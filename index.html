@@ -140,6 +140,33 @@
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
         }
 
+        /* ستايل زرار النسخ */
+        .copy-btn {
+            background: rgba(0, 255, 0, 0.15);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .copy-btn:hover {
+            background: rgba(0, 255, 0, 0.3);
+        }
+
+        .copy-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
         /* قسم الشرح (طريقة الربط) */
         .guide-section {
             margin-top: 25px;
@@ -383,9 +410,8 @@
             const loader = document.getElementById('loader');
             const resultBox = document.getElementById('resultBox');
 
-            // تصفير الرسائل القديمة
             resultBox.className = 'result-box';
-            resultBox.innerText = '';
+            resultBox.innerHTML = '';
 
             if (!phoneInput) {
                 resultBox.classList.add('result-error');
@@ -393,7 +419,6 @@
                 return;
             }
 
-            // تغيير شكل الزر أثناء التحميل
             btn.disabled = true;
             btnText.innerText = 'جاري التوليد...';
             loader.style.display = 'block';
@@ -408,24 +433,49 @@
                 const data = await response.json();
 
                 if (data.code) {
-                    // نجاح
+                    // نجاح - هنا ضفنا زرار النسخ
                     resultBox.classList.add('result-success');
-                    resultBox.innerHTML = `كود التنصيب الخاص بك:<br><br><span style="font-size: 26px; letter-spacing: 3px; font-weight: 900;">${data.code}</span>`;
+                    resultBox.innerHTML = `
+                        <div>كود التنصيب الخاص بك:</div>
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
+                            <span style="font-size: 26px; letter-spacing: 3px; font-weight: 900;">${data.code}</span>
+                            <button class="copy-btn" onclick="copyCode('${data.code}', this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                نسخ
+                            </button>
+                        </div>
+                    `;
                 } else {
-                    // خطأ من البوت
                     throw new Error(data.error || 'حدث خطأ غير متوقع');
                 }
 
             } catch (error) {
-                // فشل الاتصال أو خطأ في البوت
                 resultBox.classList.add('result-error');
                 resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر. تأكد أن البوت شغال.';
             } finally {
-                // إرجاع الزر لحالته الطبيعية
                 btn.disabled = false;
                 btnText.innerText = 'توليد الكود 🚀';
                 loader.style.display = 'none';
             }
+        }
+
+        // دالة النسخ
+        function copyCode(code, btnElement) {
+            navigator.clipboard.writeText(code).then(() => {
+                // تغيير شكل الزرار مؤقتاً عشان يطمن المستخدم
+                const originalHTML = btnElement.innerHTML;
+                btnElement.innerHTML = '✅ تم النسخ';
+                btnElement.style.background = 'rgba(0, 255, 0, 0.4)';
+                btnElement.style.color = '#fff';
+                
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHTML;
+                    btnElement.style.background = 'rgba(0, 255, 0, 0.15)';
+                    btnElement.style.color = '#00ff00';
+                }, 2000);
+            }).catch(err => {
+                alert('حدث خطأ أثناء النسخ، يرجى نسخ الكود يدوياً.');
+            });
         }
     </script>
 </body>
