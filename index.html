@@ -145,26 +145,27 @@
             background: rgba(0, 255, 0, 0.15);
             border: 1px solid #00ff00;
             color: #00ff00;
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             font-family: 'Cairo', sans-serif;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
             transition: all 0.3s ease;
             margin-top: 15px;
         }
 
         .copy-btn:hover {
             background: rgba(0, 255, 0, 0.3);
+            transform: scale(1.05);
         }
 
         .copy-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
         }
 
         /* قسم الشرح (طريقة الربط) */
@@ -401,7 +402,7 @@
 
     <script>
         // ⚠️ الرابط الجديد المحدث من كاتا بمب
-        const BOT_API_URL = 'https://special-impaired-undertake-per.trycloudflare.com/api/pair'; 
+        const BOT_API_URL = 'https://aberdeen-pixel-arabic-php.trycloudflare.com/api/pair'; 
 
         async function generateCode() {
             const phoneInput = document.getElementById('phoneInput').value.trim();
@@ -462,7 +463,6 @@
         // دالة النسخ
         function copyCode(code, btnElement) {
             navigator.clipboard.writeText(code).then(() => {
-                // تغيير شكل الزرار مؤقتاً عشان يطمن المستخدم
                 const originalHTML = btnElement.innerHTML;
                 btnElement.innerHTML = '✅ تم النسخ';
                 btnElement.style.background = 'rgba(0, 255, 0, 0.4)';
