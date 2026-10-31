@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relax | الموقع الرسمي</title>
+    <title>Relax | النظام المتكامل</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #05050a;
+            --bg: #030308;
             --primary: #00f0ff;
             --secondary: #8a2be2;
-            --text: #e0e0e0;
-            --muted: #888;
+            --text: #ffffff;
+            --muted: #94a3b8;
+            --card-bg: rgba(15, 15, 25, 0.7);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
@@ -20,9 +21,23 @@
             background-color: var(--bg);
             color: var(--text);
             overflow-x: hidden;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        /* خلفية متحركة (جزيئات) */
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.08), transparent 30%),
-                radial-gradient(circle at 85% 30%, rgba(138, 43, 226, 0.08), transparent 30%);
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.1), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(138, 43, 226, 0.1), transparent 30%);
+            animation: pulseBg 10s infinite alternate;
+        }
+        @keyframes pulseBg {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
 
         /* النافبار */
@@ -31,17 +46,17 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: rgba(5, 5, 10, 0.85);
-            backdrop-filter: blur(15px);
+            background: rgba(3, 3, 8, 0.8);
+            backdrop-filter: blur(20px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 100;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .logo { font-size: 26px; font-weight: 900; color: var(--primary); text-shadow: 0 0 15px rgba(0,240,255,0.6); letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 15px; font-weight: bold; transition: 0.3s; }
+        .logo { font-size: 28px; font-weight: 900; color: var(--primary); text-shadow: 0 0 20px var(--primary); letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 16px; font-weight: 700; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
         /* القسم الرئيسي */
@@ -56,113 +71,159 @@
             position: relative;
         }
         .hero h1 {
-            font-size: 75px;
+            font-size: 85px;
             font-weight: 900;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
             letter-spacing: -2px;
+            animation: gradientText 3s linear infinite;
         }
-        .hero h2 { font-size: 24px; font-weight: 700; margin-bottom: 20px; color: #fff; }
-        .hero p { font-size: 18px; color: var(--muted); max-width: 600px; margin-bottom: 40px; line-height: 1.8; }
+        @keyframes gradientText {
+            to { background-position: 200% center; }
+        }
+        .hero h2 { font-size: 28px; font-weight: 700; margin-bottom: 20px; color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        .hero p { font-size: 18px; color: var(--muted); max-width: 650px; margin-bottom: 50px; line-height: 1.8; }
         
         .btn {
-            padding: 15px 40px;
+            padding: 18px 45px;
             background: linear-gradient(135deg, var(--secondary), var(--primary));
             color: #fff;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 50px;
             font-weight: 900;
-            font-size: 18px;
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
-            transition: 0.3s;
+            font-size: 20px;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+            transition: 0.4s;
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-        .btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 30px rgba(0, 240, 255, 0.7); }
+        .btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 0 40px rgba(0, 240, 255, 0.8); }
 
         /* قسم المشاريع */
-        .projects { padding: 100px 50px; }
-        .section-title { text-align: center; font-size: 40px; margin-bottom: 60px; color: #fff; font-weight: 900; }
-        .section-title span { color: var(--primary); }
+        .projects { padding: 100px 50px; position: relative; z-index: 1; }
+        .section-title { text-align: center; font-size: 45px; margin-bottom: 70px; color: #fff; font-weight: 900; }
+        .section-title span { color: var(--primary); text-shadow: 0 0 15px var(--primary); }
         
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         .card {
-            background: rgba(20, 20, 30, 0.7);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
             padding: 40px 30px;
             text-align: center;
             transition: 0.4s;
             backdrop-filter: blur(10px);
         }
-        .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15); }
-        .card h3 { font-size: 24px; color: var(--primary); margin-bottom: 15px; font-weight: 900; }
-        .card p { font-size: 15px; color: var(--muted); line-height: 1.8; }
+        .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15); }
+        .card h3 { font-size: 26px; color: var(--primary); margin-bottom: 15px; font-weight: 900; }
+        .card p { font-size: 16px; color: var(--muted); line-height: 1.8; }
 
-        /* قسم التواصل */
-        .contact { padding: 100px 50px; text-align: center; }
-        .contact-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px; }
-        .contact-btn {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 18px 40px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 900;
-            font-size: 18px;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        /* قسم التنصيب */
+        .install-section { padding: 100px 20px 120px; text-align: center; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
+        
+        .install-box {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(10, 10, 15, 0.8);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(0,240,255,0.2);
+            box-shadow: 0 0 50px rgba(0,240,255,0.05), inset 0 0 20px rgba(0,240,255,0.05);
+            backdrop-filter: blur(15px);
+            position: relative;
         }
-        .contact-btn.wa { background: linear-gradient(135deg, #25D366, #128C7E); }
-        .contact-btn.tg { background: linear-gradient(135deg, #0088cc, #005580); }
-        .contact-btn.ch { background: linear-gradient(135deg, #ff9a56, #ff5e62); }
-        .contact-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        
+        .install-input {
+            width: 100%;
+            padding: 18px;
+            border-radius: 12px;
+            border: 2px solid #333;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .install-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0,240,255,0.2); }
+
+        /* شاشة النتيجة */
+        #resultBox { display: none; margin-top: 25px; padding: 25px; background: rgba(0,0,0,0.6); border: 2px dashed var(--primary); border-radius: 15px; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .code-label { color: #fff; font-size: 16px; margin-bottom: 10px; font-weight: bold; }
+        #codeText { color: var(--primary); font-size: 40px; letter-spacing: 5px; margin: 15px 0 25px; direction: ltr; font-weight: 900; text-shadow: 0 0 20px var(--primary); }
+        
+        .btn-copy { 
+            background: var(--primary); color: #000; border: none; padding: 15px; border-radius: 10px; 
+            font-weight: 900; cursor: pointer; width: 100%; font-size: 18px; transition: 0.3s; 
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        .btn-copy:hover { background: #00c0cc; transform: scale(1.02); }
+
+        #errorText { color: #ff4d4d; margin-top: 20px; display: none; font-weight: bold; background: rgba(255, 77, 77, 0.1); padding: 10px; border-radius: 8px; border: 1px solid #ff4d4d; }
+
+        /* شاشة التحميل (Loader) */
+        .loader { display: none; margin: 20px auto; width: 40px; height: 40px; border: 4px solid rgba(0, 240, 255, 0.2); border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* التنبيه (Toast) */
+        .toast {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 15px 30px;
+            border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 1000;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
         /* الفوتر */
         footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--muted);
-            font-size: 15px;
-            font-weight: bold;
+            text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--muted); font-size: 16px; font-weight: bold; position: relative; z-index: 1;
         }
         footer span { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
         @media (max-width: 768px) {
             nav { padding: 15px 20px; }
             .nav-links { display: none; }
-            .hero h1 { font-size: 50px; }
-            .hero h2 { font-size: 18px; }
+            .hero h1 { font-size: 55px; }
+            .hero h2 { font-size: 20px; }
+            .section-title { font-size: 35px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="bg-animation"></div>
 
     <nav>
         <div class="logo">RELAX</div>
         <div class="nav-links">
             <a href="#home">الرئيسية</a>
             <a href="#projects">المشاريع</a>
-            <a href="#contact">تواصل معي</a>
+            <a href="#install">التنصيب</a>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <h1>Relax</h1>
         <h2>نظام البوتات المتكامل</h2>
-        <p>مرحباً بك في الموقع الرسمي لـ Relax. هنا نقدم لك أحدث تقنيات بوتات الواتساب التفاعلية، الألعاب المدمجة، والواجهات الاحترافية.</p>
-        <a href="#projects" class="btn">استكشف Relax</a>
+        <p>مرحباً بك في الموقع الرسمي لـ Relax. هنا نقدم لك أحدث تقنيات بوتات الواتساب التفاعلية، الألعاب المدمجة، والواجهات الاحترافية بأداء فائق.</p>
+        <a href="#install" class="btn">🚀 تنصيب البوت الآن</a>
     </section>
 
     <section id="projects" class="projects">
@@ -183,25 +244,115 @@
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <h2 class="section-title">تواصل مع <span>Relax</span></h2>
-        <p style="color: var(--muted); margin-bottom: 20px;">اختر وسيلة التواصل المناسبة لك</p>
-        <div class="contact-links">
-            <a href="https://wa.me/201213799023" class="contact-btn wa" target="_blank">
-                📱 المطور
-            </a>
-            <a href="https://t.me/SE_NJ" class="contact-btn tg" target="_blank">
-                ✈️ تليجرام
-            </a>
-            <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" class="contact-btn ch" target="_blank">
-                📢 قناة Relax
-            </a>
+    <!-- قسم التنصيب -->
+    <section id="install" class="install-section">
+        <h2 class="section-title">تنصيب <span>Relax</span></h2>
+        <p style="color: var(--muted); margin-bottom: 30px;">ادخل رقمك بالصيغة الدولية (بدون +) عشان نطلعلك كود التنصيب فوراً.</p>
+        
+        <div class="install-box">
+            <input type="number" id="phoneNumber" class="install-input" placeholder="201213799023">
+            
+            <button onclick="installBot()" class="btn" style="width: 100%; font-size: 18px;">🚀 توليد الكود</button>
+            
+            <div class="loader" id="loader"></div>
+            
+            <div id="resultBox">
+                <div class="code-label">كود التنصيب الخاص بك:</div>
+                <h1 id="codeText">----</h1>
+                <button onclick="copyCode()" class="btn-copy">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    نسخ الكود
+                </button>
+            </div>
+            
+            <p id="errorText"></p>
         </div>
     </section>
 
     <footer>
         © 2026 <span>RELAX</span> SYSTEM. جميع الحقوق محفوظة.
     </footer>
+
+    <!-- التنبيه -->
+    <div id="toast" class="toast">✅ تم نسخ الكود بنجاح!</div>
+
+    <script>
+        // ⚠️ حط لينك الـ Cloudflare بتاعك هنا ⚠️
+        const API_URL = 'https://threaded-twisted-expiration-physicians.trycloudflare.com';
+
+        async function installBot() {
+            const phone = document.getElementById('phoneNumber').value;
+            const resultBox = document.getElementById('resultBox');
+            const errorText = document.getElementById('errorText');
+            const codeText = document.getElementById('codeText');
+            const loader = document.getElementById('loader');
+
+            // إخفاء العناصر القديمة
+            resultBox.style.display = 'none';
+            errorText.style.display = 'none';
+
+            if (!phone || phone.length < 10) {
+                errorText.innerText = 'يرجى إدخال رقم صحيح (10 أرقام على الأقل)';
+                errorText.style.display = 'block';
+                return;
+            }
+
+            // إظهار التحميل
+            loader.style.display = 'block';
+
+            try {
+                const response = await fetch(`${API_URL}/api/get-code`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: phone })
+                });
+
+                const data = await response.json();
+                loader.style.display = 'none'; // إخفاء التحميل
+
+                if (data.success) {
+                    resultBox.style.display = 'block';
+                    codeText.innerText = data.code;
+                } else {
+                    errorText.innerText = data.error || 'حدث خطأ غير متوقع.';
+                    errorText.style.display = 'block';
+                }
+            } catch (err) {
+                loader.style.display = 'none';
+                errorText.innerText = 'تعذر الاتصال بالسيرفر. تأكد أن الترمنال شغال.';
+                errorText.style.display = 'block';
+            }
+        }
+
+        function copyCode() {
+            const code = document.getElementById('codeText').innerText;
+            if (code === '...' || code === 'جاري التوليد...' || code === '----') return;
+            
+            // طريقة النسخ المتوافقة مع كل المتصفحات
+            var textArea = document.createElement("textarea");
+            textArea.value = code;
+            textArea.style.position = "fixed";
+            textArea.style.top = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                alert('حدث خطأ أثناء النسخ، يرجى النسخ يدوياً: ' + code);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showToast() {
+            var toast = document.getElementById('toast');
+            toast.className = "toast show";
+            setTimeout(function() {
+                toast.className = toast.className.replace("show", "");
+            }, 3000);
+        }
+    </script>
 
 </body>
 </html>
