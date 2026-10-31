@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relax | الموقع الرسمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05050a;
+            --primary: #00f0ff;
+            --secondary: #8a2be2;
+            --text: #e0e0e0;
+            --muted: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.08), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(138, 43, 226, 0.08), transparent 30%);
+        }
+
+        /* النافبار */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(5, 5, 10, 0.85);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo { font-size: 26px; font-weight: 900; color: var(--primary); text-shadow: 0 0 15px rgba(0,240,255,0.6); letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 15px; font-weight: bold; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        /* القسم الرئيسي */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 75px;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+        .hero h2 { font-size: 24px; font-weight: 700; margin-bottom: 20px; color: #fff; }
+        .hero p { font-size: 18px; color: var(--muted); max-width: 600px; margin-bottom: 40px; line-height: 1.8; }
+        
+        .btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 900;
+            font-size: 18px;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 30px rgba(0, 240, 255, 0.7); }
+
+        /* قسم المشاريع */
+        .projects { padding: 100px 50px; }
+        .section-title { text-align: center; font-size: 40px; margin-bottom: 60px; color: #fff; font-weight: 900; }
+        .section-title span { color: var(--primary); }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15); }
+        .card h3 { font-size: 24px; color: var(--primary); margin-bottom: 15px; font-weight: 900; }
+        .card p { font-size: 15px; color: var(--muted); line-height: 1.8; }
+
+        /* قسم التواصل */
+        .contact { padding: 100px 50px; text-align: center; }
+        .contact-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px; }
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 40px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 900;
+            font-size: 18px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .contact-btn.wa { background: linear-gradient(135deg, #25D366, #128C7E); }
+        .contact-btn.tg { background: linear-gradient(135deg, #0088cc, #005580); }
+        .contact-btn.ch { background: linear-gradient(135deg, #ff9a56, #ff5e62); }
+        .contact-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--muted);
+            font-size: 15px;
+            font-weight: bold;
+        }
+        footer span { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 50px; }
+            .hero h2 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">RELAX</div>
+        <div class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#projects">المشاريع</a>
+            <a href="#contact">تواصل معي</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Relax</h1>
+        <h2>نظام البوتات المتكامل</h2>
+        <p>مرحباً بك في الموقع الرسمي لـ Relax. هنا نقدم لك أحدث تقنيات بوتات الواتساب التفاعلية، الألعاب المدمجة، والواجهات الاحترافية.</p>
+        <a href="#projects" class="btn">استكشف Relax</a>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">مشاريع <span>Relax</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🤖 Relax Bot</h3>
+                <p>البوت الأساسي المتكامل الذي يدعم نظام البوتات الفرعية، الألعاب التفاعلية، وتحميل الوسائط بسرعة فائقة.</p>
+            </div>
+            <div class="card">
+                <h3>🎮 Relax Games</h3>
+                <p>مجموعة من الألعاب الحصرية التي تعمل داخل واتساب مثل الشطرنج، لعبة الذاكرة، والمزيد.</p>
+            </div>
+            <div class="card">
+                <h3>💻 Relax UI</h3>
+                <p>تصميم واجهات مستخدم (HTML/CSS) بأحدث تقنيات النيون والزجاجية لتظهر بشكل احترافي داخل الدردشة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">تواصل مع <span>Relax</span></h2>
+        <p style="color: var(--muted); margin-bottom: 20px;">اختر وسيلة التواصل المناسبة لك</p>
+        <div class="contact-links">
+            <a href="https://wa.me/201213799023" class="contact-btn wa" target="_blank">
+                📱 المطور
+            </a>
+            <a href="https://t.me/SE_NJ" class="contact-btn tg" target="_blank">
+                ✈️ تليجرام
+            </a>
+            <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" class="contact-btn ch" target="_blank">
+                📢 قناة Relax
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 <span>RELAX</span> SYSTEM. جميع الحقوق محفوظة.
+    </footer>
+
+</body>
+</html>
