@@ -401,8 +401,8 @@
     </div>
 
     <script>
-        // ⚠️ الرابط الجديد المحدث من كاتا بمب
-        const BOT_API_URL = 'https://aberdeen-pixel-arabic-php.trycloudflare.com/api/pair'; 
+        // ⚠️ تم تحديث الرابط الجديد هنا
+        const BOT_API_URL = 'https://sum-hand-ascii-chen.trycloudflare.com/api/pair'; 
 
         async function generateCode() {
             const phoneInput = document.getElementById('phoneInput').value.trim();
@@ -434,7 +434,6 @@
                 const data = await response.json();
 
                 if (data.code) {
-                    // نجاح - هنا ضفنا زرار النسخ
                     resultBox.classList.add('result-success');
                     resultBox.innerHTML = `
                         <div>كود التنصيب الخاص بك:</div>
@@ -460,7 +459,6 @@
             }
         }
 
-        // دالة النسخ
         function copyCode(code, btnElement) {
             navigator.clipboard.writeText(code).then(() => {
                 const originalHTML = btnElement.innerHTML;
