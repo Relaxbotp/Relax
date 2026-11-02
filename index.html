@@ -10,6 +10,7 @@
         
         body {
             background-color: #0d0d0d;
+            /* تم استخدام خلفية Gojo البنفسجية */
             background-image: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.95)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -29,7 +30,7 @@
             padding: 30px 20px;
             border-radius: 20px;
             border: 1px solid #333;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -40,7 +41,7 @@
         .subtitle { font-size: 14px; color: #aaa; margin-bottom: 25px; }
         .input-group { margin-bottom: 20px; }
         input[type="text"] { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #111; color: #fff; font-size: 18px; text-align: center; outline: none; transition: 0.3s; }
-        input[type="text"]:focus { border-color: #00ffff; box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); }
+        input[type="text"]:focus { border-color: #8a2be2; box-shadow: 0 0 10px rgba(138, 43, 226, 0.3); }
         
         .btn { width: 100%; padding: 15px; border: none; border-radius: 12px; background: linear-gradient(90deg, #8a2be2, #00ffff); color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .btn:hover { opacity: 0.9; transform: scale(1.02); }
@@ -57,43 +58,55 @@
         .guide-section { margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; text-align: right; }
         .guide-title { font-size: 16px; color: #00ffff; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
         .guide-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13px; color: #ccc; }
-        .step-num { background: rgba(0, 255, 255, 0.1); color: #00ffff; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+        .step-num { background: rgba(138, 43, 226, 0.2); color: #00ffff; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
         .highlight-text { color: #fff; font-weight: bold; }
         .footer { margin-top: 25px; font-size: 12px; color: #666; }
 
-        /* ================= الشات ================= */
-        .chat-fab { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #00a884, #005c4b); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 168, 132, 0.4); z-index: 9999; transition: 0.3s; }
+        /* ================= الشات (تصميم Gojo) ================= */
+        .chat-fab { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #8a2be2, #4b0082); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(138, 43, 226, 0.6); z-index: 9999; transition: 0.3s; border: 2px solid #00ffff; }
         .chat-fab:hover { transform: scale(1.1); }
         
-        .chat-modal { position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 100px); background: #111b21; border: 1px solid #2a3942; border-radius: 15px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        .chat-modal { position: fixed; bottom: 90px; right: 20px; width: 370px; max-width: calc(100vw - 40px); height: 550px; max-height: calc(100vh - 100px); background: rgba(15, 5, 25, 0.95); border: 1px solid #8a2be2; border-radius: 20px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 40px rgba(138, 43, 226, 0.4); backdrop-filter: blur(10px); }
         .chat-modal.active { display: flex; }
         
-        .chat-header { background: #202c33; padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #111b21; color: white; cursor: pointer; }
-        .chat-header .avatar { font-size: 24px; }
-        .chat-header h4 { font-size: 16px; margin: 0; }
-        .chat-header p { font-size: 12px; color: #00a884; margin: 0; }
+        /* الهيدر */
+        .chat-header { background: rgba(20, 10, 30, 0.9); padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #4b0082; color: white; cursor: pointer; }
+        .chat-header .avatar { font-size: 24px; background: #4b0082; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid #00ffff;}
+        .chat-header h4 { font-size: 16px; margin: 0; color: #00ffff; }
+        .chat-header p { font-size: 12px; color: #8a2be2; margin: 0; }
         
-        /* شاشات الشات */
-        .name-screen, .admin-login-screen { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; text-align: center; }
-        .name-screen input, .admin-login-screen input { width: 100%; padding: 12px; border-radius: 10px; border: none; background: #2a3942; color: white; outline: none; text-align: center; margin-bottom: 15px; font-size: 16px; }
-        .name-screen button, .admin-login-screen button { width: 100%; padding: 12px; background: #00a884; border: none; border-radius: 10px; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
-        .admin-login-screen button { background: #ff0055; }
-
-        /* واجهة قائمة العملاء (للمطور) */
-        .admin-list-screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; background: #111b21; }
-        .admin-user-item { padding: 15px; border-bottom: 1px solid #202c33; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; font-size: 15px;}
-        .admin-user-item:hover { background: #202c33; }
-        .admin-user-item .avatar { font-size: 20px; }
-
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); background-size: cover; display: none; flex-direction: column; gap: 10px; }
-        .chat-msg { max-width: 80%; padding: 10px 15px; border-radius: 10px; font-size: 14px; line-height: 1.5; word-wrap: break-word; color: white; }
-        .chat-msg.user { background: #005c4b; align-self: flex-end; border-top-right-radius: 0; }
-        .chat-msg.dev { background: #202c33; align-self: flex-start; border-top-left-radius: 0; }
+        /* خلفية الشات */
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-image: url('https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg'); background-size: cover; background-position: center; display: none; flex-direction: column; gap: 10px; }
+        .chat-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 0, 20, 0.8); z-index: 1; }
+        
+        /* الرسايل */
+        .chat-msg { position: relative; z-index: 2; max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.5; word-wrap: break-word; color: white; display: flex; flex-direction: column;}
+        .chat-msg.user { background: linear-gradient(135deg, #8a2be2, #4b0082); align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid #00ffff; box-shadow: 0 0 10px rgba(138, 43, 226, 0.5); }
+        .chat-msg.dev { background: rgba(30, 30, 40, 0.9); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #555; }
         .chat-msg .time { font-size: 10px; color: rgba(255,255,255,0.6); display: block; text-align: left; margin-top: 5px; }
+        
+        /* مشغل الصوت */
+        audio { width: 100%; margin-top: 5px; height: 35px; outline: none; }
 
-        .chat-footer { background: #202c33; padding: 10px; display: none; gap: 10px; align-items: center; }
-        .chat-footer input { flex: 1; background: #2a3942; border: none; padding: 12px; border-radius: 10px; color: white; outline: none; font-family: 'Cairo', sans-serif; }
-        .chat-footer button { background: #00a884; border: none; width: 45px; height: 45px; border-radius: 50%; color: white; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        /* الفوتر والإدخال */
+        .chat-footer { background: rgba(20, 10, 30, 0.95); padding: 10px; display: none; gap: 8px; align-items: center; border-top: 1px solid #4b0082; }
+        .chat-footer input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid #4b0082; padding: 12px; border-radius: 25px; color: white; outline: none; font-family: 'Cairo', sans-serif; }
+        .chat-footer button { background: #8a2be2; border: none; width: 45px; height: 45px; border-radius: 50%; color: white; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; }
+        .chat-footer button:active { transform: scale(0.9); }
+        .mic-btn { background: #00ffff !important; color: #000 !important; }
+        .mic-btn.recording { background: #ff0055 !important; color: #fff !important; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 0, 85, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); } }
+
+        /* شاشات الشات */
+        .name-screen, .admin-login-screen { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; text-align: center; position: relative; z-index: 10; }
+        .name-screen input, .admin-login-screen input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #8a2be2; background: rgba(0,0,0,0.5); color: white; outline: none; text-align: center; margin-bottom: 15px; font-size: 16px; }
+        .name-screen button, .admin-login-screen button { width: 100%; padding: 12px; background: linear-gradient(90deg, #8a2be2, #00ffff); border: none; border-radius: 10px; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
+        
+        /* قائمة العملاء */
+        .admin-list-screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; background: rgba(15, 5, 25, 0.95); position: relative; z-index: 10; }
+        .admin-user-item { padding: 15px; border-bottom: 1px solid #333; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; font-size: 15px;}
+        .admin-user-item:hover { background: rgba(138, 43, 226, 0.2); }
+        
     </style>
 </head>
 <body>
@@ -126,16 +139,16 @@
     </div>
 
     <!-- ================= الشات ================= -->
-    <div class="chat-fab" onclick="toggleChat()">💬</div>
+    <div class="chat-fab" onclick="toggleChat()">👑</div>
 
     <div class="chat-modal" id="chatModal">
         <div class="chat-header" id="chatHeader" onclick="handleHeaderClick()">
             <div class="avatar" id="headerAvatar">🧑‍💻</div>
             <div>
-                <h4 id="chatHeaderTitle">الدعم الفني | Relax</h4>
+                <h4 id="chatHeaderTitle">محادثة: الدعم</h4>
                 <p id="chatStatus">متصل الآن</p>
             </div>
-            <div id="backBtn" style="margin-right: auto; display: none; font-size: 20px;">↩</div>
+            <div id="backBtn" style="margin-right: auto; display: none; font-size: 20px; color: #00ffff;">↩</div>
         </div>
 
         <div class="admin-login-screen" id="adminLoginScreen">
@@ -146,14 +159,14 @@
         </div>
 
         <div class="name-screen" id="nameScreen">
-            <h3 style="margin-bottom: 20px; color: #00a884;">مرحباً بك! 👋</h3>
-            <p style="margin-bottom: 15px; font-size: 14px;">من فضلك اكتب اسمك للبدء في المحادثة</p>
+            <h3 style="margin-bottom: 20px; color: #00ffff;">مرحباً بك! 👋</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">من فضلك اكتب اسمك للبدء</p>
             <input type="text" id="userNameInput" placeholder="اكتب اسمك هنا...">
             <button onclick="saveUserName()">بدء المحادثة</button>
         </div>
 
         <div class="admin-list-screen" id="adminListScreen">
-            <div style="padding: 15px; font-weight: bold; color: #00a884; border-bottom: 1px solid #202c33;">قائمة العملاء</div>
+            <div style="padding: 15px; font-weight: bold; color: #00ffff; border-bottom: 1px solid #4b0082; text-align: center;">قائمة العملاء</div>
             <div id="adminUsersList"></div>
         </div>
 
@@ -161,7 +174,8 @@
         
         <div class="chat-footer" id="chatFooter">
             <input type="text" id="chatInput" placeholder="اكتب رسالتك..." onkeypress="handleChatEnter(event)">
-            <button onclick="sendChatMessage()">➤</button>
+            <button onclick="sendChatMessage()" style="background:#8a2be2;">➤</button>
+            <button id="micBtn" class="mic-btn" onclick="toggleRecording()">🎙️</button>
         </div>
     </div>
 
@@ -177,9 +191,7 @@
             if (!phoneInput) { resultBox.classList.add('result-error'); resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; return; }
             btn.disabled = true; btnText.innerText = 'جاري التوليد...';
             try {
-                // ⚠️⚠️ تحذير: غير الرابط ده كل مرة تعمل Restart للسيرفر في كاتا بمب ⚠️⚠️
                 const BOT_API_URL = 'https://radar-pioneer-extensions-sail.trycloudflare.com/api/pair';
-                
                 const response = await fetch(BOT_API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phoneInput }) });
                 const data = await response.json();
                 if (data.code) {
@@ -198,7 +210,7 @@
         }
     </script>
 
-    <!-- ================= سكريبت الشات (Firebase) ================= -->
+    <!-- ================= سكريبت الشات (Firebase + Audio + Notifications) ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push, onChildAdded, get, child, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -222,6 +234,7 @@
         let currentUserId = null;
         let isChatInitialized = false;
 
+        // عناصر الواجهة
         const chatModal = document.getElementById('chatModal');
         const nameScreen = document.getElementById('nameScreen');
         const adminLoginScreen = document.getElementById('adminLoginScreen');
@@ -233,6 +246,20 @@
         const chatStatus = document.getElementById('chatStatus');
         const backBtn = document.getElementById('backBtn');
         const headerAvatar = document.getElementById('headerAvatar');
+
+        // متغيرات التسجيل الصوتي
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+        const micBtn = document.getElementById('micBtn');
+
+        // طلب إذن الإشعارات
+        if ("Notification" in window) {
+            Notification.requestPermission();
+        }
+
+        // صوت التنبيه
+        const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
 
         window.toggleChat = function() {
             chatModal.classList.toggle('active');
@@ -290,7 +317,7 @@
             headerAvatar.innerText = "🧑‍💻";
             chatHeaderTitle.innerText = "الدعم الفني | Relax";
             chatStatus.innerText = "متصل الآن";
-            chatStatus.style.color = "#00a884";
+            chatStatus.style.color = "#00ffff";
 
             let storedId = localStorage.getItem('relax_user_id');
             let storedName = localStorage.getItem('relax_user_name');
@@ -325,14 +352,17 @@
         function loadUserMessages(userId) {
             chatBody.innerHTML = '';
             const msgRef = ref(db, 'chats/' + userId + '/messages');
+            let isInitialLoad = true;
+            
             onChildAdded(msgRef, (snapshot) => {
                 const data = snapshot.val();
-                const msgDiv = document.createElement('div');
-                msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
-                const timeStr = new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
-                msgDiv.innerHTML = `${data.text} <span class="time">${timeStr}</span>`;
-                chatBody.appendChild(msgDiv);
-                chatBody.scrollTop = chatBody.scrollHeight;
+                renderMessage(data, 'user');
+                
+                // إشعار للعميل لو المطور رد
+                if(!isInitialLoad && data.sender === 'dev') {
+                    showNotification("رد جديد من الدعم", data.isAudio ? "🎙️ رسالة صوتية" : data.text);
+                }
+                isInitialLoad = false;
             });
         }
 
@@ -361,19 +391,12 @@
                     const chats = snapshot.val();
                     Object.keys(chats).forEach(userId => {
                         let userName = "غير معروف";
-                        
                         if (chats[userId].profile && chats[userId].profile.name) {
                             userName = chats[userId].profile.name;
-                        } else if (chats[userId].profile) {
-                            const profileKeys = Object.keys(chats[userId].profile);
-                            if(profileKeys.length > 0) {
-                                userName = chats[userId].profile[profileKeys[0]].name || "غير معروف";
-                            }
                         }
-
                         const item = document.createElement('div');
                         item.className = 'admin-user-item';
-                        item.innerHTML = `<span class="avatar">👤</span> <span style="font-weight:bold; color:#00ffff;">عميل جديد</span> <span style="color:#aaa;">|</span> <span>${userName}</span>`;
+                        item.innerHTML = `<span style="font-weight:bold; color:#00ffff;">عميل جديد</span> <span style="color:#aaa;">|</span> <span>${userName}</span>`;
                         item.onclick = () => openAdminChat(userId, userName);
                         listContainer.appendChild(item);
                     });
@@ -395,35 +418,120 @@
             
             chatBody.innerHTML = '';
             const msgRef = ref(db, 'chats/' + userId + '/messages');
+            let isInitialLoad = true;
+
             onChildAdded(msgRef, (snapshot) => {
                 const data = snapshot.val();
-                const msgDiv = document.createElement('div');
-                msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
-                const timeStr = new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
-                msgDiv.innerHTML = `${data.text} <span class="time">${timeStr}</span>`;
-                chatBody.appendChild(msgDiv);
-                chatBody.scrollTop = chatBody.scrollHeight;
+                renderMessage(data, 'dev');
+                
+                // إشعار للمطور لو العميل بعت
+                if(!isInitialLoad && data.sender === 'user') {
+                    showNotification("رسالة من " + userName, data.isAudio ? "🎙️ رسالة صوتية" : data.text);
+                }
+                isInitialLoad = false;
             });
         }
 
+        // دالة عرض الرسالة (نص أو صوت)
+        function renderMessage(data, type) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
+            
+            if (data.isAudio) {
+                msgDiv.innerHTML = `<audio controls src="${data.audioBase64}"></audio><span class="time">${new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>`;
+            } else {
+                msgDiv.innerHTML = `${data.text} <span class="time">${new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>`;
+            }
+            
+            chatBody.appendChild(msgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // إرسال رسالة نصية
         window.sendChatMessage = async function() {
             const text = chatInput.value.trim();
             if (!text) return;
             chatInput.value = '';
             
             let targetUserId = isAdmin ? activeAdminChatId : currentUserId;
-            if(!targetUserId) return alert("حدث خطأ، يرجى إعادة تحميل الصفحة.");
+            if(!targetUserId) return;
 
             try {
                 await push(ref(db, 'chats/' + targetUserId + '/messages'), {
                     sender: isAdmin ? 'dev' : 'user',
                     text: text,
+                    isAudio: false,
                     time: Date.now()
                 });
             } catch(e) { alert("حدث خطأ في الإرسال."); }
         }
 
         window.handleChatEnter = function(e) { if (e.key === 'Enter') window.sendChatMessage(); }
+
+        // ================= التسجيل الصوتي =================
+        window.toggleRecording = async function() {
+            if (isRecording) {
+                // إيقاف التسجيل
+                mediaRecorder.stop();
+                isRecording = false;
+                micBtn.classList.remove('recording');
+                micBtn.innerHTML = "🎙️";
+            } else {
+                // بدء التسجيل
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = async () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        audioChunks = [];
+                        
+                        // تحويل الصوت لـ Base64
+                        const reader = new FileReader();
+                        reader.readAsDataURL(audioBlob);
+                        reader.onloadend = async () => {
+                            const base64Audio = reader.result;
+                            let targetUserId = isAdmin ? activeAdminChatId : currentUserId;
+                            
+                            if(!targetUserId) return;
+
+                            // إرسال الصوت لقاعدة البيانات
+                            await push(ref(db, 'chats/' + targetUserId + '/messages'), {
+                                sender: isAdmin ? 'dev' : 'user',
+                                isAudio: true,
+                                audioBase64: base64Audio,
+                                time: Date.now()
+                            });
+                        };
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    micBtn.classList.add('recording');
+                    micBtn.innerHTML = "🛑";
+                    
+                } catch (err) {
+                    alert("لا يمكن الوصول للميكروفون! تأكد من إعطاء الإذن.");
+                }
+            }
+        }
+
+        // دالة إظهار الإشعار
+        function showNotification(title, body) {
+            notificationSound.play().catch(e => {});
+            
+            // إشعار داخل الشات
+            if (Notification.permission === "granted") {
+                new Notification(title, {
+                    body: body,
+                    icon: "https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg"
+                });
+            }
+        }
     </script>
 </body>
 </html>
