@@ -81,7 +81,7 @@
 
         /* واجهة قائمة العملاء (للمطور) */
         .admin-list-screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; background: #111b21; }
-        .admin-user-item { padding: 15px; border-bottom: 1px solid #202c33; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
+        .admin-user-item { padding: 15px; border-bottom: 1px solid #202c33; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; font-size: 15px;}
         .admin-user-item:hover { background: #202c33; }
         .admin-user-item .avatar { font-size: 20px; }
 
@@ -138,7 +138,6 @@
             <div id="backBtn" style="margin-right: auto; display: none; font-size: 20px;">↩</div>
         </div>
 
-        <!-- شاشة إدخال باسورد المطور (الشكل الجديد) -->
         <div class="admin-login-screen" id="adminLoginScreen">
             <h3 style="margin-bottom: 10px; color: #ff0055;">🔒 دخول المطور</h3>
             <p style="margin-bottom: 20px; font-size: 12px; color: #aaa;">هذه الشاشة مخصصة للمطور فقط</p>
@@ -146,7 +145,6 @@
             <button onclick="verifyAdminPassword()">دخول</button>
         </div>
 
-        <!-- شاشة إدخال الاسم (للعملاء) -->
         <div class="name-screen" id="nameScreen">
             <h3 style="margin-bottom: 20px; color: #00a884;">مرحباً بك! 👋</h3>
             <p style="margin-bottom: 15px; font-size: 14px;">من فضلك اكتب اسمك للبدء في المحادثة</p>
@@ -154,16 +152,13 @@
             <button onclick="saveUserName()">بدء المحادثة</button>
         </div>
 
-        <!-- شاشة قائمة العملاء (للمطور) -->
         <div class="admin-list-screen" id="adminListScreen">
             <div style="padding: 15px; font-weight: bold; color: #00a884; border-bottom: 1px solid #202c33;">قائمة العملاء</div>
             <div id="adminUsersList"></div>
         </div>
 
-        <!-- شاشة الرسايل -->
         <div class="chat-body" id="chatBody"></div>
         
-        <!-- الفوتر -->
         <div class="chat-footer" id="chatFooter">
             <input type="text" id="chatInput" placeholder="اكتب رسالتك..." onkeypress="handleChatEnter(event)">
             <button onclick="sendChatMessage()">➤</button>
@@ -182,7 +177,9 @@
             if (!phoneInput) { resultBox.classList.add('result-error'); resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; return; }
             btn.disabled = true; btnText.innerText = 'جاري التوليد...';
             try {
+                // ⚠️⚠️ تحذير: غير الرابط ده كل مرة تعمل Restart للسيرفر في كاتا بمب ⚠️⚠️
                 const BOT_API_URL = 'https://radar-pioneer-extensions-sail.trycloudflare.com/api/pair';
+                
                 const response = await fetch(BOT_API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phoneInput }) });
                 const data = await response.json();
                 if (data.code) {
@@ -204,7 +201,7 @@
     <!-- ================= سكريبت الشات (Firebase) ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, push, onChildAdded, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, push, onChildAdded, get, child, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBxdcYywv3ljnR4MMiYw6UammlfFVFmLA4",
@@ -223,7 +220,7 @@
         let isAdmin = false;
         let activeAdminChatId = null;
         let currentUserId = null;
-        let isChatInitialized = false; // عشان ميطلبش الباسورد كل مرة
+        let isChatInitialized = false;
 
         const chatModal = document.getElementById('chatModal');
         const nameScreen = document.getElementById('nameScreen');
@@ -254,11 +251,9 @@
             }
         }
 
-        // --- تهيئة الشات لأول مرة ---
         function initChat() {
             const urlParams = new URLSearchParams(window.location.search);
             
-            // لو دخل من لينك المطور
             if (urlParams.get('admin') === 'true') {
                 adminLoginScreen.style.display = 'flex';
                 nameScreen.style.display = 'none';
@@ -270,12 +265,10 @@
                 chatStatus.innerText = "يرجى إدخال الباسورد";
                 chatStatus.style.color = "red";
             } else {
-                // عميل عادي
                 setupUserUI();
             }
         }
 
-        // دالة التحقق من باسورد المطور
         window.verifyAdminPassword = function() {
             const pass = document.getElementById('adminPassInput').value;
             if (pass === ADMIN_PASSWORD) {
@@ -287,7 +280,6 @@
             }
         }
 
-        // --- واجهة العميل ---
         function setupUserUI() {
             nameScreen.style.display = 'none';
             adminLoginScreen.style.display = 'none';
@@ -322,7 +314,7 @@
             localStorage.setItem('relax_user_name', name);
             currentUserId = newId;
             
-            push(ref(db, 'chats/' + newId + '/profile'), { name: name });
+            set(ref(db, 'chats/' + newId + '/profile'), { name: name });
             
             nameScreen.style.display = 'none';
             chatBody.style.display = 'flex';
@@ -344,7 +336,6 @@
             });
         }
 
-        // --- واجهة المطور (Admin) ---
         function setupAdminUI() {
             headerAvatar.innerText = "👑";
             chatHeaderTitle.innerText = "لوحة تحكم المطور";
@@ -369,13 +360,20 @@
                 if (snapshot.exists()) {
                     const chats = snapshot.val();
                     Object.keys(chats).forEach(userId => {
-                        let userName = "عميل جديد";
+                        let userName = "غير معروف";
+                        
                         if (chats[userId].profile && chats[userId].profile.name) {
                             userName = chats[userId].profile.name;
+                        } else if (chats[userId].profile) {
+                            const profileKeys = Object.keys(chats[userId].profile);
+                            if(profileKeys.length > 0) {
+                                userName = chats[userId].profile[profileKeys[0]].name || "غير معروف";
+                            }
                         }
+
                         const item = document.createElement('div');
                         item.className = 'admin-user-item';
-                        item.innerHTML = `<span class="avatar">👤</span> <span>${userName}</span>`;
+                        item.innerHTML = `<span class="avatar">👤</span> <span style="font-weight:bold; color:#00ffff;">عميل جديد</span> <span style="color:#aaa;">|</span> <span>${userName}</span>`;
                         item.onclick = () => openAdminChat(userId, userName);
                         listContainer.appendChild(item);
                     });
@@ -408,7 +406,6 @@
             });
         }
 
-        // --- إرسال رسالة ---
         window.sendChatMessage = async function() {
             const text = chatInput.value.trim();
             if (!text) return;
