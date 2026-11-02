@@ -10,7 +10,8 @@
         
         body {
             background-color: #050510;
-            background-image: linear-gradient(rgba(5, 5, 16, 0.8), rgba(5, 5, 16, 0.9)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop');
+            /* 👇 هنا حطنا اسم الصورة اللي إنت هترفعها على جيت هاب */
+            background-image: linear-gradient(rgba(5, 5, 16, 0.6), rgba(5, 5, 16, 0.9)), url('bg.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -23,16 +24,11 @@
 
         .container { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 15px; }
 
-        /* القائمة العلوية */
-        .top-nav { display: flex; justify-content: flex-end; }
-        .nav-btn { background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 50px; padding: 5px 15px 5px 5px; display: flex; align-items: center; gap: 10px; color: #fff; font-weight: bold; font-size: 14px; box-shadow: 0 0 10px rgba(0, 255, 255, 0.2); }
-        .nav-btn img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #00ffff; object-fit: cover;}
-
-        /* الهيدر (اللوجو) */
+        /* الهيدر */
         .header { text-align: center; margin-top: 10px; position: relative; }
-        .avatar-container { width: 120px; height: 120px; margin: 0 auto; border-radius: 50%; padding: 5px; background: linear-gradient(45deg, #00ffff, #0055ff); box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); position: relative; }
-        .avatar-container img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #000; }
-        .header h1 { font-size: 28px; font-weight: 900; margin-top: 15px; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); letter-spacing: 2px; }
+        .avatar-container { width: 100px; height: 100px; margin: 0 auto; border-radius: 50%; padding: 4px; background: linear-gradient(45deg, #8a2be2, #00ffff); box-shadow: 0 0 25px rgba(138, 43, 226, 0.6); }
+        .avatar-container img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #000; }
+        .header h1 { font-size: 28px; font-weight: 900; margin-top: 15px; text-shadow: 0 0 10px rgba(138, 43, 226, 0.8); letter-spacing: 1px; }
         .header p { font-size: 13px; color: #ccc; margin-top: 5px; }
 
         /* كروت الإحصائيات */
@@ -48,30 +44,30 @@
         .stat-blue h2 { color: #0088ff; }
 
         /* كارت التنصيب */
-        .main-card { background: rgba(10, 20, 30, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px 20px; backdrop-filter: blur(15px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); margin-top: 10px; }
+        .main-card { background: rgba(10, 20, 30, 0.8); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 20px; padding: 25px 20px; backdrop-filter: blur(15px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); margin-top: 10px; }
         .main-card h3 { text-align: right; font-size: 16px; margin-bottom: 15px; }
         .input-group { position: relative; margin-bottom: 10px; }
         .input-group input { width: 100%; padding: 15px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #fff; font-size: 16px; text-align: right; outline: none; }
         .input-group input::placeholder { color: #666; font-family: sans-serif; }
         .hint-text { font-size: 11px; color: #888; text-align: right; margin-bottom: 20px; }
-        .submit-btn { width: 100%; padding: 15px; background: linear-gradient(90deg, #0077ff, #00ffff); border: none; border-radius: 12px; color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3); transition: 0.3s; }
-        .submit-btn:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5); }
+        .submit-btn { width: 100%; padding: 15px; background: linear-gradient(90deg, #8a2be2, #00ffff); border: none; border-radius: 12px; color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3); transition: 0.3s; }
+        .submit-btn:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(138, 43, 226, 0.5); }
 
-        /* أزرار سفلية */
-        .menu-btn { background: rgba(10, 20, 30, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 15px; display: flex; justify-content: space-between; align-items: center; color: #fff; text-decoration: none; backdrop-filter: blur(10px); transition: 0.3s; cursor: pointer; }
-        .menu-btn:hover { background: rgba(20, 30, 40, 0.9); }
+        /* زرار الشات السفلي */
+        .menu-btn { background: rgba(10, 20, 30, 0.8); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 15px; padding: 15px; display: flex; justify-content: space-between; align-items: center; color: #fff; text-decoration: none; backdrop-filter: blur(10px); transition: 0.3s; cursor: pointer; }
+        .menu-btn:hover { background: rgba(20, 30, 40, 0.9); border-color: rgba(0, 255, 128, 0.4); }
         .menu-btn-text { text-align: right; }
         .menu-btn-text h4 { font-size: 15px; margin-bottom: 3px; }
         .menu-btn-text p { font-size: 11px; color: #888; }
-        .menu-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; }
+        .menu-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; background: rgba(138, 43, 226, 0.2); color: #00ffff; }
 
-        .footer { text-align: center; font-size: 12px; color: #666; margin-top: 20px; padding-bottom: 20px; }
+        .footer { text-align: center; font-size: 12px; color: #666; margin-top: 20px; padding-bottom: 80px; }
 
-        /* ================= شات المطور العايم ================= */
-        .chat-fab { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #00a884, #005c4b); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 168, 132, 0.4); z-index: 9999; transition: 0.3s; }
+        /* ================= واجهة الشات ================= */
+        .chat-fab { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #8a2be2, #005c4b); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5); z-index: 9999; transition: 0.3s; }
         .chat-fab:hover { transform: scale(1.1); }
         
-        .chat-modal { position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 100px); background: #111b21; border: 1px solid #2a3942; border-radius: 15px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .chat-modal { position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 100px); background: #111b21; border: 1px solid #2a3942; border-radius: 15px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
         .chat-modal.active { display: flex; }
         
         .chat-header { background: #202c33; padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #111b21; color: white; cursor: pointer; }
@@ -94,13 +90,6 @@
 <body>
 
     <div class="container">
-        <div class="top-nav">
-            <div class="nav-btn">
-                <span>RELAX BOT</span>
-                <img src="https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg" alt="Logo">
-            </div>
-        </div>
-
         <div class="header">
             <div class="avatar-container">
                 <img src="https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg" alt="RELAX">
@@ -133,8 +122,9 @@
             <button class="submit-btn" id="submitBtn" onclick="generateCode()">تنصيب البوت</button>
         </div>
 
+        <!-- زر فتح الشات -->
         <div class="menu-btn" onclick="toggleChat()">
-            <div class="menu-icon" style="background: rgba(0, 200, 83, 0.2); color: #00c853;">💬</div>
+            <div class="menu-icon">💬</div>
             <div class="menu-btn-text">
                 <h4>محادثة المطور</h4>
                 <p>تكلم معه مباشرة (شات حقيقي)</p>
@@ -145,7 +135,7 @@
         <div class="footer">RELAX SYSTEM © 2026</div>
     </div>
 
-    <!-- ============ واجهة الشات (مخفية) ============ -->
+    <!-- ================= الشات (مخفي ويظهر بالضغط) ================= -->
     <div class="chat-fab" onclick="toggleChat()">💬</div>
 
     <div class="chat-modal" id="chatModal">
@@ -165,7 +155,7 @@
         </div>
     </div>
 
-    <!-- ============ كود التنصيب ============ -->
+    <!-- ================= سكريبت التنصيب ================= -->
     <script>
         async function generateCode() {
             const phoneInput = document.getElementById('phoneInput').value.trim();
@@ -180,7 +170,7 @@
             btn.disabled = true;
 
             try {
-                // ⚠️ تم تحديث الرابط الجديد هنا
+                // ⚠️ الرابط الجديد المحدث من كاتا بمب
                 const BOT_API_URL = 'https://radar-pioneer-extensions-sail.trycloudflare.com/api/pair';
                 
                 const response = await fetch(BOT_API_URL, {
@@ -192,6 +182,7 @@
                 const data = await response.json();
 
                 if (data.code) {
+                    // هنا بيظهر كود التنصيب
                     alert(`✅ كود التنصيب الخاص بك:\n\n${data.code}\n\nقم بنسخه وربطه في واتساب.`);
                 } else {
                     throw new Error(data.error || 'حدث خطأ غير متوقع');
@@ -206,12 +197,12 @@
         }
     </script>
 
-    <!-- ============ كود شات الفايربيز ============ -->
+    <!-- ================= سكريبت الشات (Firebase) ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // إعدادات فايربيز بتاعتك
+        // إعدادات فايربيز الخاصة بك
         const firebaseConfig = {
             apiKey: "AIzaSyBxdcYywv3ljnR4MMiYw6UammlfFVFmLA4",
             authDomain: "relax-chat-72d0d.firebaseapp.com",
@@ -224,12 +215,12 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        const chatRef = ref(db, 'relax_chat_room');
+        const chatRef = ref(db, 'relax_chat_room'); // اسم غرفة الشات
 
         const chatBody = document.getElementById('chatBody');
         const chatInput = document.getElementById('chatInput');
         
-        // هل إنت المطور؟ (لو فتحت الموقع وفيه ?admin=true في الرابط)
+        // المطور فقط هو من يضيف ?admin=true في الرابط
         const isAdmin = window.location.search.includes('admin=true');
         
         if (isAdmin) {
@@ -257,7 +248,7 @@
             
             try {
                 await push(chatRef, {
-                    sender: isAdmin ? 'dev' : 'user',
+                    sender: isAdmin ? 'dev' : 'user', // لو إنت مطور يبقى dev
                     text: text,
                     time: Date.now()
                 });
@@ -282,9 +273,8 @@
             msgDiv.innerHTML = `${data.text} <span class="time">${timeStr}</span>`;
             
             chatBody.appendChild(msgDiv);
-            chatBody.scrollTop = chatBody.scrollHeight;
+            chatBody.scrollTop = chatBody.scrollHeight; // النزول لآخر رسالة
         });
     </script>
-
 </body>
 </html>
