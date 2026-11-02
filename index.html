@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RELAX SYSTEM | تنصيب البوت</title>
+    <title>RELAX BOT | تنصيب البوت</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,466 +14,397 @@
         }
 
         body {
-            background-color: #0d0d0d;
-            color: #ffffff;
+            background-color: #050510;
+            /* خلفية أنمي فخمة، تقدر تغير الرابط لصورة تانية */
+            background-image: linear-gradient(rgba(5, 5, 16, 0.7), rgba(5, 5, 16, 0.9)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: radial-gradient(circle at top right, #1a1a2e, #0d0d0d);
             padding: 20px;
         }
 
         .container {
             width: 100%;
             max-width: 420px;
-            background: rgba(20, 20, 20, 0.85);
-            padding: 35px 25px;
-            border-radius: 24px;
-            border: 1px solid #2a2a2a;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-size: 36px;
-            font-weight: 900;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
-            margin-bottom: 8px;
-            letter-spacing: 3px;
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: #aaa;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 16px;
-            border-radius: 14px;
-            border: 1px solid #333;
-            background: #111;
-            color: #fff;
-            font-size: 18px;
-            text-align: center;
-            outline: none;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        input[type="text"]:focus {
-            border-color: #00ffff;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #8a2be2, #00ffff);
-            color: #fff;
-            font-size: 18px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
-        }
-
-        .btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
-        }
-
-        .btn:disabled {
-            background: #333;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .result-box {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 14px;
-            font-size: 18px;
-            font-weight: bold;
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .result-success {
-            background: rgba(0, 255, 0, 0.08);
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            display: block;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
-        }
-
-        .result-error {
-            background: rgba(255, 0, 0, 0.08);
-            border: 1px solid #ff0000;
-            color: #ff0000;
-            display: block;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
-        }
-
-        /* ستايل زرار النسخ */
-        .copy-btn {
-            background: rgba(0, 255, 0, 0.15);
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 10px 18px;
-            border-radius: 10px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: bold;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .copy-btn:hover {
-            background: rgba(0, 255, 0, 0.3);
-            transform: scale(1.05);
-        }
-
-        .copy-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* قسم الشرح (طريقة الربط) */
-        .guide-section {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid #2a2a2a;
-            border-radius: 16px;
-            text-align: right;
-        }
-
-        .guide-title {
-            font-size: 16px;
-            color: #00ffff;
-            font-weight: 800;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .guide-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-size: 13px;
-            color: #ccc;
-            line-height: 1.5;
-        }
-
-        .step-num {
-            background: rgba(0, 255, 255, 0.1);
-            color: #00ffff;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            font-weight: bold;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .highlight-text {
-            color: #fff;
-            font-weight: bold;
-        }
-
-        /* Social Links Section */
-        .social-section {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid #2a2a2a;
-        }
-
-        .social-title {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
+            flex-direction: column;
             gap: 15px;
         }
 
-        .social-btn {
+        /* القائمة العلوية */
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 5px 15px 5px 5px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            border: 1px solid #333;
-            background: rgba(255, 255, 255, 0.03);
+            gap: 10px;
             color: #fff;
-        }
-
-        .social-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .social-btn.whatsapp:hover {
-            background: rgba(37, 211, 102, 0.1);
-            border-color: #25D366;
-            color: #25D366;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .social-btn.telegram:hover {
-            background: rgba(0, 136, 204, 0.1);
-            border-color: #0088cc;
-            color: #0088cc;
-            box-shadow: 0 0 15px rgba(0, 136, 204, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .dev-channel {
-            margin-top: 20px;
-        }
-
-        .dev-channel a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #00ffff;
-            text-decoration: none;
+            font-weight: bold;
             font-size: 14px;
-            font-weight: 700;
-            transition: 0.3s;
-            padding: 8px 15px;
-            border-radius: 10px;
-            background: rgba(0, 255, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
         }
 
-        .dev-channel a:hover {
-            background: rgba(0, 255, 255, 0.1);
-            text-shadow: 0 0 10px #00ffff;
+        .nav-btn img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #00ffff;
+        }
+
+        /* الهيدر (اللوجو) */
+        .header {
+            text-align: center;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, #00ffff, #0055ff);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            position: relative;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #000;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-top: 15px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        /* كروت الإحصائيات */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 15px 5px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 11px;
+            color: #aaa;
+            font-weight: bold;
+        }
+
+        /* ألوان الكروت */
+        .stat-pink {
+            border: 1px solid rgba(255, 0, 128, 0.5);
+            box-shadow: inset 0 0 15px rgba(255, 0, 128, 0.1);
+        }
+        .stat-pink h2 { color: #ff0080; }
+
+        .stat-green {
+            border: 1px solid rgba(0, 255, 128, 0.5);
+            box-shadow: inset 0 0 15px rgba(0, 255, 128, 0.1);
+        }
+        .stat-green h2 { color: #00ff80; }
+
+        .stat-blue {
+            border: 1px solid rgba(0, 128, 255, 0.5);
+            box-shadow: inset 0 0 15px rgba(0, 128, 255, 0.1);
+        }
+        .stat-blue h2 { color: #0088ff; }
+
+        /* كارت التنصيب الزجاجي */
+        .main-card {
+            background: rgba(10, 20, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-top: 10px;
+        }
+
+        .main-card h3 {
+            text-align: right;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            text-align: right;
+            outline: none;
+        }
+
+        .input-group input::placeholder {
+            color: #666;
+            font-family: sans-serif;
+        }
+
+        .hint-text {
+            font-size: 11px;
+            color: #888;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #0077ff, #00ffff);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
+        }
+
+        /* الأزرار السفلية */
+        .menu-btn {
+            background: rgba(10, 20, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .menu-btn:hover {
+            background: rgba(20, 30, 40, 0.9);
+        }
+
+        .menu-btn-text {
+            text-align: right;
+        }
+
+        .menu-btn-text h4 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .menu-btn-text p {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        /* صف الأزرار الجانبية */
+        .side-by-side {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .channel-btn {
+            background: linear-gradient(90deg, #00c853, #00e676);
+            border-radius: 50px;
+            padding: 15px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 200, 83, 0.3);
+            margin-top: 10px;
         }
 
         .footer {
-            margin-top: 30px;
+            text-align: center;
             font-size: 12px;
-            color: #555;
-        }
-
-        /* Loader Animation */
-        .loader {
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid #fff;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            display: none;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            color: #666;
+            margin-top: 10px;
+            padding-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="logo">RELAX</div>
-        <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
-
-        <div class="input-group">
-            <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off">
-        </div>
-
-        <button class="btn" id="generateBtn" onclick="generateCode()">
-            <span id="btnText">توليد الكود 🚀</span>
-            <div class="loader" id="loader"></div>
-        </button>
-
-        <!-- مكان ظهور الكود أو الخطأ -->
-        <div id="resultBox" class="result-box"></div>
-
-        <!-- قسم شرح طريقة الربط -->
-        <div class="guide-section">
-            <div class="guide-title">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                طريقة ربط البوت
-            </div>
-            <div class="guide-step">
-                <span class="step-num">1</span>
-                <div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">2</span>
-                <div>اذهب إلى <span class="highlight-text">الإعدادات</span> (أو النقاط الثلاث في الأندرويد).</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">3</span>
-                <div>اختر <span class="highlight-text">الأجهزة المرتبطة</span> (Linked Devices).</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">4</span>
-                <div>اضغط على <span class="highlight-text">ربط جهاز</span> (Link a Device).</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">5</span>
-                <div>اختر خيار <span class="highlight-text">الربط برقم الهاتف</span> بدلاً من مسح رمز الـ QR.</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">6</span>
-                <div>أدخل الكود المكون من 8 أرقام الذي ظهر لك في الموقع أعلاه.</div>
+        <!-- القائمة العلوية -->
+        <div class="top-nav">
+            <div class="nav-btn">
+                <span>RELAX BOT</span>
+                <img src="https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg" alt="Logo"> <!-- غير الصورة دي بصورة البوت بتاعك -->
             </div>
         </div>
 
-        <!-- قسم التواصل -->
-        <div class="social-section">
-            <div class="social-title">تواصل مع المطور</div>
-            <div class="social-links">
-                <a href="https://wa.me/201559978241" target="_blank" class="social-btn whatsapp">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    واتساب
-                </a>
-                
-                <a href="https://t.me/SE_NJ" target="_blank" class="social-btn telegram">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                    تليجرام
-                </a>
+        <!-- الهيدر -->
+        <div class="header">
+            <div class="avatar-container">
+                <!-- حط صورة البوت هنا -->
+                <img src="https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg" alt="RELAX">
+            </div>
+            <h1>RELAX BOT</h1>
+            <p>احصل على بوت واتساب خاص بك في ثواني</p>
+        </div>
+
+        <!-- كروت الإحصائيات -->
+        <div class="stats-grid">
+            <div class="stat-card stat-blue">
+                <h2>119</h2>
+                <p>بوتات مثبتة</p>
+            </div>
+            <div class="stat-card stat-green">
+                <h2>119</h2>
+                <p>متصلة الآن</p>
+            </div>
+            <div class="stat-card stat-pink">
+                <h2>1</h2>
+                <p>أماكن متاحة</p>
             </div>
         </div>
 
-        <!-- قناة المطور -->
-        <div class="dev-channel">
-            <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                انضم لقناة المطور
+        <!-- كارت التنصيب -->
+        <div class="main-card">
+            <h3>رقم واتساب</h3>
+            <div class="input-group">
+                <input type="text" id="phoneInput" placeholder="201234567890">
+            </div>
+            <div class="hint-text">اكتب رقمك مع رمز الدولة، من غير + أو مسافات.</div>
+            <button class="submit-btn" onclick="generateCode()">تنصيب البوت</button>
+        </div>
+
+        <!-- الأوامر -->
+        <a href="#" class="menu-btn">
+            <div class="menu-icon" style="background: rgba(0, 128, 255, 0.2); color: #0088ff;">📜</div>
+            <div class="menu-btn-text">
+                <h4>الأوامر</h4>
+                <p>144 أمر • شرح ونسخ</p>
+            </div>
+            <div style="color: #666;">&lt;</div>
+        </a>
+
+        <!-- الأزرار الجانبية (شكاوي ومطور) -->
+        <div class="side-by-side">
+            <a href="#" class="menu-btn" style="flex-direction: row-reverse;">
+                <div class="menu-icon" style="background: rgba(255, 165, 0, 0.2); color: #ffa500;">📝</div>
+                <div class="menu-btn-text" style="text-align: left;">
+                    <h4>الشكاوي</h4>
+                    <p>اكتب شكوى للمطور</p>
+                </div>
+            </a>
+            <a href="#" class="menu-btn" style="flex-direction: row-reverse;">
+                <div class="menu-icon" style="background: rgba(0, 200, 83, 0.2); color: #00c853;">💬</div>
+                <div class="menu-btn-text" style="text-align: left;">
+                    <h4>محادثة المطور</h4>
+                    <p>تكلم معه مباشرة</p>
+                </div>
             </a>
         </div>
 
-        <div class="footer">
-            © RELAX SYSTEM 2026 جميع الحقوق محفوظة
-        </div>
+        <!-- قناة الواتساب -->
+        <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" target="_blank" class="channel-btn">
+            قناة البوت على واتساب
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+
+        <div class="footer">RELAX SYSTEM © 2026</div>
     </div>
 
     <script>
-        // ⚠️ تم تحديث الرابط الجديد هنا
-        const BOT_API_URL = 'https://cancellation-summary-frontier-again.trycloudflare.com/api/pair'; 
-
+        // دالة زرار التنصيب
+        // هنا بتربط الموقع بالبوت بتاعك
         async function generateCode() {
-            const phoneInput = document.getElementById('phoneInput').value.trim();
-            const btn = document.getElementById('generateBtn');
-            const btnText = document.getElementById('btnText');
-            const loader = document.getElementById('loader');
-            const resultBox = document.getElementById('resultBox');
+            const phone = document.getElementById('phoneInput').value.trim();
+            if(!phone) return alert("اكتب رقمك الأول!");
 
-            resultBox.className = 'result-box';
-            resultBox.innerHTML = '';
-
-            if (!phoneInput) {
-                resultBox.classList.add('result-error');
-                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!';
-                return;
-            }
-
+            const btn = document.querySelector('.submit-btn');
+            btn.innerText = "جاري التوليد...";
             btn.disabled = true;
-            btnText.innerText = 'جاري التوليد...';
-            loader.style.display = 'block';
 
             try {
-                const response = await fetch(BOT_API_URL, {
+                // ⚠️ غير الرابط ده برابط البوت بتاعك الجديد
+                const BOT_URL = 'https://cancellation-summary-frontier-again.trycloudflare.com/api/pair'; 
+                
+                const res = await fetch(BOT_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ phone: phoneInput })
+                    body: JSON.stringify({ phone })
                 });
-
-                const data = await response.json();
-
-                if (data.code) {
-                    resultBox.classList.add('result-success');
-                    resultBox.innerHTML = `
-                        <div>كود التنصيب الخاص بك:</div>
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
-                            <span style="font-size: 26px; letter-spacing: 3px; font-weight: 900;">${data.code}</span>
-                            <button class="copy-btn" onclick="copyCode('${data.code}', this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                                نسخ
-                            </button>
-                        </div>
-                    `;
-                } else {
-                    throw new Error(data.error || 'حدث خطأ غير متوقع');
-                }
-
-            } catch (error) {
-                resultBox.classList.add('result-error');
-                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر. تأكد أن البوت شغال.';
-            } finally {
-                btn.disabled = false;
-                btnText.innerText = 'توليد الكود 🚀';
-                loader.style.display = 'none';
-            }
-        }
-
-        function copyCode(code, btnElement) {
-            navigator.clipboard.writeText(code).then(() => {
-                const originalHTML = btnElement.innerHTML;
-                btnElement.innerHTML = '✅ تم النسخ';
-                btnElement.style.background = 'rgba(0, 255, 0, 0.4)';
-                btnElement.style.color = '#fff';
                 
-                setTimeout(() => {
-                    btnElement.innerHTML = originalHTML;
-                    btnElement.style.background = 'rgba(0, 255, 0, 0.15)';
-                    btnElement.style.color = '#00ff00';
-                }, 2000);
-            }).catch(err => {
-                alert('حدث خطأ أثناء النسخ، يرجى نسخ الكود يدوياً.');
-            });
+                const data = await res.json();
+                if(data.code) {
+                    alert("✅ كود التنصيب الخاص بك:\n" + data.code);
+                } else {
+                    alert("❌ خطأ: " + (data.error || 'تأكد من الرقم'));
+                }
+            } catch(e) {
+                alert("❌ تعذر الاتصال بالسيرفر، البوت مقفول أو الرابط قديم.");
+            } finally {
+                btn.innerText = "تنصيب البوت";
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
