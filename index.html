@@ -10,7 +10,6 @@
         
         body {
             background-color: #0d0d0d;
-            /* خلفية نيون فخمة */
             background-image: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.95)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -37,121 +36,55 @@
             backdrop-filter: blur(10px);
         }
 
-        .logo {
-            font-size: 32px;
-            font-weight: 900;
-            color: #00ffff;
-            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-            margin-bottom: 5px;
-            letter-spacing: 2px;
-        }
-
+        .logo { font-size: 32px; font-weight: 900; color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-bottom: 5px; letter-spacing: 2px; }
         .subtitle { font-size: 14px; color: #aaa; margin-bottom: 25px; }
-
         .input-group { margin-bottom: 20px; }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #444;
-            background: #111;
-            color: #fff;
-            font-size: 18px;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input[type="text"]:focus {
-            border-color: #00ffff;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(90deg, #8a2be2, #00ffff);
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
+        input[type="text"] { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #111; color: #fff; font-size: 18px; text-align: center; outline: none; transition: 0.3s; }
+        input[type="text"]:focus { border-color: #00ffff; box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); }
+        
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 12px; background: linear-gradient(90deg, #8a2be2, #00ffff); color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .btn:hover { opacity: 0.9; transform: scale(1.02); }
         .btn:disabled { background: #333; cursor: not-allowed; transform: none; }
 
         .result-box { margin-top: 20px; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; display: none; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
         .result-success { background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00; color: #00ff00; display: block; }
         .result-error { background: rgba(255, 0, 0, 0.1); border: 1px solid #ff0000; color: #ff0000; display: block; }
 
-        .copy-btn {
-            background: rgba(0, 255, 0, 0.15);
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s;
-            margin-top: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
+        .copy-btn { background: rgba(0, 255, 0, 0.15); border: 1px solid #00ff00; color: #00ff00; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-family: 'Cairo', sans-serif; font-weight: bold; font-size: 14px; transition: 0.3s; margin-top: 10px; display: inline-flex; align-items: center; gap: 5px; }
         .copy-btn:hover { background: rgba(0, 255, 0, 0.3); }
 
-        /* قسم الشرح */
-        .guide-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            text-align: right;
-        }
-
+        .guide-section { margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; text-align: right; }
         .guide-title { font-size: 16px; color: #00ffff; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
         .guide-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13px; color: #ccc; }
         .step-num { background: rgba(0, 255, 255, 0.1); color: #00ffff; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
         .highlight-text { color: #fff; font-weight: bold; }
-
         .footer { margin-top: 25px; font-size: 12px; color: #666; }
 
-        /* ================= الشات العايم ================= */
-        .chat-fab {
-            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
-            background: linear-gradient(135deg, #00a884, #005c4b);
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            color: white; font-size: 30px; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 168, 132, 0.4); z-index: 9999; transition: 0.3s;
-        }
+        /* ================= الشات ================= */
+        .chat-fab { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #00a884, #005c4b); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 168, 132, 0.4); z-index: 9999; transition: 0.3s; }
         .chat-fab:hover { transform: scale(1.1); }
         
-        .chat-modal {
-            position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px);
-            height: 500px; max-height: calc(100vh - 100px); background: #111b21;
-            border: 1px solid #2a3942; border-radius: 15px; display: none;
-            flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
+        .chat-modal { position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 100px); background: #111b21; border: 1px solid #2a3942; border-radius: 15px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
         .chat-modal.active { display: flex; }
         
         .chat-header { background: #202c33; padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #111b21; color: white; cursor: pointer; }
         .chat-header .avatar { font-size: 24px; }
         .chat-header h4 { font-size: 16px; margin: 0; }
         .chat-header p { font-size: 12px; color: #00a884; margin: 0; }
+        
+        /* واجهة إدخال الاسم (للعملاء) */
+        .name-screen { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; text-align: center; }
+        .name-screen input { width: 100%; padding: 12px; border-radius: 10px; border: none; background: #2a3942; color: white; outline: none; text-align: center; margin-bottom: 15px; font-size: 16px; }
+        .name-screen button { width: 100%; padding: 12px; background: #00a884; border: none; border-radius: 10px; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
+
+        /* واجهة قائمة العملاء (للمطور) */
+        .admin-list-screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; background: #111b21; }
+        .admin-user-item { padding: 15px; border-bottom: 1px solid #202c33; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
+        .admin-user-item:hover { background: #202c33; }
+        .admin-user-item .avatar { font-size: 20px; }
 
         .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); background-size: cover; display: flex; flex-direction: column; gap: 10px; }
-        
         .chat-msg { max-width: 80%; padding: 10px 15px; border-radius: 10px; font-size: 14px; line-height: 1.5; word-wrap: break-word; color: white; }
         .chat-msg.user { background: #005c4b; align-self: flex-end; border-top-right-radius: 0; }
         .chat-msg.dev { background: #202c33; align-self: flex-start; border-top-left-radius: 0; }
@@ -178,53 +111,52 @@
 
         <div id="resultBox" class="result-box"></div>
 
-        <!-- قسم شرح طريقة الربط -->
         <div class="guide-section">
             <div class="guide-title">❓ طريقة ربط البوت</div>
-            <div class="guide-step">
-                <span class="step-num">1</span>
-                <div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">2</span>
-                <div>اذهب إلى <span class="highlight-text">الإعدادات</span> (أو النقاط الثلاث).</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">3</span>
-                <div>اختر <span class="highlight-text">الأجهزة المرتبطة</span>.</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">4</span>
-                <div>اضغط على <span class="highlight-text">ربط جهاز</span>.</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">5</span>
-                <div>اختر <span class="highlight-text">الربط برقم الهاتف</span>.</div>
-            </div>
-            <div class="guide-step">
-                <span class="step-num">6</span>
-                <div>أدخل الكود المكون من 8 أرقام الذي ظهر لك أعلاه.</div>
-            </div>
+            <div class="guide-step"><span class="step-num">1</span><div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div></div>
+            <div class="guide-step"><span class="step-num">2</span><div>اذهب إلى <span class="highlight-text">الإعدادات</span> (أو النقاط الثلاث).</div></div>
+            <div class="guide-step"><span class="step-num">3</span><div>اختر <span class="highlight-text">الأجهزة المرتبطة</span>.</div></div>
+            <div class="guide-step"><span class="step-num">4</span><div>اضغط على <span class="highlight-text">ربط جهاز</span>.</div></div>
+            <div class="guide-step"><span class="step-num">5</span><div>اختر <span class="highlight-text">الربط برقم الهاتف</span>.</div></div>
+            <div class="guide-step"><span class="step-num">6</span><div>أدخل الكود المكون من 8 أرقام الذي ظهر لك أعلاه.</div></div>
         </div>
 
         <div class="footer">© RELAX SYSTEM 2026</div>
     </div>
 
-    <!-- ================= الشات العايم ================= -->
+    <!-- ================= الشات ================= -->
     <div class="chat-fab" onclick="toggleChat()">💬</div>
 
     <div class="chat-modal" id="chatModal">
-        <div class="chat-header" onclick="toggleChat()">
-            <div class="avatar">🧑‍💻</div>
+        <!-- الهيدر -->
+        <div class="chat-header" id="chatHeader" onclick="handleHeaderClick()">
+            <div class="avatar" id="headerAvatar">🧑‍💻</div>
             <div>
                 <h4 id="chatHeaderTitle">الدعم الفني | Relax</h4>
                 <p id="chatStatus">متصل الآن</p>
             </div>
+            <div id="backBtn" style="margin-right: auto; display: none; font-size: 20px;">↩</div>
         </div>
-        <div class="chat-body" id="chatBody">
-            <!-- الرسايل هتظهر هنا -->
+
+        <!-- شاشة إدخال الاسم -->
+        <div class="name-screen" id="nameScreen">
+            <h3 style="margin-bottom: 20px; color: #00a884;">مرحباً بك! 👋</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">من فضلك اكتب اسمك للبدء في المحادثة</p>
+            <input type="text" id="userNameInput" placeholder="اكتب اسمك هنا...">
+            <button onclick="saveUserName()">بدء المحادثة</button>
         </div>
-        <div class="chat-footer">
+
+        <!-- شاشة قائمة العملاء (للمطور) -->
+        <div class="admin-list-screen" id="adminListScreen">
+            <div style="padding: 15px; font-weight: bold; color: #00a884; border-bottom: 1px solid #202c33;">قائمة العملاء</div>
+            <div id="adminUsersList"></div>
+        </div>
+
+        <!-- شاشة الرسايل -->
+        <div class="chat-body" id="chatBody" style="display: none;"></div>
+        
+        <!-- الفوتر -->
+        <div class="chat-footer" id="chatFooter" style="display: none;">
             <input type="text" id="chatInput" placeholder="اكتب رسالتك..." onkeypress="handleChatEnter(event)">
             <button onclick="sendChatMessage()">➤</button>
         </div>
@@ -237,60 +169,26 @@
             const btn = document.getElementById('generateBtn');
             const btnText = document.getElementById('btnText');
             const resultBox = document.getElementById('resultBox');
-
             resultBox.className = 'result-box';
             resultBox.innerHTML = '';
-
-            if (!phoneInput) {
-                resultBox.classList.add('result-error');
-                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!';
-                return;
-            }
-
-            btn.disabled = true;
-            btnText.innerText = 'جاري التوليد...';
-
+            if (!phoneInput) { resultBox.classList.add('result-error'); resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; return; }
+            btn.disabled = true; btnText.innerText = 'جاري التوليد...';
             try {
-                // ⚠️ الرابط الجديد المحدث
                 const BOT_API_URL = 'https://radar-pioneer-extensions-sail.trycloudflare.com/api/pair';
-                
-                const response = await fetch(BOT_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ phone: phoneInput })
-                });
-
+                const response = await fetch(BOT_API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phoneInput }) });
                 const data = await response.json();
-
                 if (data.code) {
                     resultBox.classList.add('result-success');
-                    resultBox.innerHTML = `
-                        <div>كود التنصيب الخاص بك:</div>
-                        <div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div>
-                        <button class="copy-btn" onclick="copyCode('${data.code}', this)">
-                            📋 نسخ
-                        </button>
-                    `;
-                } else {
-                    throw new Error(data.error || 'حدث خطأ غير متوقع');
-                }
-
-            } catch (error) {
-                resultBox.classList.add('result-error');
-                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.';
-            } finally {
-                btn.disabled = false;
-                btnText.innerText = 'توليد الكود 🚀';
-            }
+                    resultBox.innerHTML = `<div>كود التنصيب الخاص بك:</div><div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div><button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>`;
+                } else { throw new Error(data.error || 'حدث خطأ غير متوقع'); }
+            } catch (error) { resultBox.classList.add('result-error'); resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.'; }
+            finally { btn.disabled = false; btnText.innerText = 'توليد الكود 🚀'; }
         }
-
         function copyCode(code, btnElement) {
             navigator.clipboard.writeText(code).then(() => {
                 const originalHTML = btnElement.innerHTML;
                 btnElement.innerHTML = '✅ تم النسخ';
                 setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
-            }).catch(err => {
-                alert('حدث خطأ أثناء النسخ، يرجى نسخ الكود يدوياً.');
             });
         }
     </script>
@@ -298,9 +196,8 @@
     <!-- ================= سكريبت الشات (Firebase) ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, push, onChildAdded, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // إعدادات فايربيز الخاصة بك
         const firebaseConfig = {
             apiKey: "AIzaSyBxdcYywv3ljnR4MMiYw6UammlfFVFmLA4",
             authDomain: "relax-chat-72d0d.firebaseapp.com",
@@ -313,66 +210,231 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        const chatRef = ref(db, 'relax_chat_room'); // اسم غرفة الشات
 
+        // --- إعدادات المطور والباسورد ---
+        const ADMIN_PASSWORD = "123456789mm*";
+        let isAdmin = false;
+        let activeAdminChatId = null; // الشات المفتوح حالياً للمطور
+        let currentUserId = null; // معرف العميل الحالي
+
+        // عناصر الواجهة
+        const chatModal = document.getElementById('chatModal');
+        const nameScreen = document.getElementById('nameScreen');
+        const adminListScreen = document.getElementById('adminListScreen');
         const chatBody = document.getElementById('chatBody');
+        const chatFooter = document.getElementById('chatFooter');
         const chatInput = document.getElementById('chatInput');
-        
-        // هل إنت المطور؟ (لو فتحت الموقع وفيه ?admin=true في الرابط)
-        const isAdmin = window.location.search.includes('admin=true');
-        
-        if (isAdmin) {
-            document.getElementById('chatHeaderTitle').innerText = 'أنت المطور (وضع الإدارة)';
-            document.getElementById('chatStatus').innerText = 'ترد على العملاء';
-            document.getElementById('chatStatus').style.color = 'orange';
-        }
+        const chatHeaderTitle = document.getElementById('chatHeaderTitle');
+        const chatStatus = document.getElementById('chatStatus');
+        const backBtn = document.getElementById('backBtn');
+        const headerAvatar = document.getElementById('headerAvatar');
 
         // فتح وقفل الشات
         window.toggleChat = function() {
-            const modal = document.getElementById('chatModal');
-            modal.classList.toggle('active');
-            if(modal.classList.contains('active')) {
-                chatBody.scrollTop = chatBody.scrollHeight;
-                chatInput.focus();
+            chatModal.classList.toggle('active');
+            if(chatModal.classList.contains('active')) {
+                initChat();
             }
         }
 
-        // إرسال رسالة
+        // إغلاق/رجوع
+        window.handleHeaderClick = function() {
+            if(isAdmin && activeAdminChatId) {
+                // لو المطور جوه شات وضغط رجوع، نرجعه للقائمة
+                activeAdminChatId = null;
+                loadAdminUsersList();
+            } else {
+                toggleChat();
+            }
+        }
+
+        // --- تهيئة الشات (أول ما حد يفتح) ---
+        function initChat() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // 1. هل هذا مطور؟
+            if (urlParams.get('admin') === 'true') {
+                const enteredPass = prompt("🔒 يرجى إدخال كلمة مرور المطور:");
+                if (enteredPass === ADMIN_PASSWORD) {
+                    isAdmin = true;
+                    setupAdminUI();
+                    return;
+                } else {
+                    alert("❌ كلمة المرور خاطئة! سيتم معاملتك كعميل.");
+                }
+            }
+
+            // 2. عميل عادي
+            isAdmin = false;
+            setupUserUI();
+        }
+
+        // --- واجهة العميل ---
+        function setupUserUI() {
+            nameScreen.style.display = 'none';
+            adminListScreen.style.display = 'none';
+            chatBody.style.display = 'flex';
+            chatFooter.style.display = 'flex';
+            backBtn.style.display = 'none';
+            headerAvatar.innerText = "🧑‍💻";
+            chatHeaderTitle.innerText = "الدعم الفني | Relax";
+            chatStatus.innerText = "متصل الآن";
+            chatStatus.style.color = "#00a884";
+
+            // جلب أو إنشاء معرف للمستخدم
+            let storedId = localStorage.getItem('relax_user_id');
+            let storedName = localStorage.getItem('relax_user_name');
+
+            if (!storedId || !storedName) {
+                // مستخدم جديد، نعرض شاشة الاسم
+                nameScreen.style.display = 'flex';
+                chatBody.style.display = 'none';
+                chatFooter.style.display = 'none';
+            } else {
+                // مستخدم قديم، نفتح الشات مباشرة
+                currentUserId = storedId;
+                loadUserMessages(storedId);
+            }
+        }
+
+        // حفظ اسم العميل
+        window.saveUserName = function() {
+            const name = document.getElementById('userNameInput').value.trim();
+            if(!name) return alert("اكتب اسمك أولاً!");
+            
+            const newId = 'user_' + Date.now();
+            localStorage.setItem('relax_user_id', newId);
+            localStorage.setItem('relax_user_name', name);
+            
+            currentUserId = newId;
+            
+            // حفظ اسمه في الداتابيز عشان المطور يشوفه
+            push(ref(db, 'chats/' + newId + '/profile'), { name: name });
+            
+            nameScreen.style.display = 'none';
+            chatBody.style.display = 'flex';
+            chatFooter.style.display = 'flex';
+            
+            loadUserMessages(newId);
+        }
+
+        // تحميل رسايل العميل
+        function loadUserMessages(userId) {
+            chatBody.innerHTML = '';
+            const msgRef = ref(db, 'chats/' + userId + '/messages');
+            
+            onChildAdded(msgRef, (snapshot) => {
+                const data = snapshot.val();
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
+                const timeStr = new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+                msgDiv.innerHTML = `${data.text} <span class="time">${timeStr}</span>`;
+                chatBody.appendChild(msgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            });
+        }
+
+        // --- واجهة المطور (Admin) ---
+        function setupAdminUI() {
+            headerAvatar.innerText = "👑";
+            chatHeaderTitle.innerText = "لوحة تحكم المطور";
+            chatStatus.innerText = "اختر عميلاً للرد عليه";
+            chatStatus.style.color = "orange";
+            
+            nameScreen.style.display = 'none';
+            chatBody.style.display = 'none';
+            chatFooter.style.display = 'none';
+            
+            loadAdminUsersList();
+        }
+
+        // تحميل قائمة العملاء للمطور
+        function loadAdminUsersList() {
+            adminListScreen.style.display = 'flex';
+            chatBody.style.display = 'none';
+            chatFooter.style.display = 'none';
+            backBtn.style.display = 'none';
+            chatHeaderTitle.innerText = "قائمة العملاء";
+            
+            const listContainer = document.getElementById('adminUsersList');
+            listContainer.innerHTML = '<div style="padding: 15px; color: #888;">جاري التحميل...</div>';
+
+            const dbRef = ref(db);
+            get(child(dbRef, 'chats')).then((snapshot) => {
+                listContainer.innerHTML = '';
+                if (snapshot.exists()) {
+                    const chats = snapshot.val();
+                    Object.keys(chats).forEach(userId => {
+                        // نجيب اسم العميل
+                        let userName = "مستخدم مجهول";
+                        if (chats[userId].profile && chats[userId].profile.name) {
+                            userName = chats[userId].profile.name;
+                        } else if (chats[userId].messages) {
+                            // لو مفيش بروفايل، نجيب أول رسالة
+                            userName = "عميل جديد";
+                        }
+
+                        // بنعرض العميل في القائمة
+                        const item = document.createElement('div');
+                        item.className = 'admin-user-item';
+                        item.innerHTML = `<span class="avatar">👤</span> <span>${userName}</span>`;
+                        item.onclick = () => openAdminChat(userId, userName);
+                        listContainer.appendChild(item);
+                    });
+                } else {
+                    listContainer.innerHTML = '<div style="padding: 15px; color: #888;">لا توجد رسائل حتى الآن.</div>';
+                }
+            });
+        }
+
+        // فتح شات عميل معين للمطور
+        function openAdminChat(userId, userName) {
+            activeAdminChatId = userId;
+            adminListScreen.style.display = 'none';
+            chatBody.style.display = 'flex';
+            chatFooter.style.display = 'flex';
+            backBtn.style.display = 'block';
+            chatHeaderTitle.innerText = "محادثة: " + userName;
+            chatStatus.innerText = "ترد الآن...";
+            chatStatus.style.color = "red";
+            
+            chatBody.innerHTML = '';
+            const msgRef = ref(db, 'chats/' + userId + '/messages');
+            
+            onChildAdded(msgRef, (snapshot) => {
+                const data = snapshot.val();
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
+                const timeStr = new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+                msgDiv.innerHTML = `${data.text} <span class="time">${timeStr}</span>`;
+                chatBody.appendChild(msgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            });
+        }
+
+        // --- إرسال رسالة ---
         window.sendChatMessage = async function() {
             const text = chatInput.value.trim();
             if (!text) return;
-
             chatInput.value = '';
             
+            let targetUserId = isAdmin ? activeAdminChatId : currentUserId;
+            if(!targetUserId) return alert("حدث خطأ، يرجى إعادة تحميل الصفحة.");
+
             try {
-                await push(chatRef, {
-                    sender: isAdmin ? 'dev' : 'user', // لو إنت مطور يبقى dev
+                await push(ref(db, 'chats/' + targetUserId + '/messages'), {
+                    sender: isAdmin ? 'dev' : 'user',
                     text: text,
                     time: Date.now()
                 });
             } catch(e) {
-                alert("حدث خطأ في الإرسال، تأكد من اتصالك بالإنترنت.");
+                alert("حدث خطأ في الإرسال.");
             }
         }
 
-        // إرسال بزر Enter
         window.handleChatEnter = function(e) {
             if (e.key === 'Enter') window.sendChatMessage();
         }
-
-        // استقبال الرسايل لايف
-        onChildAdded(chatRef, (snapshot) => {
-            const data = snapshot.val();
-            
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
-            
-            const timeStr = new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
-            msgDiv.innerHTML = `${data.text} <span class="time">${timeStr}</span>`;
-            
-            chatBody.appendChild(msgDiv);
-            chatBody.scrollTop = chatBody.scrollHeight; // النزول لآخر رسالة
-        });
     </script>
 </body>
 </html>
