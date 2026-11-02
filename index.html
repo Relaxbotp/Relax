@@ -37,7 +37,20 @@
         }
 
         .logo { font-size: 32px; font-weight: 900; color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-bottom: 5px; letter-spacing: 2px; }
-        .subtitle { font-size: 14px; color: #aaa; margin-bottom: 25px; }
+        .subtitle { font-size: 14px; color: #aaa; margin-bottom: 20px; }
+        
+        /* كروت الإحصائيات */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-card { background: rgba(0, 0, 0, 0.6); border-radius: 15px; padding: 15px 5px; text-align: center; backdrop-filter: blur(10px); }
+        .stat-card h2 { font-size: 24px; margin-bottom: 5px; }
+        .stat-card p { font-size: 11px; color: #aaa; font-weight: bold; }
+        .stat-pink { border: 1px solid rgba(255, 0, 128, 0.5); box-shadow: inset 0 0 15px rgba(255, 0, 128, 0.1); }
+        .stat-pink h2 { color: #ff0080; }
+        .stat-green { border: 1px solid rgba(0, 255, 128, 0.5); box-shadow: inset 0 0 15px rgba(0, 255, 128, 0.1); }
+        .stat-green h2 { color: #00ff80; }
+        .stat-blue { border: 1px solid rgba(0, 128, 255, 0.5); box-shadow: inset 0 0 15px rgba(0, 128, 255, 0.1); }
+        .stat-blue h2 { color: #0088ff; }
+
         .input-group { margin-bottom: 20px; }
         input[type="text"] { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #111; color: #fff; font-size: 18px; text-align: center; outline: none; transition: 0.3s; }
         input[type="text"]:focus { border-color: #8a2be2; box-shadow: 0 0 10px rgba(138, 43, 226, 0.3); }
@@ -63,61 +76,26 @@
 
         /* زرار مراسلة المطور */
         .contact-dev-btn {
-            width: 100%;
-            padding: 15px;
-            margin-top: 20px;
-            background: rgba(138, 43, 226, 0.15);
-            border: 2px solid #8a2be2;
-            border-radius: 12px;
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+            width: 100%; padding: 15px; margin-top: 20px;
+            background: rgba(138, 43, 226, 0.15); border: 2px solid #8a2be2;
+            border-radius: 12px; color: #fff; font-size: 18px; font-weight: bold;
+            cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
         }
         .contact-dev-btn:hover { background: rgba(138, 43, 226, 0.3); transform: scale(1.02); }
 
-        /* أزرار التواصل الاجتماعي الجديدة */
-        .social-links-container {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .social-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            transition: 0.3s;
-        }
+        /* أزرار التواصل الاجتماعي */
+        .social-links-container { display: flex; gap: 10px; margin-top: 15px; }
+        .social-btn { flex: 1; padding: 10px; border-radius: 10px; text-align: center; text-decoration: none; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; transition: 0.3s; }
         .social-btn.wa { background: rgba(37, 211, 102, 0.1); color: #25D366; border: 1px solid #25D366; }
         .social-btn.wa:hover { background: rgba(37, 211, 102, 0.2); }
         .social-btn.tg { background: rgba(0, 136, 204, 0.1); color: #0088cc; border: 1px solid #0088cc; }
         .social-btn.tg:hover { background: rgba(0, 136, 204, 0.2); }
 
-        /* ================= الشات (تصميم Gojo) ================= */
-        .chat-modal { 
-            position: fixed; bottom: 0; right: 0; width: 100%; height: 100dvh; 
-            background: rgba(15, 5, 25, 0.98); border: none; display: none; flex-direction: column; 
-            z-index: 9999; overflow: hidden; backdrop-filter: blur(10px); 
-        }
+        /* ================= الشات ================= */
+        .chat-modal { position: fixed; bottom: 0; right: 0; width: 100%; height: 100dvh; background: rgba(15, 5, 25, 0.98); border: none; display: none; flex-direction: column; z-index: 9999; overflow: hidden; backdrop-filter: blur(10px); }
         .chat-modal.active { display: flex; }
-        
-        @media (min-width: 768px) {
-            .chat-modal { bottom: 20px; right: 20px; width: 380px; height: 80vh; max-height: 600px; border-radius: 20px; border: 1px solid #8a2be2; }
-        }
+        @media (min-width: 768px) { .chat-modal { bottom: 20px; right: 20px; width: 380px; height: 80vh; max-height: 600px; border-radius: 20px; border: 1px solid #8a2be2; } }
         
         .chat-header { background: rgba(20, 10, 30, 0.9); padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #4b0082; color: white; cursor: pointer; }
         .chat-header .avatar { font-size: 24px; background: #4b0082; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid #00ffff;}
@@ -132,10 +110,7 @@
         .chat-msg.dev { background: rgba(30, 30, 40, 0.9); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #555; }
         .chat-msg .time { font-size: 10px; color: rgba(255,255,255,0.6); display: block; text-align: left; margin-top: 5px; }
         
-        /* مشغل الصوت المخصص */
-        .custom-audio-player {
-            display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 15px; min-width: 220px; margin-top: 5px; border: 1px solid rgba(138, 43, 226, 0.3);
-        }
+        .custom-audio-player { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 15px; min-width: 220px; margin-top: 5px; border: 1px solid rgba(138, 43, 226, 0.3); }
         .custom-play-btn { background: #00ffff; color: #000; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 18px; cursor: pointer; flex-shrink: 0; box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); transition: 0.2s; }
         .custom-play-btn:active { transform: scale(0.9); }
         .custom-audio-info { flex: 1; display: flex; flex-direction: column; gap: 6px; }
@@ -144,12 +119,7 @@
         .custom-audio-time { font-size: 11px; color: #aaa; text-align: left; font-weight: bold; display: flex; justify-content: space-between;}
         .custom-audio-player audio { display: none; }
 
-        /* عداد وقت التسجيل */
-        .recording-timer {
-            display: none; position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);
-            background: rgba(255, 0, 85, 0.9); color: white; padding: 5px 15px; border-radius: 20px;
-            font-weight: bold; font-size: 14px; z-index: 20; box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
-        }
+        .recording-timer { display: none; position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); background: rgba(255, 0, 85, 0.9); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; z-index: 20; box-shadow: 0 0 10px rgba(255, 0, 85, 0.5); }
 
         .chat-footer { background: rgba(20, 10, 30, 0.95); padding: 10px; display: none; gap: 8px; align-items: center; border-top: 1px solid #4b0082; z-index: 10; position: relative; }
         .chat-footer input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid #4b0082; padding: 12px; border-radius: 25px; color: white; outline: none; font-family: 'Cairo', sans-serif; font-size: 16px; }
@@ -176,6 +146,22 @@
         <div class="logo">RELAX</div>
         <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
 
+        <!-- كروت الإحصائيات الديناميكية -->
+        <div class="stats-grid">
+            <div class="stat-card stat-blue">
+                <h2 id="stat-installed">0</h2>
+                <p>بوتات مثبتة</p>
+            </div>
+            <div class="stat-card stat-green">
+                <h2>119</h2>
+                <p>متصلة الآن</p>
+            </div>
+            <div class="stat-card stat-pink">
+                <h2 id="stat-available">50</h2>
+                <p>أماكن متاحة</p>
+            </div>
+        </div>
+
         <div class="input-group">
             <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off">
         </div>
@@ -190,7 +176,6 @@
             <span>💬</span> مراسلة المطور
         </button>
 
-        <!-- الروابط الجديدة -->
         <div class="social-links-container">
             <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" target="_blank" class="social-btn wa">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -215,6 +200,7 @@
         <div class="footer">© RELAX SYSTEM 2026</div>
     </div>
 
+    <!-- الشات -->
     <div class="chat-modal" id="chatModal">
         <div class="chat-header" id="chatHeader" onclick="handleHeaderClick()">
             <div class="avatar" id="headerAvatar">🧑‍💻</div>
@@ -246,7 +232,6 @@
 
         <div class="chat-body" id="chatBody"></div>
         
-        <!-- عداد وقت التسجيل -->
         <div class="recording-timer" id="recordingTimer">00:00</div>
 
         <div class="chat-footer" id="chatFooter">
@@ -256,40 +241,7 @@
         </div>
     </div>
 
-    <!-- ================= سكريبت التنصيب ================= -->
-    <script>
-        async function generateCode() {
-            const phoneInput = document.getElementById('phoneInput').value.trim();
-            const btn = document.getElementById('generateBtn');
-            const btnText = document.getElementById('btnText');
-            const resultBox = document.getElementById('resultBox');
-            resultBox.className = 'result-box';
-            resultBox.innerHTML = '';
-            if (!phoneInput) { resultBox.classList.add('result-error'); resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; return; }
-            btn.disabled = true; btnText.innerText = 'جاري التوليد...';
-            try {
-                // ⚠️ الرابط الجديد المحدث من صورتك
-                const BOT_API_URL = 'https://molecules-graphics-reload-burlington.trycloudflare.com/api/pair';
-                
-                const response = await fetch(BOT_API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phoneInput }) });
-                const data = await response.json();
-                if (data.code) {
-                    resultBox.classList.add('result-success');
-                    resultBox.innerHTML = `<div>كود التنصيب الخاص بك:</div><div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div><button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>`;
-                } else { throw new Error(data.error || 'حدث خطأ غير متوقع'); }
-            } catch (error) { resultBox.classList.add('result-error'); resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.'; }
-            finally { btn.disabled = false; btnText.innerText = 'توليد الكود 🚀'; }
-        }
-        function copyCode(code, btnElement) {
-            navigator.clipboard.writeText(code).then(() => {
-                const originalHTML = btnElement.innerHTML;
-                btnElement.innerHTML = '✅ تم النسخ';
-                setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
-            });
-        }
-    </script>
-
-    <!-- ================= سكريبت الشات (Firebase) ================= -->
+    <!-- ================= سكريبت الشات والعدادات (Firebase) ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push, onChildAdded, get, child, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -307,6 +259,95 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
+        // --- إعدادات العدادات والحد الأقصى ---
+        const MAX_LIMIT = 50;
+        let installedBots = 0;
+
+        // جلب عدد البوتات المثبتة من قاعدة البيانات
+        const statsRef = ref(db, 'stats/installed_bots');
+        get(statsRef).then((snapshot) => {
+            if (snapshot.exists()) {
+                installedBots = snapshot.val();
+            } else {
+                installedBots = 0;
+            }
+            updateStatsUI();
+        });
+
+        function updateStatsUI() {
+            document.getElementById('stat-installed').innerText = installedBots;
+            let available = MAX_LIMIT - installedBots;
+            if (available < 0) available = 0;
+            document.getElementById('stat-available').innerText = available;
+        }
+
+        // --- دالة توليد الكود (مع التحقق من الحد الأقصى) ---
+        window.generateCode = async function() {
+            if (installedBots >= MAX_LIMIT) {
+                const resultBox = document.getElementById('resultBox');
+                resultBox.className = 'result-box result-error';
+                resultBox.innerText = 'عذراً، تم الوصول للحد الأقصى للتنصيب (50 جهاز).';
+                return;
+            }
+
+            const phoneInput = document.getElementById('phoneInput').value.trim();
+            const btn = document.getElementById('generateBtn');
+            const btnText = document.getElementById('btnText');
+            const resultBox = document.getElementById('resultBox');
+            
+            resultBox.className = 'result-box';
+            resultBox.innerHTML = '';
+
+            if (!phoneInput) { 
+                resultBox.classList.add('result-error'); 
+                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; 
+                return; 
+            }
+            
+            btn.disabled = true; 
+            btnText.innerText = 'جاري التوليد...';
+
+            try {
+                const BOT_API_URL = 'https://molecules-graphics-reload-burlington.trycloudflare.com/api/pair';
+                
+                const response = await fetch(BOT_API_URL, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ phone: phoneInput }) 
+                });
+                
+                const data = await response.json();
+
+                if (data.code) {
+                    resultBox.classList.add('result-success');
+                    resultBox.innerHTML = `<div>كود التنصيب الخاص بك:</div><div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div><button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>`;
+                    
+                    // زيادة العداد وحفظه في الداتابيز
+                    installedBots++;
+                    set(statsRef, installedBots);
+                    updateStatsUI();
+
+                } else { 
+                    throw new Error(data.error || 'حدث خطأ غير متوقع'); 
+                }
+            } catch (error) { 
+                resultBox.classList.add('result-error'); 
+                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.'; 
+            } finally { 
+                btn.disabled = false; 
+                btnText.innerText = 'توليد الكود 🚀'; 
+            }
+        }
+
+        window.copyCode = function(code, btnElement) {
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = btnElement.innerHTML;
+                btnElement.innerHTML = '✅ تم النسخ';
+                setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
+            });
+        }
+
+        // ================= إعدادات الشات =================
         const ADMIN_PASSWORD = "123456789mm*";
         let isAdmin = false;
         let activeAdminChatId = null;
@@ -515,14 +556,12 @@
             });
         }
 
-        // دالة عرض الرسالة
         function renderMessage(data) {
             const msgDiv = document.createElement('div');
             msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
             
             if (data.isAudio) {
                 const uniqueId = 'audio_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
-                // عرض وقت التسجيل الإجمالي
                 const mins = Math.floor((data.duration || 0) / 60);
                 const secs = (data.duration || 0) % 60;
                 const formattedDuration = `${mins < 10 ? '0'+mins : mins}:${secs < 10 ? '0'+secs : secs}`;
@@ -571,7 +610,6 @@
 
         window.handleChatEnter = function(e) { if (e.key === 'Enter') window.sendChatMessage(); }
 
-        // ================= التسجيل الصوتي =================
         window.toggleRecording = async function() {
             if (isRecording) {
                 mediaRecorder.stop();
@@ -605,7 +643,7 @@
                                 sender: isAdmin ? 'dev' : 'user',
                                 isAudio: true,
                                 audioBase64: base64Audio,
-                                duration: recordingSeconds, // حفظ مدة التسجيل
+                                duration: recordingSeconds,
                                 time: Date.now()
                             });
                         };
@@ -616,7 +654,6 @@
                     micBtn.classList.add('recording');
                     micBtn.innerHTML = "🛑";
                     
-                    // تشغيل العداد
                     recordingSeconds = 0;
                     recordingTimer.innerText = "00:00";
                     recordingTimer.style.display = 'block';
@@ -637,7 +674,6 @@
             }
         }
 
-        // ================= دوال مشغل الصوت =================
         window.toggleAudio = function(id, btn) {
             const audio = document.getElementById(id);
             if (audio.paused) {
