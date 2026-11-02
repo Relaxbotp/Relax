@@ -39,7 +39,7 @@
         .logo { font-size: 32px; font-weight: 900; color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-bottom: 5px; letter-spacing: 2px; }
         .subtitle { font-size: 14px; color: #aaa; margin-bottom: 20px; }
         
-        /* كروت الإحصائيات - بقت كارتين بس */
+        /* كروت الإحصائيات */
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .stat-card { background: rgba(0, 0, 0, 0.6); border-radius: 15px; padding: 15px 5px; text-align: center; backdrop-filter: blur(10px); }
         .stat-card h2 { font-size: 24px; margin-bottom: 5px; }
@@ -89,7 +89,7 @@
         .social-btn.tg { background: rgba(0, 136, 204, 0.1); color: #0088cc; border: 1px solid #0088cc; }
         .social-btn.tg:hover { background: rgba(0, 136, 204, 0.2); }
 
-        /* الشات (نفس التصميم القديم) */
+        /* الشات */
         .chat-modal { position: fixed; bottom: 0; right: 0; width: 100%; height: 100dvh; background: rgba(15, 5, 25, 0.98); border: none; display: none; flex-direction: column; z-index: 9999; overflow: hidden; backdrop-filter: blur(10px); }
         .chat-modal.active { display: flex; }
         @media (min-width: 768px) { .chat-modal { bottom: 20px; right: 20px; width: 380px; height: 80vh; max-height: 600px; border-radius: 20px; border: 1px solid #8a2be2; } }
@@ -130,14 +130,13 @@
         <div class="logo">RELAX</div>
         <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
 
-        <!-- كروت الإحصائيات (كارتين بس) -->
         <div class="stats-grid">
             <div class="stat-card stat-green">
-                <h2 id="stat-connected">0</h2>
+                <h2 id="stat-connected">--</h2>
                 <p>متصلة الآن</p>
             </div>
             <div class="stat-card stat-pink">
-                <h2 id="stat-available">50</h2>
+                <h2 id="stat-available">--</h2>
                 <p>أماكن متاحة</p>
             </div>
         </div>
@@ -239,23 +238,26 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // ⚠️ رابط البوت الأساسي
-        const BOT_API_URL = 'https://molecules-graphics-reload-burlington.trycloudflare.com';
+        // ⚠️ الرابط الجديد المحدث
+        const BOT_API_URL = 'https://stevens-repairs-spy-novel.trycloudflare.com';
 
-        // --- جلب الإحصائيات الحقيقية من البوت كل 5 ثواني ---
+        // --- جلب الإحصائيات الحقيقية من البوت ---
         async function fetchLiveStats() {
             try {
                 const res = await fetch(`${BOT_API_URL}/api/stats`);
                 const data = await res.json();
                 
-                document.getElementById('stat-connected').innerText = data.connected;
-                document.getElementById('stat-available').innerText = data.available;
+                if (data.connected !== undefined) {
+                    document.getElementById('stat-connected').innerText = data.connected;
+                    document.getElementById('stat-available').innerText = data.available;
+                }
             } catch (e) {
-                console.log("تعذر جلب الإحصائيات");
+                console.error("تعذر جلب الإحصائيات، الرابط قديم أو البوت مقفول.");
+                document.getElementById('stat-connected').innerText = '--';
+                document.getElementById('stat-available').innerText = '--';
             }
         }
         
-        // أول ما الموقع يفتح بنجيب الإحصائيات، وبعدين بنحدثها كل 5 ثواني
         fetchLiveStats();
         setInterval(fetchLiveStats, 5000);
 
@@ -291,7 +293,6 @@
                     resultBox.classList.add('result-success');
                     resultBox.innerHTML = `<div>كود التنصيب الخاص بك:</div><div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div><button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>`;
                     
-                    // تحديث الإحصائيات فور نجاح التنصيب
                     fetchLiveStats();
                 } else { 
                     throw new Error(data.error || 'حدث خطأ غير متوقع'); 
