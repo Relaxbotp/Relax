@@ -3,71 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RELAX BOT | تنصيب البوت</title>
+    <title>RELAX | تنصيب البوت</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
         
         body {
-            background-color: #050510;
-            /* 👇 هنا حطنا اسم الصورة اللي إنت هترفعها على جيت هاب */
-            background-image: linear-gradient(rgba(5, 5, 16, 0.6), rgba(5, 5, 16, 0.9)), url('bg.jpg');
+            background-color: #0d0d0d;
+            /* خلفية نيون فخمة */
+            background-image: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.95)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: #fff;
-            min-height: 100vh;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 20px;
         }
 
-        .container { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 15px; }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(20, 20, 20, 0.85);
+            padding: 30px 20px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
 
-        /* الهيدر */
-        .header { text-align: center; margin-top: 10px; position: relative; }
-        .avatar-container { width: 100px; height: 100px; margin: 0 auto; border-radius: 50%; padding: 4px; background: linear-gradient(45deg, #8a2be2, #00ffff); box-shadow: 0 0 25px rgba(138, 43, 226, 0.6); }
-        .avatar-container img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #000; }
-        .header h1 { font-size: 28px; font-weight: 900; margin-top: 15px; text-shadow: 0 0 10px rgba(138, 43, 226, 0.8); letter-spacing: 1px; }
-        .header p { font-size: 13px; color: #ccc; margin-top: 5px; }
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
 
-        /* كروت الإحصائيات */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .stat-card { background: rgba(0, 0, 0, 0.6); border-radius: 15px; padding: 15px 5px; text-align: center; backdrop-filter: blur(10px); }
-        .stat-card h2 { font-size: 24px; margin-bottom: 5px; }
-        .stat-card p { font-size: 11px; color: #aaa; font-weight: bold; }
-        .stat-pink { border: 1px solid rgba(255, 0, 128, 0.5); box-shadow: inset 0 0 15px rgba(255, 0, 128, 0.1); }
-        .stat-pink h2 { color: #ff0080; }
-        .stat-green { border: 1px solid rgba(0, 255, 128, 0.5); box-shadow: inset 0 0 15px rgba(0, 255, 128, 0.1); }
-        .stat-green h2 { color: #00ff80; }
-        .stat-blue { border: 1px solid rgba(0, 128, 255, 0.5); box-shadow: inset 0 0 15px rgba(0, 128, 255, 0.1); }
-        .stat-blue h2 { color: #0088ff; }
+        .subtitle { font-size: 14px; color: #aaa; margin-bottom: 25px; }
 
-        /* كارت التنصيب */
-        .main-card { background: rgba(10, 20, 30, 0.8); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 20px; padding: 25px 20px; backdrop-filter: blur(15px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); margin-top: 10px; }
-        .main-card h3 { text-align: right; font-size: 16px; margin-bottom: 15px; }
-        .input-group { position: relative; margin-bottom: 10px; }
-        .input-group input { width: 100%; padding: 15px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #fff; font-size: 16px; text-align: right; outline: none; }
-        .input-group input::placeholder { color: #666; font-family: sans-serif; }
-        .hint-text { font-size: 11px; color: #888; text-align: right; margin-bottom: 20px; }
-        .submit-btn { width: 100%; padding: 15px; background: linear-gradient(90deg, #8a2be2, #00ffff); border: none; border-radius: 12px; color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3); transition: 0.3s; }
-        .submit-btn:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(138, 43, 226, 0.5); }
+        .input-group { margin-bottom: 20px; }
 
-        /* زرار الشات السفلي */
-        .menu-btn { background: rgba(10, 20, 30, 0.8); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 15px; padding: 15px; display: flex; justify-content: space-between; align-items: center; color: #fff; text-decoration: none; backdrop-filter: blur(10px); transition: 0.3s; cursor: pointer; }
-        .menu-btn:hover { background: rgba(20, 30, 40, 0.9); border-color: rgba(0, 255, 128, 0.4); }
-        .menu-btn-text { text-align: right; }
-        .menu-btn-text h4 { font-size: 15px; margin-bottom: 3px; }
-        .menu-btn-text p { font-size: 11px; color: #888; }
-        .menu-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; background: rgba(138, 43, 226, 0.2); color: #00ffff; }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #444;
+            background: #111;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
 
-        .footer { text-align: center; font-size: 12px; color: #666; margin-top: 20px; padding-bottom: 80px; }
+        input[type="text"]:focus {
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
 
-        /* ================= واجهة الشات ================= */
-        .chat-fab { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #8a2be2, #005c4b); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5); z-index: 9999; transition: 0.3s; }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #8a2be2, #00ffff);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover { opacity: 0.9; transform: scale(1.02); }
+        .btn:disabled { background: #333; cursor: not-allowed; transform: none; }
+
+        .result-box { margin-top: 20px; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; display: none; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .result-success { background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00; color: #00ff00; display: block; }
+        .result-error { background: rgba(255, 0, 0, 0.1); border: 1px solid #ff0000; color: #ff0000; display: block; }
+
+        .copy-btn {
+            background: rgba(0, 255, 0, 0.15);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .copy-btn:hover { background: rgba(0, 255, 0, 0.3); }
+
+        /* قسم الشرح */
+        .guide-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: right;
+        }
+
+        .guide-title { font-size: 16px; color: #00ffff; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .guide-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13px; color: #ccc; }
+        .step-num { background: rgba(0, 255, 255, 0.1); color: #00ffff; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+        .highlight-text { color: #fff; font-weight: bold; }
+
+        .footer { margin-top: 25px; font-size: 12px; color: #666; }
+
+        /* ================= الشات العايم ================= */
+        .chat-fab {
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
+            background: linear-gradient(135deg, #00a884, #005c4b);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            color: white; font-size: 30px; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 168, 132, 0.4); z-index: 9999; transition: 0.3s;
+        }
         .chat-fab:hover { transform: scale(1.1); }
         
-        .chat-modal { position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 100px); background: #111b21; border: 1px solid #2a3942; border-radius: 15px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        .chat-modal {
+            position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px);
+            height: 500px; max-height: calc(100vh - 100px); background: #111b21;
+            border: 1px solid #2a3942; border-radius: 15px; display: none;
+            flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
         .chat-modal.active { display: flex; }
         
         .chat-header { background: #202c33; padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #111b21; color: white; cursor: pointer; }
@@ -90,52 +165,52 @@
 <body>
 
     <div class="container">
-        <div class="header">
-            <div class="avatar-container">
-                <img src="https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg" alt="RELAX">
-            </div>
-            <h1>RELAX BOT</h1>
-            <p>احصل على بوت واتساب خاص بك في ثواني</p>
+        <div class="logo">RELAX</div>
+        <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
+
+        <div class="input-group">
+            <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off">
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card stat-blue">
-                <h2>119</h2>
-                <p>بوتات مثبتة</p>
+        <button class="btn" id="generateBtn" onclick="generateCode()">
+            <span id="btnText">توليد الكود 🚀</span>
+        </button>
+
+        <div id="resultBox" class="result-box"></div>
+
+        <!-- قسم شرح طريقة الربط -->
+        <div class="guide-section">
+            <div class="guide-title">❓ طريقة ربط البوت</div>
+            <div class="guide-step">
+                <span class="step-num">1</span>
+                <div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div>
             </div>
-            <div class="stat-card stat-green">
-                <h2>119</h2>
-                <p>متصلة الآن</p>
+            <div class="guide-step">
+                <span class="step-num">2</span>
+                <div>اذهب إلى <span class="highlight-text">الإعدادات</span> (أو النقاط الثلاث).</div>
             </div>
-            <div class="stat-card stat-pink">
-                <h2>1</h2>
-                <p>أماكن متاحة</p>
+            <div class="guide-step">
+                <span class="step-num">3</span>
+                <div>اختر <span class="highlight-text">الأجهزة المرتبطة</span>.</div>
+            </div>
+            <div class="guide-step">
+                <span class="step-num">4</span>
+                <div>اضغط على <span class="highlight-text">ربط جهاز</span>.</div>
+            </div>
+            <div class="guide-step">
+                <span class="step-num">5</span>
+                <div>اختر <span class="highlight-text">الربط برقم الهاتف</span>.</div>
+            </div>
+            <div class="guide-step">
+                <span class="step-num">6</span>
+                <div>أدخل الكود المكون من 8 أرقام الذي ظهر لك أعلاه.</div>
             </div>
         </div>
 
-        <div class="main-card">
-            <h3>رقم واتساب</h3>
-            <div class="input-group">
-                <input type="text" id="phoneInput" placeholder="201234567890">
-            </div>
-            <div class="hint-text">اكتب رقمك مع رمز الدولة، من غير + أو مسافات.</div>
-            <button class="submit-btn" id="submitBtn" onclick="generateCode()">تنصيب البوت</button>
-        </div>
-
-        <!-- زر فتح الشات -->
-        <div class="menu-btn" onclick="toggleChat()">
-            <div class="menu-icon">💬</div>
-            <div class="menu-btn-text">
-                <h4>محادثة المطور</h4>
-                <p>تكلم معه مباشرة (شات حقيقي)</p>
-            </div>
-            <div style="color: #666;">&lt;</div>
-        </div>
-
-        <div class="footer">RELAX SYSTEM © 2026</div>
+        <div class="footer">© RELAX SYSTEM 2026</div>
     </div>
 
-    <!-- ================= الشات (مخفي ويظهر بالضغط) ================= -->
+    <!-- ================= الشات العايم ================= -->
     <div class="chat-fab" onclick="toggleChat()">💬</div>
 
     <div class="chat-modal" id="chatModal">
@@ -159,18 +234,24 @@
     <script>
         async function generateCode() {
             const phoneInput = document.getElementById('phoneInput').value.trim();
-            const btn = document.getElementById('submitBtn');
+            const btn = document.getElementById('generateBtn');
+            const btnText = document.getElementById('btnText');
+            const resultBox = document.getElementById('resultBox');
+
+            resultBox.className = 'result-box';
+            resultBox.innerHTML = '';
 
             if (!phoneInput) {
-                alert('يرجى إدخال رقم الهاتف أولاً!');
+                resultBox.classList.add('result-error');
+                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!';
                 return;
             }
 
-            btn.innerText = 'جاري التوليد...';
             btn.disabled = true;
+            btnText.innerText = 'جاري التوليد...';
 
             try {
-                // ⚠️ الرابط الجديد المحدث من كاتا بمب
+                // ⚠️ الرابط الجديد المحدث
                 const BOT_API_URL = 'https://radar-pioneer-extensions-sail.trycloudflare.com/api/pair';
                 
                 const response = await fetch(BOT_API_URL, {
@@ -182,18 +263,35 @@
                 const data = await response.json();
 
                 if (data.code) {
-                    // هنا بيظهر كود التنصيب
-                    alert(`✅ كود التنصيب الخاص بك:\n\n${data.code}\n\nقم بنسخه وربطه في واتساب.`);
+                    resultBox.classList.add('result-success');
+                    resultBox.innerHTML = `
+                        <div>كود التنصيب الخاص بك:</div>
+                        <div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div>
+                        <button class="copy-btn" onclick="copyCode('${data.code}', this)">
+                            📋 نسخ
+                        </button>
+                    `;
                 } else {
                     throw new Error(data.error || 'حدث خطأ غير متوقع');
                 }
 
             } catch (error) {
-                alert(error.message || 'تعذر الاتصال بالسيرفر. تأكد أن البوت شغال.');
+                resultBox.classList.add('result-error');
+                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.';
             } finally {
-                btn.innerText = 'تنصيب البوت';
                 btn.disabled = false;
+                btnText.innerText = 'توليد الكود 🚀';
             }
+        }
+
+        function copyCode(code, btnElement) {
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = btnElement.innerHTML;
+                btnElement.innerHTML = '✅ تم النسخ';
+                setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
+            }).catch(err => {
+                alert('حدث خطأ أثناء النسخ، يرجى نسخ الكود يدوياً.');
+            });
         }
     </script>
 
@@ -220,7 +318,7 @@
         const chatBody = document.getElementById('chatBody');
         const chatInput = document.getElementById('chatInput');
         
-        // المطور فقط هو من يضيف ?admin=true في الرابط
+        // هل إنت المطور؟ (لو فتحت الموقع وفيه ?admin=true في الرابط)
         const isAdmin = window.location.search.includes('admin=true');
         
         if (isAdmin) {
