@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>تحدي الصداقة | RELAX SYSTEM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RELAX SYSTEM | تنصيب البوت</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,437 +14,466 @@
         }
 
         body {
-            background-color: #e0f2f1; /* لون أزرق فاتح */
-            background-image: radial-gradient(circle at top, #b2dfdb 0%, #e0f2f1 100%);
+            background-color: #0d0d0d;
+            color: #ffffff;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 15px;
+            background-image: radial-gradient(circle at top right, #1a1a2e, #0d0d0d);
+            padding: 20px;
         }
 
-        .app-container {
-            background: #fff;
+        .container {
             width: 100%;
-            max-width: 450px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* شريط علوي */
-        .top-bar {
-            background: #26a69a;
-            height: 8px;
-            width: 100%;
-        }
-
-        /* شاشات اللعبة */
-        .screen {
-            padding: 30px 20px;
-            display: none;
-        }
-
-        .screen.active {
-            display: block;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .header-title {
+            max-width: 420px;
+            background: rgba(20, 20, 20, 0.85);
+            padding: 35px 25px;
+            border-radius: 24px;
+            border: 1px solid #2a2a2a;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
             text-align: center;
-            font-size: 24px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 36px;
             font-weight: 900;
-            color: #00796b;
-            margin-bottom: 5px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+            margin-bottom: 8px;
+            letter-spacing: 3px;
         }
 
         .subtitle {
-            text-align: center;
             font-size: 14px;
-            color: #888;
-            margin-bottom: 20px;
-        }
-
-        .instructions {
-            background: #f1f8e9;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 14px;
-            line-height: 1.8;
-            border-right: 4px solid #26a69a;
+            color: #aaa;
+            margin-bottom: 30px;
+            font-weight: 600;
         }
 
         .input-group {
             margin-bottom: 20px;
+            position: relative;
         }
 
-        .input-group input {
+        input[type="text"] {
             width: 100%;
-            padding: 14px;
-            border: 2px solid #b2dfdb;
-            border-radius: 12px;
-            font-size: 16px;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid #333;
+            background: #111;
+            color: #fff;
+            font-size: 18px;
             text-align: center;
             outline: none;
-            font-family: 'Cairo', sans-serif;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
-        .input-group input:focus {
-            border-color: #00796b;
-            box-shadow: 0 0 10px rgba(38, 166, 154, 0.2);
+        input[type="text"]:focus {
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
         }
 
-        .btn-main {
+        .btn {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #26a69a, #00796b);
-            color: #fff;
+            padding: 16px;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #8a2be2, #00ffff);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+        }
+
+        .btn:disabled {
+            background: #333;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 14px;
             font-size: 18px;
             font-weight: bold;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-success {
+            background: rgba(0, 255, 0, 0.08);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            display: block;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+        }
+
+        .result-error {
+            background: rgba(255, 0, 0, 0.08);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            display: block;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+        }
+
+        /* ستايل زرار النسخ */
+        .copy-btn {
+            background: rgba(0, 255, 0, 0.15);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 10px 18px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(38, 166, 154, 0.3);
-        }
-
-        .btn-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(38, 166, 154, 0.4);
-        }
-
-        /* شاشة الأسئلة */
-        .question-header {
-            display: flex;
-            justify-content: space-between;
+            display: inline-flex;
             align-items: center;
-            margin-bottom: 10px;
-            color: #00796b;
+            gap: 8px;
+            font-family: 'Cairo', sans-serif;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            margin-bottom: 25px;
-            overflow: hidden;
+        .copy-btn:hover {
+            background: rgba(0, 255, 0, 0.3);
+            transform: scale(1.05);
         }
 
-        .progress-fill {
-            height: 100%;
-            background: #26a69a;
-            width: 0%;
-            transition: width 0.4s ease;
+        .copy-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
-        .question-text {
-            font-size: 20px;
+        /* قسم الشرح (طريقة الربط) */
+        .guide-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            text-align: right;
+        }
+
+        .guide-title {
+            font-size: 16px;
+            color: #00ffff;
             font-weight: 800;
-            text-align: center;
-            margin-bottom: 25px;
-            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .guide-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .step-num {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .highlight-text {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Social Links Section */
+        .social-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .social-title {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
             gap: 15px;
         }
 
-        .option-card {
-            border: 2px solid #eee;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: 0.2s;
-            text-align: center;
-            background: #fff;
-        }
-
-        .option-card:hover, .option-card.selected {
-            border-color: #26a69a;
-            background: #f1f8e9;
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .option-img {
-            width: 100%;
-            height: 110px;
-            object-fit: cover;
-            background: #ccc;
-        }
-
-        .option-text {
-            padding: 12px 5px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        /* شاشة النتيجة */
-        .result-score {
-            font-size: 55px;
-            font-weight: 900;
-            text-align: center;
-            color: #ff5722;
-            margin: 15px 0;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
-        }
-
-        .result-message {
-            text-align: center;
-            font-size: 18px;
-            color: #333;
-            font-weight: bold;
-            margin-bottom: 25px;
-            background: #fff3e0;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px dashed #ff9800;
-        }
-
-        .share-btn {
+        .social-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 15px;
+            gap: 8px;
+            padding: 12px 20px;
             border-radius: 12px;
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+        }
+
+        .social-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .social-btn.whatsapp:hover {
+            background: rgba(37, 211, 102, 0.1);
+            border-color: #25D366;
+            color: #25D366;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .social-btn.telegram:hover {
+            background: rgba(0, 136, 204, 0.1);
+            border-color: #0088cc;
+            color: #0088cc;
+            box-shadow: 0 0 15px rgba(0, 136, 204, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .dev-channel {
+            margin-top: 20px;
+        }
+
+        .dev-channel a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
             transition: 0.3s;
+            padding: 8px 15px;
+            border-radius: 10px;
+            background: rgba(0, 255, 255, 0.05);
         }
 
-        .share-btn:hover {
-            background: #128C7E;
+        .dev-channel a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            text-shadow: 0 0 10px #00ffff;
         }
 
-        /* الحقوق */
-        .footer-brand {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 13px;
-            color: #888;
-            font-weight: bold;
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #555;
         }
 
-        .footer-brand span {
-            color: #00796b;
-            font-weight: 900;
-            text-shadow: 0 0 5px rgba(0, 121, 107, 0.3);
+        /* Loader Animation */
+        .loader {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
-        <div class="top-bar"></div>
+    <div class="container">
+        <div class="logo">RELAX</div>
+        <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
 
-        <!-- الشاشة الأولى: البداية -->
-        <div id="start-screen" class="screen active">
-            <div class="header-title">تحدي الصداقة 😂😜</div>
-            <div class="subtitle">هل أنت صديق حقيقي؟</div>
-            
-            <div class="instructions">
-                <p>1️⃣ ادخل اسمك</p>
-                <p>2️⃣ أجب عن الأسئلة</p>
-                <p>3️⃣ شارك النتيجة مع أصحابك وتحداهم</p>
-            </div>
-
-            <div class="input-group">
-                <input type="text" id="playerName" placeholder="اكتب اسمك هنا (مثال: مالك)">
-            </div>
-            <button class="btn-main" onclick="startQuiz()">ابدأ التحدي 👈</button>
-            
-            <div class="footer-brand">Powered by <span>RELAX SYSTEM</span> © 2026</div>
+        <div class="input-group">
+            <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off">
         </div>
 
-        <!-- الشاشة الثانية: الأسئلة -->
-        <div id="quiz-screen" class="screen">
-            <div class="question-header">
-                <span id="questionCounter">سؤال 1</span>
-                <span id="scoreTracker">النقاط: 0</span>
+        <button class="btn" id="generateBtn" onclick="generateCode()">
+            <span id="btnText">توليد الكود 🚀</span>
+            <div class="loader" id="loader"></div>
+        </button>
+
+        <!-- مكان ظهور الكود أو الخطأ -->
+        <div id="resultBox" class="result-box"></div>
+
+        <!-- قسم شرح طريقة الربط -->
+        <div class="guide-section">
+            <div class="guide-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                طريقة ربط البوت
             </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress"></div>
+            <div class="guide-step">
+                <span class="step-num">1</span>
+                <div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div>
             </div>
-            <div class="question-text" id="questionText">السؤال هنا</div>
-            
-            <div class="options-grid" id="optionsGrid">
-                <!-- الخيارات هتتحط هنا بالجافاسكريبت -->
+            <div class="guide-step">
+                <span class="step-num">2</span>
+                <div>اذهب إلى <span class="highlight-text">الإعدادات</span> (أو النقاط الثلاث في الأندرويد).</div>
+            </div>
+            <div class="guide-step">
+                <span class="step-num">3</span>
+                <div>اختر <span class="highlight-text">الأجهزة المرتبطة</span> (Linked Devices).</div>
+            </div>
+            <div class="guide-step">
+                <span class="step-num">4</span>
+                <div>اضغط على <span class="highlight-text">ربط جهاز</span> (Link a Device).</div>
+            </div>
+            <div class="guide-step">
+                <span class="step-num">5</span>
+                <div>اختر خيار <span class="highlight-text">الربط برقم الهاتف</span> بدلاً من مسح رمز الـ QR.</div>
+            </div>
+            <div class="guide-step">
+                <span class="step-num">6</span>
+                <div>أدخل الكود المكون من 8 أرقام الذي ظهر لك في الموقع أعلاه.</div>
             </div>
         </div>
 
-        <!-- الشاشة الثالثة: النتيجة -->
-        <div id="result-screen" class="screen">
-            <div class="header-title">🏆 النتيجة 🏆</div>
-            <div style="text-align:center; font-size: 22px; font-weight: bold; color: #00796b;" id="resultName">يا مالك</div>
-            <div class="result-score" id="finalScore">0 / 20</div>
-            
-            <div class="result-message" id="resultMessage">أنت صديق رائع!</div>
+        <!-- قسم التواصل -->
+        <div class="social-section">
+            <div class="social-title">تواصل مع المطور</div>
+            <div class="social-links">
+                <a href="https://wa.me/201559978241" target="_blank" class="social-btn whatsapp">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    واتساب
+                </a>
+                
+                <a href="https://t.me/SE_NJ" target="_blank" class="social-btn telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    تليجرام
+                </a>
+            </div>
+        </div>
 
-            <button class="share-btn" onclick="shareWhatsApp()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                تحدى صاحبك على واتساب
-            </button>
-            
-            <button class="btn-main" style="background:#cfd8dc; color:#333; margin-top:15px; box-shadow:none;" onclick="location.reload()">العب تاني 🔄</button>
+        <!-- قناة المطور -->
+        <div class="dev-channel">
+            <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                انضم لقناة المطور
+            </a>
+        </div>
 
-            <div class="footer-brand">Powered by <span>RELAX SYSTEM</span> © 2026</div>
+        <div class="footer">
+            © RELAX SYSTEM 2026 جميع الحقوق محفوظة
         </div>
     </div>
 
     <script>
-        // 1. بيانات الأسئلة
-        const questions = [
-            {
-                question: "ما هو مشروبك المفضل؟",
-                options: [
-                    { text: "القهوة", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80", score: 1 },
-                    { text: "الشاي", img: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=400&q=80", score: 2 },
-                    { text: "الحليب", img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80", score: 3 },
-                    { text: "العصير", img: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80", score: 4 }
-                ]
-            },
-            {
-                question: "ما هي سيارتك المفضلة؟",
-                options: [
-                    { text: "رولز رويس", img: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=400&q=80", score: 1 },
-                    { text: "بي إم دبليو", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&q=80", score: 2 },
-                    { text: "فيراري", img: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=400&q=80", score: 3 },
-                    { text: "لامبورغيني", img: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?w=400&q=80", score: 4 }
-                ]
-            },
-            {
-                question: "أي جزء من اليوم تحب أكثر؟",
-                options: [
-                    { text: "الليل", img: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=400&q=80", score: 1 },
-                    { text: "الصباح", img: "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=400&q=80", score: 2 },
-                    { text: "المساء", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", score: 3 },
-                    { text: "بعد الظهر", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=80", score: 4 }
-                ]
-            },
-            {
-                question: "ما هو لونك المفضل؟",
-                options: [
-                    { text: "أزرق", img: "https://images.unsplash.com/photo-1508615039623-a25605d2b022?w=400&q=80", score: 1 },
-                    { text: "أحمر", img: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=400&q=80", score: 2 },
-                    { text: "وردي", img: "https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?w=400&q=80", score: 3 },
-                    { text: "أصفر", img: "https://images.unsplash.com/photo-1557682260-96773eb01377?w=400&q=80", score: 4 }
-                ]
-            },
-            {
-                question: "أكثر تطبيق تستخدمه؟",
-                options: [
-                    { text: "يوتيوب", img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=80", score: 1 },
-                    { text: "واتساب", img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&q=80", score: 2 },
-                    { text: "إنستجرام", img: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=400&q=80", score: 3 },
-                    { text: "تيك توك", img: "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=400&q=80", score: 4 }
-                ]
-            }
-        ];
+        // ⚠️ تم تحديث الرابط الجديد هنا
+        const BOT_API_URL = 'https://cancellation-summary-frontier-again.trycloudflare.com/api/pair'; 
 
-        let currentQuestionIndex = 0;
-        let totalScore = 0;
-        let playerName = "";
-        const totalQuestions = questions.length;
+        async function generateCode() {
+            const phoneInput = document.getElementById('phoneInput').value.trim();
+            const btn = document.getElementById('generateBtn');
+            const btnText = document.getElementById('btnText');
+            const loader = document.getElementById('loader');
+            const resultBox = document.getElementById('resultBox');
 
-        // 2. دالة بدء اللعبة
-        function startQuiz() {
-            const nameInput = document.getElementById('playerName').value.trim();
-            if (nameInput === "") {
-                alert("يرجى إدخال اسمك أولاً!");
+            resultBox.className = 'result-box';
+            resultBox.innerHTML = '';
+
+            if (!phoneInput) {
+                resultBox.classList.add('result-error');
+                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!';
                 return;
             }
-            playerName = nameInput;
-            document.getElementById('start-screen').classList.remove('active');
-            document.getElementById('quiz-screen').classList.add('active');
-            loadQuestion();
-        }
 
-        // 3. دالة تحميل السؤال
-        function loadQuestion() {
-            const q = questions[currentQuestionIndex];
-            
-            document.getElementById('questionCounter').innerText = `سؤال ${currentQuestionIndex + 1} من ${totalQuestions}`;
-            document.getElementById('progress').style.width = `${((currentQuestionIndex) / totalQuestions) * 100}%`;
-            document.getElementById('questionText').innerText = q.question;
+            btn.disabled = true;
+            btnText.innerText = 'جاري التوليد...';
+            loader.style.display = 'block';
 
-            const grid = document.getElementById('optionsGrid');
-            grid.innerHTML = "";
+            try {
+                const response = await fetch(BOT_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: phoneInput })
+                });
 
-            q.options.forEach(opt => {
-                const card = document.createElement('div');
-                card.className = 'option-card';
-                card.onclick = () => selectOption(opt.score, card);
-                
-                card.innerHTML = `
-                    <img class="option-img" src="${opt.img}" alt="${opt.text}">
-                    <div class="option-text">${opt.text}</div>
-                `;
-                grid.appendChild(card);
-            });
-        }
+                const data = await response.json();
 
-        // 4. دالة اختيار إجابة
-        function selectOption(score, element) {
-            element.classList.add('selected');
-            totalScore += score;
-            document.getElementById('scoreTracker').innerText = `النقاط: ${totalScore}`;
-
-            setTimeout(() => {
-                currentQuestionIndex++;
-                if (currentQuestionIndex < totalQuestions) {
-                    loadQuestion();
+                if (data.code) {
+                    resultBox.classList.add('result-success');
+                    resultBox.innerHTML = `
+                        <div>كود التنصيب الخاص بك:</div>
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
+                            <span style="font-size: 26px; letter-spacing: 3px; font-weight: 900;">${data.code}</span>
+                            <button class="copy-btn" onclick="copyCode('${data.code}', this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                نسخ
+                            </button>
+                        </div>
+                    `;
                 } else {
-                    showResults();
+                    throw new Error(data.error || 'حدث خطأ غير متوقع');
                 }
-            }, 400);
+
+            } catch (error) {
+                resultBox.classList.add('result-error');
+                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر. تأكد أن البوت شغال.';
+            } finally {
+                btn.disabled = false;
+                btnText.innerText = 'توليد الكود 🚀';
+                loader.style.display = 'none';
+            }
         }
 
-        // 5. دالة عرض النتيجة
-        function showResults() {
-            document.getElementById('quiz-screen').classList.remove('active');
-            document.getElementById('result-screen').classList.add('active');
-            document.getElementById('progress').style.width = '100%';
-
-            document.getElementById('resultName').innerText = `يا ${playerName}، نتيجتك هي:`;
-            // أقصى نتيجة 20 (5 أسئلة * 4 نقاط)
-            document.getElementById('finalScore').innerText = `${totalScore} / 20`;
-
-            let msg = "";
-            if (totalScore >= 16) msg = "أنت صديق مخلص جداً! ❤️ مستحيل حد يعرفك زينا.";
-            else if (totalScore >= 11) msg = "صديق جيد جداً، بس محتاج تعرفهم أكتر! 😉";
-            else if (totalScore >= 6) msg = "إنت صديق متوسط، محتاج تقرب منهم شوية. 🤔";
-            else msg = "إنت غريب خالص عنهم! 😂 إنت متأكد إنك تعرفهم؟";
-
-            document.getElementById('resultMessage').innerText = msg;
-        }
-
-        // 6. دالة المشاركة على واتساب
-        function shareWhatsApp() {
-            const text = `أنا ${playerName} جبت نتيجة ${totalScore} من 20 في تحدي الصداقة 😂😜! تقدر تغلبني؟ جرب اللعبة من هنا:`;
-            const siteUrl = window.location.href; 
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + siteUrl)}`;
-            window.open(whatsappUrl, '_blank');
+        function copyCode(code, btnElement) {
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = btnElement.innerHTML;
+                btnElement.innerHTML = '✅ تم النسخ';
+                btnElement.style.background = 'rgba(0, 255, 0, 0.4)';
+                btnElement.style.color = '#fff';
+                
+                setTimeout(() => {
+                    btnElement.innerHTML = originalHTML;
+                    btnElement.style.background = 'rgba(0, 255, 0, 0.15)';
+                    btnElement.style.color = '#00ff00';
+                }, 2000);
+            }).catch(err => {
+                alert('حدث خطأ أثناء النسخ، يرجى نسخ الكود يدوياً.');
+            });
         }
     </script>
 </body>
