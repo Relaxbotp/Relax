@@ -18,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100dvh; /* تم التعديل ليتناسب مع الموبايل */
+            min-height: 100dvh;
             padding: 20px;
         }
 
@@ -61,7 +61,7 @@
         .highlight-text { color: #fff; font-weight: bold; }
         .footer { margin-top: 25px; font-size: 12px; color: #666; }
 
-        /* زرار مراسلة المطور الجديد */
+        /* زرار مراسلة المطور */
         .contact-dev-btn {
             width: 100%;
             padding: 15px;
@@ -88,7 +88,7 @@
             bottom: 0; 
             right: 0; 
             width: 100%; 
-            height: 100dvh; /* ياخد الشاشة كلها على الموبايل عشان الكيبورد */
+            height: 100dvh; 
             background: rgba(15, 5, 25, 0.98); 
             border: none;
             display: none; 
@@ -105,26 +105,79 @@
             }
         }
         
-        /* الهيدر */
         .chat-header { background: rgba(20, 10, 30, 0.9); padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #4b0082; color: white; cursor: pointer; }
         .chat-header .avatar { font-size: 24px; background: #4b0082; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid #00ffff;}
         .chat-header h4 { font-size: 16px; margin: 0; color: #00ffff; }
         .chat-header p { font-size: 12px; color: #8a2be2; margin: 0; }
         
-        /* خلفية الشات */
         .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-image: url('https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg'); background-size: cover; background-position: center; display: none; flex-direction: column; gap: 10px; position: relative; }
         .chat-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 0, 20, 0.85); z-index: 1; }
         
-        /* الرسايل */
         .chat-msg { position: relative; z-index: 2; max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.5; word-wrap: break-word; color: white; display: flex; flex-direction: column;}
         .chat-msg.user { background: linear-gradient(135deg, #8a2be2, #4b0082); align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid #00ffff; box-shadow: 0 0 10px rgba(138, 43, 226, 0.5); }
         .chat-msg.dev { background: rgba(30, 30, 40, 0.9); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #555; }
         .chat-msg .time { font-size: 10px; color: rgba(255,255,255,0.6); display: block; text-align: left; margin-top: 5px; }
         
-        /* مشغل الصوت */
-        audio { width: 100%; margin-top: 5px; height: 35px; outline: none; }
+        /* مشغل الصوت المخصص الجديد */
+        .custom-audio-player {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0,0,0,0.4);
+            padding: 10px;
+            border-radius: 15px;
+            min-width: 220px;
+            margin-top: 5px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+        .custom-play-btn {
+            background: #00ffff;
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            cursor: pointer;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transition: 0.2s;
+        }
+        .custom-play-btn:active { transform: scale(0.9); }
+        .custom-audio-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .custom-audio-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+        .custom-audio-fill {
+            height: 100%;
+            background: #8a2be2;
+            border-radius: 3px;
+            width: 0%;
+            position: absolute;
+            top: 0; left: 0;
+            pointer-events: none;
+        }
+        .custom-audio-time {
+            font-size: 11px;
+            color: #aaa;
+            text-align: left;
+            font-weight: bold;
+        }
+        .custom-audio-player audio { display: none; }
 
-        /* الفوتر والإدخال */
         .chat-footer { background: rgba(20, 10, 30, 0.95); padding: 10px; display: none; gap: 8px; align-items: center; border-top: 1px solid #4b0082; z-index: 10; }
         .chat-footer input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid #4b0082; padding: 12px; border-radius: 25px; color: white; outline: none; font-family: 'Cairo', sans-serif; font-size: 16px; }
         .chat-footer button { background: #8a2be2; border: none; width: 45px; height: 45px; border-radius: 50%; color: white; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; flex-shrink: 0;}
@@ -134,12 +187,10 @@
         .mic-btn.recording { background: #ff0055 !important; color: #fff !important; animation: pulse 1s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 0, 85, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); } }
 
-        /* شاشات الشات */
         .name-screen, .admin-login-screen { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; text-align: center; position: relative; z-index: 10; }
         .name-screen input, .admin-login-screen input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #8a2be2; background: rgba(0,0,0,0.5); color: white; outline: none; text-align: center; margin-bottom: 15px; font-size: 16px; }
         .name-screen button, .admin-login-screen button { width: 100%; padding: 12px; background: linear-gradient(90deg, #8a2be2, #00ffff); border: none; border-radius: 10px; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
         
-        /* قائمة العملاء */
         .admin-list-screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; background: rgba(15, 5, 25, 0.95); position: relative; z-index: 10; }
         .admin-user-item { padding: 15px; border-bottom: 1px solid #333; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; font-size: 15px;}
         .admin-user-item:hover { background: rgba(138, 43, 226, 0.2); }
@@ -162,7 +213,6 @@
 
         <div id="resultBox" class="result-box"></div>
 
-        <!-- زرار مراسلة المطور الجديد -->
         <button class="contact-dev-btn" onclick="toggleChat()">
             <span>💬</span> مراسلة المطور
         </button>
@@ -180,7 +230,6 @@
         <div class="footer">© RELAX SYSTEM 2026</div>
     </div>
 
-    <!-- ================= الشات ================= -->
     <div class="chat-modal" id="chatModal">
         <div class="chat-header" id="chatHeader" onclick="handleHeaderClick()">
             <div class="avatar" id="headerAvatar">🧑‍💻</div>
@@ -231,7 +280,9 @@
             if (!phoneInput) { resultBox.classList.add('result-error'); resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; return; }
             btn.disabled = true; btnText.innerText = 'جاري التوليد...';
             try {
+                // ⚠️ الرابط المحدث
                 const BOT_API_URL = 'https://radar-pioneer-extensions-sail.trycloudflare.com/api/pair';
+                
                 const response = await fetch(BOT_API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: phoneInput }) });
                 const data = await response.json();
                 if (data.code) {
@@ -250,7 +301,7 @@
         }
     </script>
 
-    <!-- ================= سكريبت الشات (Firebase + Audio + Notifications) ================= -->
+    <!-- ================= سكريبت الشات (Firebase) ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push, onChildAdded, get, child, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -274,7 +325,6 @@
         let currentUserId = null;
         let isChatInitialized = false;
 
-        // عناصر الواجهة
         const chatModal = document.getElementById('chatModal');
         const nameScreen = document.getElementById('nameScreen');
         const adminLoginScreen = document.getElementById('adminLoginScreen');
@@ -287,18 +337,12 @@
         const backBtn = document.getElementById('backBtn');
         const headerAvatar = document.getElementById('headerAvatar');
 
-        // متغيرات التسجيل الصوتي
         let mediaRecorder;
         let audioChunks = [];
         let isRecording = false;
         const micBtn = document.getElementById('micBtn');
 
-        // طلب إذن الإشعارات
-        if ("Notification" in window) {
-            Notification.requestPermission();
-        }
-
-        // صوت التنبيه
+        if ("Notification" in window) { Notification.requestPermission(); }
         const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
 
         window.toggleChat = function() {
@@ -320,7 +364,6 @@
 
         function initChat() {
             const urlParams = new URLSearchParams(window.location.search);
-            
             if (urlParams.get('admin') === 'true') {
                 adminLoginScreen.style.display = 'flex';
                 nameScreen.style.display = 'none';
@@ -381,7 +424,6 @@
             localStorage.setItem('relax_user_name', name);
             currentUserId = newId;
             
-            // استخدام set لضمان الحفظ الصحيح
             set(ref(db, 'chats/' + newId + '/profile'), { name: name });
             
             nameScreen.style.display = 'none';
@@ -397,7 +439,7 @@
             
             onChildAdded(msgRef, (snapshot) => {
                 const data = snapshot.val();
-                renderMessage(data, 'user');
+                renderMessage(data);
                 
                 if(!isInitialLoad && data.sender === 'dev') {
                     showNotification("رد جديد من الدعم", data.isAudio ? "🎙️ رسالة صوتية" : data.text);
@@ -432,13 +474,11 @@
                     Object.keys(chats).forEach(userId => {
                         let userName = "عميل بدون اسم";
                         
-                        // قراءة الاسم بشكل عميق ومضمون
                         if (chats[userId].profile) {
                             if (typeof chats[userId].profile === 'object') {
                                 if (chats[userId].profile.name) {
                                     userName = chats[userId].profile.name;
                                 } else {
-                                    // لو متسجل بطريقة push القديمة
                                     const keys = Object.keys(chats[userId].profile);
                                     if(keys.length > 0 && chats[userId].profile[keys[0]].name) {
                                         userName = chats[userId].profile[keys[0]].name;
@@ -456,8 +496,6 @@
                 } else {
                     listContainer.innerHTML = '<div style="padding: 15px; color: #888; text-align:center;">لا توجد رسائل حتى الآن.</div>';
                 }
-            }).catch((error) => {
-                listContainer.innerHTML = '<div style="padding: 15px; color: red; text-align:center;">حدث خطأ في تحميل البيانات.</div>';
             });
         }
 
@@ -477,7 +515,7 @@
 
             onChildAdded(msgRef, (snapshot) => {
                 const data = snapshot.val();
-                renderMessage(data, 'dev');
+                renderMessage(data);
                 
                 if(!isInitialLoad && data.sender === 'user') {
                     showNotification("رسالة من " + userName, data.isAudio ? "🎙️ رسالة صوتية" : data.text);
@@ -486,13 +524,26 @@
             });
         }
 
-        // دالة عرض الرسالة (نص أو صوت)
-        function renderMessage(data, type) {
+        // دالة عرض الرسالة (تم تعديل الصوت فقط)
+        function renderMessage(data) {
             const msgDiv = document.createElement('div');
             msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
             
             if (data.isAudio) {
-                msgDiv.innerHTML = `<audio controls src="${data.audioBase64}"></audio><span class="time">${new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>`;
+                const uniqueId = 'audio_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+                msgDiv.innerHTML = `
+                    <div class="custom-audio-player">
+                        <button class="custom-play-btn" onclick="toggleAudio('${uniqueId}', this)">▶</button>
+                        <div class="custom-audio-info">
+                            <div class="custom-audio-bar" onclick="seekAudio(event, '${uniqueId}')">
+                                <div class="custom-audio-fill" id="fill_${uniqueId}"></div>
+                            </div>
+                            <span class="custom-audio-time" id="time_${uniqueId}">0:00</span>
+                        </div>
+                        <audio id="${uniqueId}" src="${data.audioBase64}" ontimeupdate="updateAudioProgress('${uniqueId}')" onended="audioEnded('${uniqueId}', this.closest('.custom-audio-player').querySelector('.custom-play-btn'))"></audio>
+                    </div>
+                    <span class="time">${new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
+                `;
             } else {
                 msgDiv.innerHTML = `${data.text} <span class="time">${new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>`;
             }
@@ -501,7 +552,6 @@
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        // إرسال رسالة نصية
         window.sendChatMessage = async function() {
             const text = chatInput.value.trim();
             if (!text) return;
@@ -525,15 +575,12 @@
         // ================= التسجيل الصوتي =================
         window.toggleRecording = async function() {
             if (isRecording) {
-                // إيقاف التسجيل
                 mediaRecorder.stop();
                 isRecording = false;
                 micBtn.classList.remove('recording');
                 micBtn.innerHTML = "🎙️";
             } else {
-                // بدء التسجيل
                 try {
-                    // طلب إذن المايك
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     mediaRecorder = new MediaRecorder(stream);
                     
@@ -580,10 +627,61 @@
             }
         }
 
-        // دالة إظهار الإشعار
+        // ================= دوال مشغل الصوت =================
+        window.toggleAudio = function(id, btn) {
+            const audio = document.getElementById(id);
+            if (audio.paused) {
+                // إيقاف أي صوت تاني شغال
+                document.querySelectorAll('audio').forEach(a => {
+                    if (a.id !== id) {
+                        a.pause();
+                        const parent = a.closest('.custom-audio-player');
+                        if(parent) parent.querySelector('.custom-play-btn').innerHTML = '▶';
+                    }
+                });
+                audio.play();
+                btn.innerHTML = '⏸';
+            } else {
+                audio.pause();
+                btn.innerHTML = '▶';
+            }
+        }
+
+        window.updateAudioProgress = function(id) {
+            const audio = document.getElementById(id);
+            const fill = document.getElementById('fill_' + id);
+            const timeDisplay = document.getElementById('time_' + id);
+            
+            if (audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                fill.style.width = percent + '%';
+                
+                let mins = Math.floor(audio.currentTime / 60);
+                let secs = Math.floor(audio.currentTime % 60);
+                if (secs < 10) secs = '0' + secs;
+                timeDisplay.innerText = `${mins}:${secs}`;
+            }
+        }
+
+        window.audioEnded = function(id, btn) {
+            btn.innerHTML = '▶';
+            document.getElementById('fill_' + id).style.width = '0%';
+            document.getElementById('time_' + id).innerText = '0:00';
+        }
+
+        window.seekAudio = function(event, id) {
+            const bar = event.currentTarget;
+            const rect = bar.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const percent = clickX / rect.width;
+            const audio = document.getElementById(id);
+            if(audio.duration) {
+                audio.currentTime = percent * audio.duration;
+            }
+        }
+
         function showNotification(title, body) {
             notificationSound.play().catch(e => {});
-            
             if (Notification.permission === "granted") {
                 new Notification(title, {
                     body: body,
