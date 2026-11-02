@@ -39,17 +39,16 @@
         .logo { font-size: 32px; font-weight: 900; color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-bottom: 5px; letter-spacing: 2px; }
         .subtitle { font-size: 14px; color: #aaa; margin-bottom: 20px; }
         
-        /* كروت الإحصائيات */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        /* كروت الإحصائيات - بقت كارتين بس */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .stat-card { background: rgba(0, 0, 0, 0.6); border-radius: 15px; padding: 15px 5px; text-align: center; backdrop-filter: blur(10px); }
         .stat-card h2 { font-size: 24px; margin-bottom: 5px; }
-        .stat-card p { font-size: 11px; color: #aaa; font-weight: bold; }
+        .stat-card p { font-size: 12px; color: #aaa; font-weight: bold; }
+        
         .stat-pink { border: 1px solid rgba(255, 0, 128, 0.5); box-shadow: inset 0 0 15px rgba(255, 0, 128, 0.1); }
         .stat-pink h2 { color: #ff0080; }
         .stat-green { border: 1px solid rgba(0, 255, 128, 0.5); box-shadow: inset 0 0 15px rgba(0, 255, 128, 0.1); }
         .stat-green h2 { color: #00ff80; }
-        .stat-blue { border: 1px solid rgba(0, 128, 255, 0.5); box-shadow: inset 0 0 15px rgba(0, 128, 255, 0.1); }
-        .stat-blue h2 { color: #0088ff; }
 
         .input-group { margin-bottom: 20px; }
         input[type="text"] { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #111; color: #fff; font-size: 18px; text-align: center; outline: none; transition: 0.3s; }
@@ -74,7 +73,6 @@
         .highlight-text { color: #fff; font-weight: bold; }
         .footer { margin-top: 25px; font-size: 12px; color: #666; }
 
-        /* زرار مراسلة المطور */
         .contact-dev-btn {
             width: 100%; padding: 15px; margin-top: 20px;
             background: rgba(138, 43, 226, 0.15); border: 2px solid #8a2be2;
@@ -84,7 +82,6 @@
         }
         .contact-dev-btn:hover { background: rgba(138, 43, 226, 0.3); transform: scale(1.02); }
 
-        /* أزرار التواصل الاجتماعي */
         .social-links-container { display: flex; gap: 10px; margin-top: 15px; }
         .social-btn { flex: 1; padding: 10px; border-radius: 10px; text-align: center; text-decoration: none; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; transition: 0.3s; }
         .social-btn.wa { background: rgba(37, 211, 102, 0.1); color: #25D366; border: 1px solid #25D366; }
@@ -92,52 +89,39 @@
         .social-btn.tg { background: rgba(0, 136, 204, 0.1); color: #0088cc; border: 1px solid #0088cc; }
         .social-btn.tg:hover { background: rgba(0, 136, 204, 0.2); }
 
-        /* ================= الشات ================= */
+        /* الشات (نفس التصميم القديم) */
         .chat-modal { position: fixed; bottom: 0; right: 0; width: 100%; height: 100dvh; background: rgba(15, 5, 25, 0.98); border: none; display: none; flex-direction: column; z-index: 9999; overflow: hidden; backdrop-filter: blur(10px); }
         .chat-modal.active { display: flex; }
         @media (min-width: 768px) { .chat-modal { bottom: 20px; right: 20px; width: 380px; height: 80vh; max-height: 600px; border-radius: 20px; border: 1px solid #8a2be2; } }
-        
         .chat-header { background: rgba(20, 10, 30, 0.9); padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #4b0082; color: white; cursor: pointer; }
         .chat-header .avatar { font-size: 24px; background: #4b0082; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid #00ffff;}
         .chat-header h4 { font-size: 16px; margin: 0; color: #00ffff; }
         .chat-header p { font-size: 12px; color: #8a2be2; margin: 0; }
-        
         .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-image: url('https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg'); background-size: cover; background-position: center; display: none; flex-direction: column; gap: 10px; position: relative; }
         .chat-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 0, 20, 0.85); z-index: 1; }
-        
         .chat-msg { position: relative; z-index: 2; max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.5; word-wrap: break-word; color: white; display: flex; flex-direction: column;}
         .chat-msg.user { background: linear-gradient(135deg, #8a2be2, #4b0082); align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid #00ffff; box-shadow: 0 0 10px rgba(138, 43, 226, 0.5); }
         .chat-msg.dev { background: rgba(30, 30, 40, 0.9); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #555; }
         .chat-msg .time { font-size: 10px; color: rgba(255,255,255,0.6); display: block; text-align: left; margin-top: 5px; }
-        
         .custom-audio-player { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 15px; min-width: 220px; margin-top: 5px; border: 1px solid rgba(138, 43, 226, 0.3); }
         .custom-play-btn { background: #00ffff; color: #000; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 18px; cursor: pointer; flex-shrink: 0; box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); transition: 0.2s; }
-        .custom-play-btn:active { transform: scale(0.9); }
         .custom-audio-info { flex: 1; display: flex; flex-direction: column; gap: 6px; }
         .custom-audio-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; cursor: pointer; position: relative; }
         .custom-audio-fill { height: 100%; background: #8a2be2; border-radius: 3px; width: 0%; position: absolute; top: 0; left: 0; pointer-events: none; }
         .custom-audio-time { font-size: 11px; color: #aaa; text-align: left; font-weight: bold; display: flex; justify-content: space-between;}
         .custom-audio-player audio { display: none; }
-
         .recording-timer { display: none; position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); background: rgba(255, 0, 85, 0.9); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; z-index: 20; box-shadow: 0 0 10px rgba(255, 0, 85, 0.5); }
-
         .chat-footer { background: rgba(20, 10, 30, 0.95); padding: 10px; display: none; gap: 8px; align-items: center; border-top: 1px solid #4b0082; z-index: 10; position: relative; }
         .chat-footer input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid #4b0082; padding: 12px; border-radius: 25px; color: white; outline: none; font-family: 'Cairo', sans-serif; font-size: 16px; }
         .chat-footer button { background: #8a2be2; border: none; width: 45px; height: 45px; border-radius: 50%; color: white; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; flex-shrink: 0;}
-        .chat-footer button:active { transform: scale(0.9); }
-        
         .mic-btn { background: #00ffff !important; color: #000 !important; }
         .mic-btn.recording { background: #ff0055 !important; color: #fff !important; animation: pulse 1s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 0, 85, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); } }
-
         .name-screen, .admin-login-screen { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; text-align: center; position: relative; z-index: 10; }
         .name-screen input, .admin-login-screen input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #8a2be2; background: rgba(0,0,0,0.5); color: white; outline: none; text-align: center; margin-bottom: 15px; font-size: 16px; }
         .name-screen button, .admin-login-screen button { width: 100%; padding: 12px; background: linear-gradient(90deg, #8a2be2, #00ffff); border: none; border-radius: 10px; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
-        
         .admin-list-screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; background: rgba(15, 5, 25, 0.95); position: relative; z-index: 10; }
         .admin-user-item { padding: 15px; border-bottom: 1px solid #333; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; font-size: 15px;}
-        .admin-user-item:hover { background: rgba(138, 43, 226, 0.2); }
-        
     </style>
 </head>
 <body>
@@ -146,14 +130,10 @@
         <div class="logo">RELAX</div>
         <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
 
-        <!-- كروت الإحصائيات الديناميكية -->
+        <!-- كروت الإحصائيات (كارتين بس) -->
         <div class="stats-grid">
-            <div class="stat-card stat-blue">
-                <h2 id="stat-installed">0</h2>
-                <p>بوتات مثبتة</p>
-            </div>
             <div class="stat-card stat-green">
-                <h2>119</h2>
+                <h2 id="stat-connected">0</h2>
                 <p>متصلة الآن</p>
             </div>
             <div class="stat-card stat-pink">
@@ -241,7 +221,7 @@
         </div>
     </div>
 
-    <!-- ================= سكريبت الشات والعدادات (Firebase) ================= -->
+    <!-- سكريبت الوظائف الأساسية والشات -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push, onChildAdded, get, child, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -259,37 +239,28 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // --- إعدادات العدادات والحد الأقصى ---
-        const MAX_LIMIT = 50;
-        let installedBots = 0;
+        // ⚠️ رابط البوت الأساسي
+        const BOT_API_URL = 'https://molecules-graphics-reload-burlington.trycloudflare.com';
 
-        // جلب عدد البوتات المثبتة من قاعدة البيانات
-        const statsRef = ref(db, 'stats/installed_bots');
-        get(statsRef).then((snapshot) => {
-            if (snapshot.exists()) {
-                installedBots = snapshot.val();
-            } else {
-                installedBots = 0;
+        // --- جلب الإحصائيات الحقيقية من البوت كل 5 ثواني ---
+        async function fetchLiveStats() {
+            try {
+                const res = await fetch(`${BOT_API_URL}/api/stats`);
+                const data = await res.json();
+                
+                document.getElementById('stat-connected').innerText = data.connected;
+                document.getElementById('stat-available').innerText = data.available;
+            } catch (e) {
+                console.log("تعذر جلب الإحصائيات");
             }
-            updateStatsUI();
-        });
-
-        function updateStatsUI() {
-            document.getElementById('stat-installed').innerText = installedBots;
-            let available = MAX_LIMIT - installedBots;
-            if (available < 0) available = 0;
-            document.getElementById('stat-available').innerText = available;
         }
+        
+        // أول ما الموقع يفتح بنجيب الإحصائيات، وبعدين بنحدثها كل 5 ثواني
+        fetchLiveStats();
+        setInterval(fetchLiveStats, 5000);
 
-        // --- دالة توليد الكود (مع التحقق من الحد الأقصى) ---
+        // --- دالة توليد الكود ---
         window.generateCode = async function() {
-            if (installedBots >= MAX_LIMIT) {
-                const resultBox = document.getElementById('resultBox');
-                resultBox.className = 'result-box result-error';
-                resultBox.innerText = 'عذراً، تم الوصول للحد الأقصى للتنصيب (50 جهاز).';
-                return;
-            }
-
             const phoneInput = document.getElementById('phoneInput').value.trim();
             const btn = document.getElementById('generateBtn');
             const btnText = document.getElementById('btnText');
@@ -308,9 +279,7 @@
             btnText.innerText = 'جاري التوليد...';
 
             try {
-                const BOT_API_URL = 'https://molecules-graphics-reload-burlington.trycloudflare.com/api/pair';
-                
-                const response = await fetch(BOT_API_URL, { 
+                const response = await fetch(`${BOT_API_URL}/api/pair`, { 
                     method: 'POST', 
                     headers: { 'Content-Type': 'application/json' }, 
                     body: JSON.stringify({ phone: phoneInput }) 
@@ -322,11 +291,8 @@
                     resultBox.classList.add('result-success');
                     resultBox.innerHTML = `<div>كود التنصيب الخاص بك:</div><div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div><button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>`;
                     
-                    // زيادة العداد وحفظه في الداتابيز
-                    installedBots++;
-                    set(statsRef, installedBots);
-                    updateStatsUI();
-
+                    // تحديث الإحصائيات فور نجاح التنصيب
+                    fetchLiveStats();
                 } else { 
                     throw new Error(data.error || 'حدث خطأ غير متوقع'); 
                 }
