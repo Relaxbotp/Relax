@@ -10,7 +10,6 @@
         
         body {
             background-color: #0d0d0d;
-            /* تم استخدام خلفية Gojo البنفسجية */
             background-image: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.95)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -19,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 100dvh; /* تم التعديل ليتناسب مع الموبايل */
             padding: 20px;
         }
 
@@ -62,12 +61,49 @@
         .highlight-text { color: #fff; font-weight: bold; }
         .footer { margin-top: 25px; font-size: 12px; color: #666; }
 
+        /* زرار مراسلة المطور الجديد */
+        .contact-dev-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background: rgba(138, 43, 226, 0.15);
+            border: 2px solid #8a2be2;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+        }
+        .contact-dev-btn:hover { background: rgba(138, 43, 226, 0.3); transform: scale(1.02); }
+
         /* ================= الشات (تصميم Gojo) ================= */
-        .chat-fab { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #8a2be2, #4b0082); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(138, 43, 226, 0.6); z-index: 9999; transition: 0.3s; border: 2px solid #00ffff; }
-        .chat-fab:hover { transform: scale(1.1); }
-        
-        .chat-modal { position: fixed; bottom: 90px; right: 20px; width: 370px; max-width: calc(100vw - 40px); height: 550px; max-height: calc(100vh - 100px); background: rgba(15, 5, 25, 0.95); border: 1px solid #8a2be2; border-radius: 20px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 10px 40px rgba(138, 43, 226, 0.4); backdrop-filter: blur(10px); }
+        .chat-modal { 
+            position: fixed; 
+            bottom: 0; 
+            right: 0; 
+            width: 100%; 
+            height: 100dvh; /* ياخد الشاشة كلها على الموبايل عشان الكيبورد */
+            background: rgba(15, 5, 25, 0.98); 
+            border: none;
+            display: none; 
+            flex-direction: column; 
+            z-index: 9999; 
+            overflow: hidden; 
+            backdrop-filter: blur(10px); 
+        }
         .chat-modal.active { display: flex; }
+        
+        @media (min-width: 768px) {
+            .chat-modal {
+                bottom: 20px; right: 20px; width: 380px; height: 80vh; max-height: 600px; border-radius: 20px; border: 1px solid #8a2be2;
+            }
+        }
         
         /* الهيدر */
         .chat-header { background: rgba(20, 10, 30, 0.9); padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #4b0082; color: white; cursor: pointer; }
@@ -76,8 +112,8 @@
         .chat-header p { font-size: 12px; color: #8a2be2; margin: 0; }
         
         /* خلفية الشات */
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-image: url('https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg'); background-size: cover; background-position: center; display: none; flex-direction: column; gap: 10px; }
-        .chat-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 0, 20, 0.8); z-index: 1; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-image: url('https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg'); background-size: cover; background-position: center; display: none; flex-direction: column; gap: 10px; position: relative; }
+        .chat-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 0, 20, 0.85); z-index: 1; }
         
         /* الرسايل */
         .chat-msg { position: relative; z-index: 2; max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.5; word-wrap: break-word; color: white; display: flex; flex-direction: column;}
@@ -89,10 +125,11 @@
         audio { width: 100%; margin-top: 5px; height: 35px; outline: none; }
 
         /* الفوتر والإدخال */
-        .chat-footer { background: rgba(20, 10, 30, 0.95); padding: 10px; display: none; gap: 8px; align-items: center; border-top: 1px solid #4b0082; }
-        .chat-footer input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid #4b0082; padding: 12px; border-radius: 25px; color: white; outline: none; font-family: 'Cairo', sans-serif; }
-        .chat-footer button { background: #8a2be2; border: none; width: 45px; height: 45px; border-radius: 50%; color: white; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; }
+        .chat-footer { background: rgba(20, 10, 30, 0.95); padding: 10px; display: none; gap: 8px; align-items: center; border-top: 1px solid #4b0082; z-index: 10; }
+        .chat-footer input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid #4b0082; padding: 12px; border-radius: 25px; color: white; outline: none; font-family: 'Cairo', sans-serif; font-size: 16px; }
+        .chat-footer button { background: #8a2be2; border: none; width: 45px; height: 45px; border-radius: 50%; color: white; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; flex-shrink: 0;}
         .chat-footer button:active { transform: scale(0.9); }
+        
         .mic-btn { background: #00ffff !important; color: #000 !important; }
         .mic-btn.recording { background: #ff0055 !important; color: #fff !important; animation: pulse 1s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 0, 85, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); } }
@@ -125,6 +162,11 @@
 
         <div id="resultBox" class="result-box"></div>
 
+        <!-- زرار مراسلة المطور الجديد -->
+        <button class="contact-dev-btn" onclick="toggleChat()">
+            <span>💬</span> مراسلة المطور
+        </button>
+
         <div class="guide-section">
             <div class="guide-title">❓ طريقة ربط البوت</div>
             <div class="guide-step"><span class="step-num">1</span><div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div></div>
@@ -139,8 +181,6 @@
     </div>
 
     <!-- ================= الشات ================= -->
-    <div class="chat-fab" onclick="toggleChat()">👑</div>
-
     <div class="chat-modal" id="chatModal">
         <div class="chat-header" id="chatHeader" onclick="handleHeaderClick()">
             <div class="avatar" id="headerAvatar">🧑‍💻</div>
@@ -148,7 +188,7 @@
                 <h4 id="chatHeaderTitle">محادثة: الدعم</h4>
                 <p id="chatStatus">متصل الآن</p>
             </div>
-            <div id="backBtn" style="margin-right: auto; display: none; font-size: 20px; color: #00ffff;">↩</div>
+            <div id="backBtn" style="margin-right: auto; display: none; font-size: 20px; color: #00ffff; padding: 10px;">↩</div>
         </div>
 
         <div class="admin-login-screen" id="adminLoginScreen">
@@ -341,6 +381,7 @@
             localStorage.setItem('relax_user_name', name);
             currentUserId = newId;
             
+            // استخدام set لضمان الحفظ الصحيح
             set(ref(db, 'chats/' + newId + '/profile'), { name: name });
             
             nameScreen.style.display = 'none';
@@ -358,7 +399,6 @@
                 const data = snapshot.val();
                 renderMessage(data, 'user');
                 
-                // إشعار للعميل لو المطور رد
                 if(!isInitialLoad && data.sender === 'dev') {
                     showNotification("رد جديد من الدعم", data.isAudio ? "🎙️ رسالة صوتية" : data.text);
                 }
@@ -382,7 +422,7 @@
             chatHeaderTitle.innerText = "قائمة العملاء";
 
             const listContainer = document.getElementById('adminUsersList');
-            listContainer.innerHTML = '<div style="padding: 15px; color: #888;">جاري التحميل...</div>';
+            listContainer.innerHTML = '<div style="padding: 15px; color: #888; text-align:center;">جاري التحميل...</div>';
 
             const dbRef = ref(db);
             get(child(dbRef, 'chats')).then((snapshot) => {
@@ -390,10 +430,23 @@
                 if (snapshot.exists()) {
                     const chats = snapshot.val();
                     Object.keys(chats).forEach(userId => {
-                        let userName = "غير معروف";
-                        if (chats[userId].profile && chats[userId].profile.name) {
-                            userName = chats[userId].profile.name;
+                        let userName = "عميل بدون اسم";
+                        
+                        // قراءة الاسم بشكل عميق ومضمون
+                        if (chats[userId].profile) {
+                            if (typeof chats[userId].profile === 'object') {
+                                if (chats[userId].profile.name) {
+                                    userName = chats[userId].profile.name;
+                                } else {
+                                    // لو متسجل بطريقة push القديمة
+                                    const keys = Object.keys(chats[userId].profile);
+                                    if(keys.length > 0 && chats[userId].profile[keys[0]].name) {
+                                        userName = chats[userId].profile[keys[0]].name;
+                                    }
+                                }
+                            }
                         }
+
                         const item = document.createElement('div');
                         item.className = 'admin-user-item';
                         item.innerHTML = `<span style="font-weight:bold; color:#00ffff;">عميل جديد</span> <span style="color:#aaa;">|</span> <span>${userName}</span>`;
@@ -401,8 +454,10 @@
                         listContainer.appendChild(item);
                     });
                 } else {
-                    listContainer.innerHTML = '<div style="padding: 15px; color: #888;">لا توجد رسائل حتى الآن.</div>';
+                    listContainer.innerHTML = '<div style="padding: 15px; color: #888; text-align:center;">لا توجد رسائل حتى الآن.</div>';
                 }
+            }).catch((error) => {
+                listContainer.innerHTML = '<div style="padding: 15px; color: red; text-align:center;">حدث خطأ في تحميل البيانات.</div>';
             });
         }
 
@@ -424,7 +479,6 @@
                 const data = snapshot.val();
                 renderMessage(data, 'dev');
                 
-                // إشعار للمطور لو العميل بعت
                 if(!isInitialLoad && data.sender === 'user') {
                     showNotification("رسالة من " + userName, data.isAudio ? "🎙️ رسالة صوتية" : data.text);
                 }
@@ -479,6 +533,7 @@
             } else {
                 // بدء التسجيل
                 try {
+                    // طلب إذن المايك
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     mediaRecorder = new MediaRecorder(stream);
                     
@@ -490,7 +545,6 @@
                         const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
                         audioChunks = [];
                         
-                        // تحويل الصوت لـ Base64
                         const reader = new FileReader();
                         reader.readAsDataURL(audioBlob);
                         reader.onloadend = async () => {
@@ -499,7 +553,6 @@
                             
                             if(!targetUserId) return;
 
-                            // إرسال الصوت لقاعدة البيانات
                             await push(ref(db, 'chats/' + targetUserId + '/messages'), {
                                 sender: isAdmin ? 'dev' : 'user',
                                 isAudio: true,
@@ -515,7 +568,14 @@
                     micBtn.innerHTML = "🛑";
                     
                 } catch (err) {
-                    alert("لا يمكن الوصول للميكروفون! تأكد من إعطاء الإذن.");
+                    console.error(err);
+                    if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+                        alert("❌ تم رفض إذن الميكروفون. يرجى السماح بالوصول للميكروفون من إعدادات المتصفح.");
+                    } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+                        alert("❌ لم يتم العثور على ميكروفون في جهازك.");
+                    } else {
+                        alert("❌ حدث خطأ أثناء محاولة تشغيل الميكروفون: " + err.message);
+                    }
                 }
             }
         }
@@ -524,7 +584,6 @@
         function showNotification(title, body) {
             notificationSound.play().catch(e => {});
             
-            // إشعار داخل الشات
             if (Notification.permission === "granted") {
                 new Notification(title, {
                     body: body,
