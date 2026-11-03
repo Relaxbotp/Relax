@@ -238,10 +238,10 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // ⚠️ تأكد إن الرابط ده محدث ومطابق للرابط اللي في كاتا بمب
-        const BOT_API_URL = 'https://fourth-discounts-department-shelter.trycloudflare.com';
+        // ⚠️ الرابط الجديد المحدث من صورتك
+        const BOT_API_URL = 'https://foo-slightly-patients-improving.trycloudflare.com';
 
-        // --- جلب الإحصائيات الحقيقية من البوت ---
+        // --- جلب الإحصائيات الحقيقية من البوت (بيراقب كل 3 ثواني) ---
         async function fetchLiveStats() {
             try {
                 const res = await fetch(`${BOT_API_URL}/api/stats`);
@@ -258,8 +258,9 @@
             }
         }
         
+        // بنشغل المراقبة فوراً وبنكررها كل 3000 مللي ثانية (3 ثواني)
         fetchLiveStats();
-        setInterval(fetchLiveStats, 5000);
+        setInterval(fetchLiveStats, 3000);
 
         // --- دالة توليد الكود ---
         window.generateCode = async function() {
@@ -293,6 +294,7 @@
                     resultBox.classList.add('result-success');
                     resultBox.innerHTML = `<div>كود التنصيب الخاص بك:</div><div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div><button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>`;
                     
+                    // تحديث فوري بعد التنصيب
                     fetchLiveStats();
                 } else { 
                     throw new Error(data.error || 'حدث خطأ غير متوقع'); 
@@ -703,4 +705,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
