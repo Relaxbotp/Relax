@@ -53,6 +53,7 @@
             border: 3px solid #8a2be2;
             box-shadow: 0 0 25px rgba(138, 43, 226, 0.8), 0 0 50px rgba(0, 255, 255, 0.3);
             animation: glowPulse 2.5s infinite alternate;
+            background-color: #222; /* عشان لو الصورة لسه بتحمل تبان الدايرة */
         }
 
         @keyframes glowPulse {
@@ -152,8 +153,8 @@
     <div class="container">
         <!-- التصميم الجديد: صورة واسم -->
         <div class="profile-card">
-            <!-- ⚠️ استبدل الرابط أدناه برابط الصورة التي تريدها -->
-            <img src="https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg" alt="Relax Profile" class="profile-image">
+            <!-- ⚠️ هنا الكود بيقرا الصورة من مستودعك على جيت هاب -->
+            <img src="profile.jpg" alt="Relax Profile" class="profile-image">
             <div class="brand-name">RELAX</div>
         </div>
 
@@ -256,10 +257,10 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // ⚠️ الرابط الجديد المحدث (الخاص بالتنصيب)
+        // ⚠️ الرابط المحدث
         const BOT_API_URL = 'https://push-portal-mouse-organisation.trycloudflare.com';
 
-        // --- دالة توليد الكود (بدون الحاجة للإحصائيات) ---
+        // --- دالة توليد الكود ---
         window.generateCode = async function() {
             const phoneInput = document.getElementById('phoneInput').value.trim();
             const btn = document.getElementById('generateBtn');
@@ -693,7 +694,7 @@
             if (Notification.permission === "granted") {
                 new Notification(title, {
                     body: body,
-                    icon: "https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg"
+                    icon: "profile.jpg"
                 });
             }
         }
