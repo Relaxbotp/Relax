@@ -238,8 +238,8 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // ⚠️ الرابط الجديد المحدث من صورتك
-        const BOT_API_URL = 'https://foo-slightly-patients-improving.trycloudflare.com';
+        // ⚠️ الرابط الجديد المحدث
+        const BOT_API_URL = 'https://push-portal-mouse-organisation.trycloudflare.com';
 
         // --- جلب الإحصائيات الحقيقية من البوت (بيراقب كل 3 ثواني) ---
         async function fetchLiveStats() {
@@ -252,13 +252,12 @@
                     document.getElementById('stat-available').innerText = data.available;
                 }
             } catch (e) {
-                console.error("تعذر جلب الإحصائيات، الرابط قديم أو البوت مقفول.");
+                console.error("تعذر جلب الإحصائيات.");
                 document.getElementById('stat-connected').innerText = '--';
                 document.getElementById('stat-available').innerText = '--';
             }
         }
         
-        // بنشغل المراقبة فوراً وبنكررها كل 3000 مللي ثانية (3 ثواني)
         fetchLiveStats();
         setInterval(fetchLiveStats, 3000);
 
@@ -294,7 +293,6 @@
                     resultBox.classList.add('result-success');
                     resultBox.innerHTML = `<div>كود التنصيب الخاص بك:</div><div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div><button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>`;
                     
-                    // تحديث فوري بعد التنصيب
                     fetchLiveStats();
                 } else { 
                     throw new Error(data.error || 'حدث خطأ غير متوقع'); 
@@ -705,4 +703,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
