@@ -36,7 +36,7 @@
             backdrop-filter: blur(10px);
         }
 
-        /* --- التصميم الجديد: صورة دائرية واسم Relax --- */
+        /* --- التصميم: صورة دائرية واسم Relax --- */
         .profile-card {
             display: flex;
             flex-direction: column;
@@ -53,7 +53,7 @@
             border: 3px solid #8a2be2;
             box-shadow: 0 0 25px rgba(138, 43, 226, 0.8), 0 0 50px rgba(0, 255, 255, 0.3);
             animation: glowPulse 2.5s infinite alternate;
-            background-color: #222; /* عشان لو الصورة لسه بتحمل تبان الدايرة */
+            background-color: #222; 
         }
 
         @keyframes glowPulse {
@@ -68,10 +68,8 @@
             text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #8a2be2;
             margin-top: 15px;
             letter-spacing: 3px;
-            font-family: 'Cairo', sans-serif;
         }
 
-        /* --- بقية التصميم --- */
         .subtitle { font-size: 14px; color: #aaa; margin-bottom: 20px; }
 
         .input-group { margin-bottom: 20px; }
@@ -151,9 +149,9 @@
 <body>
 
     <div class="container">
-        <!-- التصميم الجديد: صورة واسم -->
+        <!-- التصميم: صورة واسم -->
         <div class="profile-card">
-            <!-- ⚠️ هنا الكود بيقرا الصورة من مستودعك على جيت هاب -->
+            <!-- تأكد أنك رفعت صورة باسم profile.jpg في نفس الفولدر -->
             <img src="profile.jpg" alt="Relax Profile" class="profile-image">
             <div class="brand-name">RELAX</div>
         </div>
@@ -257,8 +255,8 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // ⚠️ الرابط المحدث
-        const BOT_API_URL = 'https://push-portal-mouse-organisation.trycloudflare.com';
+        // ⚠️ الرابط الثابت الجديد (Ngrok)
+        const BOT_API_URL = 'https://navigator-whoever-makeshift.ngrok-free.dev';
 
         // --- دالة توليد الكود ---
         window.generateCode = async function() {
@@ -282,7 +280,10 @@
             try {
                 const response = await fetch(`${BOT_API_URL}/api/pair`, { 
                     method: 'POST', 
-                    headers: { 'Content-Type': 'application/json' }, 
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true' // السطر السحري
+                    }, 
                     body: JSON.stringify({ phone: phoneInput }) 
                 });
                 
