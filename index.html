@@ -36,18 +36,18 @@
             backdrop-filter: blur(10px);
         }
 
-        /* --- التصميم: صورة دائرية واسم Relax --- */
+        /* التصميم: صورة واسم */
         .profile-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             position: relative;
         }
 
         .profile-image {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #8a2be2;
@@ -62,26 +62,15 @@
         }
 
         .brand-name {
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 900;
             color: #00ffff;
             text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #8a2be2;
-            margin-top: 10px;
-            letter-spacing: 2px;
+            margin-top: 15px;
+            letter-spacing: 3px;
         }
 
-        .subtitle { font-size: 14px; color: #aaa; margin-bottom: 20px; }
-
-        /* كروت الإحصائيات */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .stat-card { background: rgba(0, 0, 0, 0.6); border-radius: 15px; padding: 12px 5px; text-align: center; backdrop-filter: blur(10px); }
-        .stat-card h2 { font-size: 22px; margin-bottom: 5px; }
-        .stat-card p { font-size: 11px; color: #aaa; font-weight: bold; }
-        
-        .stat-pink { border: 1px solid rgba(255, 0, 128, 0.5); box-shadow: inset 0 0 15px rgba(255, 0, 128, 0.1); }
-        .stat-pink h2 { color: #ff0080; }
-        .stat-green { border: 1px solid rgba(0, 255, 128, 0.5); box-shadow: inset 0 0 15px rgba(0, 255, 128, 0.1); }
-        .stat-green h2 { color: #00ff80; }
+        .subtitle { font-size: 14px; color: #aaa; margin-bottom: 25px; }
 
         .input-group { margin-bottom: 20px; }
         input[type="text"] { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #111; color: #fff; font-size: 18px; text-align: center; outline: none; transition: 0.3s; }
@@ -160,23 +149,13 @@
 <body>
 
     <div class="container">
+        <!-- التصميم: صورة واسم -->
         <div class="profile-card">
             <img src="profile.jpg" alt="Relax Profile" class="profile-image">
             <div class="brand-name">RELAX</div>
         </div>
 
         <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
-
-        <div class="stats-grid">
-            <div class="stat-card stat-green">
-                <h2 id="stat-connected">0</h2>
-                <p>متصلة الآن</p>
-            </div>
-            <div class="stat-card stat-pink">
-                <h2 id="stat-available">100</h2>
-                <p>أماكن متاحة</p>
-            </div>
-        </div>
 
         <div class="input-group">
             <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off">
@@ -277,28 +256,6 @@
 
         // ⚠️ الرابط الثابت (Ngrok)
         const BOT_API_URL = 'https://navigator-whoever-makeshift.ngrok-free.dev';
-
-        // --- جلب الإحصائيات الحقيقية من البوت ---
-        async function fetchLiveStats() {
-            try {
-                const res = await fetch(`${BOT_API_URL}/api/stats`, {
-                    headers: { 'ngrok-skip-browser-warning': 'true' }
-                });
-                const data = await res.json();
-                
-                if (data.connected !== undefined) {
-                    document.getElementById('stat-connected').innerText = data.connected;
-                    document.getElementById('stat-available').innerText = data.available;
-                }
-            } catch (e) {
-                console.error("تعذر جلب الإحصائيات.");
-                document.getElementById('stat-connected').innerText = '--';
-                document.getElementById('stat-available').innerText = '--';
-            }
-        }
-        
-        fetchLiveStats();
-        setInterval(fetchLiveStats, 3000);
 
         // --- دالة توليد الكود ---
         window.generateCode = async function() {
