@@ -10,140 +10,155 @@
         
         body {
             background-color: #0d0d0d;
-            background-image: linear-gradient(rgba(13,13,13,0.85), rgba(13,13,13,0.95)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop');
-            background-size: cover; background-position: center; background-attachment: fixed;
-            color: #fff; display: flex; justify-content: center; align-items: center;
-            min-height: 100dvh; padding: 20px;
+            background-image: linear-gradient(rgba(13, 13, 13, 0.85), rgba(13, 13, 13, 0.95)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100dvh;
+            padding: 20px;
         }
 
         .container {
-            width: 100%; max-width: 400px;
-            background: rgba(20,20,20,0.85);
-            padding: 30px 20px; border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            background: rgba(20, 20, 20, 0.85);
+            padding: 30px 20px;
+            border-radius: 20px;
             border: 1px solid #333;
-            box-shadow: 0 0 20px rgba(138,43,226,0.2);
-            text-align: center; position: relative; overflow: hidden;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
             backdrop-filter: blur(10px);
         }
 
-        .profile-card { display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; position: relative; }
+        /* التصميم: صورة واسم */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
         .profile-image {
-            width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
             border: 3px solid #8a2be2;
-            box-shadow: 0 0 25px rgba(138,43,226,0.8), 0 0 50px rgba(0,255,255,0.3);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.8), 0 0 50px rgba(0, 255, 255, 0.3);
             animation: glowPulse 2.5s infinite alternate;
-            background-color: #222;
+            background-color: #222; 
         }
+
         @keyframes glowPulse {
-            from { box-shadow: 0 0 20px rgba(138,43,226,0.6), 0 0 40px rgba(0,255,255,0.2); }
-            to { box-shadow: 0 0 35px rgba(138,43,226,1), 0 0 70px rgba(0,255,255,0.5); }
+            from { box-shadow: 0 0 20px rgba(138, 43, 226, 0.6), 0 0 40px rgba(0, 255, 255, 0.2); }
+            to { box-shadow: 0 0 35px rgba(138, 43, 226, 1), 0 0 70px rgba(0, 255, 255, 0.5); }
         }
+
         .brand-name {
-            font-size: 34px; font-weight: 900; color: #00ffff;
+            font-size: 34px;
+            font-weight: 900;
+            color: #00ffff;
             text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #8a2be2;
-            margin-top: 15px; letter-spacing: 3px;
+            margin-top: 15px;
+            letter-spacing: 3px;
         }
 
         .subtitle { font-size: 14px; color: #aaa; margin-bottom: 25px; }
-        .input-group { margin-bottom: 20px; }
-        input[type="text"], input[type="password"], input[type="email"] {
-            width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444;
-            background: #111; color: #fff; font-size: 16px; text-align: center;
-            outline: none; transition: 0.3s;
-        }
-        input:focus { border-color: #8a2be2; box-shadow: 0 0 10px rgba(138,43,226,0.3); }
 
-        .btn {
-            width: 100%; padding: 15px; border: none; border-radius: 12px;
-            background: linear-gradient(90deg, #8a2be2, #00ffff); color: #fff;
-            font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s;
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-        }
+        .input-group { margin-bottom: 20px; }
+        input[type="text"] { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #111; color: #fff; font-size: 18px; text-align: center; outline: none; transition: 0.3s; }
+        input[type="text"]:focus { border-color: #8a2be2; box-shadow: 0 0 10px rgba(138, 43, 226, 0.3); }
+        
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 12px; background: linear-gradient(90deg, #8a2be2, #00ffff); color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .btn:hover { opacity: 0.9; transform: scale(1.02); }
         .btn:disabled { background: #333; cursor: not-allowed; transform: none; }
 
-        .result-box { margin-top: 20px; padding: 15px; border-radius: 12px; font-size: 16px; font-weight: bold; display: none; animation: fadeIn 0.5s; }
+        .result-box { margin-top: 20px; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; display: none; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .result-success { background: rgba(0,255,0,0.1); border: 1px solid #00ff00; color: #00ff00; display: block; }
-        .result-error { background: rgba(255,0,0,0.1); border: 1px solid #ff0000; color: #ff0000; display: block; }
+        .result-success { background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00; color: #00ff00; display: block; }
+        .result-error { background: rgba(255, 0, 0, 0.1); border: 1px solid #ff0000; color: #ff0000; display: block; }
 
-        .copy-btn { background: rgba(0,255,0,0.15); border: 1px solid #00ff00; color: #00ff00; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-family: 'Cairo', sans-serif; font-weight: bold; font-size: 14px; transition: 0.3s; margin-top: 10px; display: inline-flex; align-items: center; gap: 5px; }
-        .copy-btn:hover { background: rgba(0,255,0,0.3); }
+        .copy-btn { background: rgba(0, 255, 0, 0.15); border: 1px solid #00ff00; color: #00ff00; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-family: 'Cairo', sans-serif; font-weight: bold; font-size: 14px; transition: 0.3s; margin-top: 10px; display: inline-flex; align-items: center; gap: 5px; }
+        .copy-btn:hover { background: rgba(0, 255, 0, 0.3); }
 
         .guide-section { margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; text-align: right; }
         .guide-title { font-size: 16px; color: #00ffff; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
         .guide-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13px; color: #ccc; }
-        .step-num { background: rgba(138,43,226,0.2); color: #00ffff; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+        .step-num { background: rgba(138, 43, 226, 0.2); color: #00ffff; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
         .highlight-text { color: #fff; font-weight: bold; }
         .footer { margin-top: 25px; font-size: 12px; color: #666; }
 
         .contact-dev-btn {
             width: 100%; padding: 15px; margin-top: 20px;
-            background: rgba(138,43,226,0.15); border: 2px solid #8a2be2;
+            background: rgba(138, 43, 226, 0.15); border: 2px solid #8a2be2;
             border-radius: 12px; color: #fff; font-size: 18px; font-weight: bold;
             cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
-            box-shadow: 0 0 15px rgba(138,43,226,0.3);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
         }
-        .contact-dev-btn:hover { background: rgba(138,43,226,0.3); transform: scale(1.02); }
+        .contact-dev-btn:hover { background: rgba(138, 43, 226, 0.3); transform: scale(1.02); }
 
         .social-links-container { display: flex; gap: 10px; margin-top: 15px; }
         .social-btn { flex: 1; padding: 10px; border-radius: 10px; text-align: center; text-decoration: none; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; transition: 0.3s; }
-        .social-btn.wa { background: rgba(37,211,102,0.1); color: #25D366; border: 1px solid #25D366; }
-        .social-btn.wa:hover { background: rgba(37,211,102,0.2); }
-        .social-btn.tg { background: rgba(0,136,204,0.1); color: #0088cc; border: 1px solid #0088cc; }
-        .social-btn.tg:hover { background: rgba(0,136,204,0.2); }
+        .social-btn.wa { background: rgba(37, 211, 102, 0.1); color: #25D366; border: 1px solid #25D366; }
+        .social-btn.wa:hover { background: rgba(37, 211, 102, 0.2); }
+        .social-btn.tg { background: rgba(0, 136, 204, 0.1); color: #0088cc; border: 1px solid #0088cc; }
+        .social-btn.tg:hover { background: rgba(0, 136, 204, 0.2); }
 
-        .chat-modal { position: fixed; bottom: 0; right: 0; width: 100%; height: 100dvh; background: rgba(15,5,25,0.98); display: none; flex-direction: column; z-index: 9999; overflow: hidden; backdrop-filter: blur(10px); }
+        /* الشات */
+        .chat-modal { position: fixed; bottom: 0; right: 0; width: 100%; height: 100dvh; background: rgba(15, 5, 25, 0.98); border: none; display: none; flex-direction: column; z-index: 9999; overflow: hidden; backdrop-filter: blur(10px); }
         .chat-modal.active { display: flex; }
         @media (min-width: 768px) { .chat-modal { bottom: 20px; right: 20px; width: 380px; height: 80vh; max-height: 600px; border-radius: 20px; border: 1px solid #8a2be2; } }
-        .chat-header { background: rgba(20,10,30,0.9); padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #4b0082; color: white; cursor: pointer; }
-        .chat-header .avatar { font-size: 24px; background: #4b0082; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid #00ffff; flex-shrink: 0; }
+        .chat-header { background: rgba(20, 10, 30, 0.9); padding: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #4b0082; color: white; cursor: pointer; }
+        .chat-header .avatar { font-size: 24px; background: #4b0082; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid #00ffff;}
         .chat-header h4 { font-size: 16px; margin: 0; color: #00ffff; }
         .chat-header p { font-size: 12px; color: #8a2be2; margin: 0; }
         .chat-body { flex: 1; padding: 15px; overflow-y: auto; background-image: url('https://i.pinimg.com/736x/8f/1a/64/8f1a64e6c75e224499e6f4983a88493b.jpg'); background-size: cover; background-position: center; display: none; flex-direction: column; gap: 10px; position: relative; }
-        .chat-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,0,20,0.85); z-index: 1; }
-        .chat-msg { position: relative; z-index: 2; max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.5; word-wrap: break-word; color: white; display: flex; flex-direction: column; }
-        .chat-msg.user { background: linear-gradient(135deg, #8a2be2, #4b0082); align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid #00ffff; box-shadow: 0 0 10px rgba(138,43,226,0.5); }
-        .chat-msg.dev { background: rgba(30,30,40,0.9); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #555; }
+        .chat-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 0, 20, 0.85); z-index: 1; }
+        .chat-msg { position: relative; z-index: 2; max-width: 85%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.5; word-wrap: break-word; color: white; display: flex; flex-direction: column;}
+        .chat-msg.user { background: linear-gradient(135deg, #8a2be2, #4b0082); align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid #00ffff; box-shadow: 0 0 10px rgba(138, 43, 226, 0.5); }
+        .chat-msg.dev { background: rgba(30, 30, 40, 0.9); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #555; }
         .chat-msg .time { font-size: 10px; color: rgba(255,255,255,0.6); display: block; text-align: left; margin-top: 5px; }
-        .custom-audio-player { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 15px; min-width: 220px; margin-top: 5px; border: 1px solid rgba(138,43,226,0.3); }
-        .custom-play-btn { background: #00ffff; color: #000; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 18px; cursor: pointer; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,255,255,0.5); transition: 0.2s; }
+        .custom-audio-player { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 15px; min-width: 220px; margin-top: 5px; border: 1px solid rgba(138, 43, 226, 0.3); }
+        .custom-play-btn { background: #00ffff; color: #000; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 18px; cursor: pointer; flex-shrink: 0; box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); transition: 0.2s; }
         .custom-audio-info { flex: 1; display: flex; flex-direction: column; gap: 6px; }
         .custom-audio-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; cursor: pointer; position: relative; }
         .custom-audio-fill { height: 100%; background: #8a2be2; border-radius: 3px; width: 0%; position: absolute; top: 0; left: 0; pointer-events: none; }
-        .custom-audio-time { font-size: 11px; color: #aaa; text-align: left; font-weight: bold; display: flex; justify-content: space-between; }
+        .custom-audio-time { font-size: 11px; color: #aaa; text-align: left; font-weight: bold; display: flex; justify-content: space-between;}
         .custom-audio-player audio { display: none; }
-        .recording-timer { display: none; position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); background: rgba(255,0,85,0.9); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; z-index: 20; box-shadow: 0 0 10px rgba(255,0,85,0.5); }
-        .chat-footer { background: rgba(20,10,30,0.95); padding: 10px; display: none; gap: 8px; align-items: center; border-top: 1px solid #4b0082; z-index: 10; position: relative; }
-        .chat-footer input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid #4b0082; padding: 12px; border-radius: 25px; color: white; outline: none; font-family: 'Cairo', sans-serif; font-size: 16px; }
-        .chat-footer button { background: #8a2be2; border: none; width: 45px; height: 45px; border-radius: 50%; color: white; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; flex-shrink: 0; }
+        .recording-timer { display: none; position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); background: rgba(255, 0, 85, 0.9); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; z-index: 20; box-shadow: 0 0 10px rgba(255, 0, 85, 0.5); }
+        .chat-footer { background: rgba(20, 10, 30, 0.95); padding: 10px; display: none; gap: 8px; align-items: center; border-top: 1px solid #4b0082; z-index: 10; position: relative; }
+        .chat-footer input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid #4b0082; padding: 12px; border-radius: 25px; color: white; outline: none; font-family: 'Cairo', sans-serif; font-size: 16px; }
+        .chat-footer button { background: #8a2be2; border: none; width: 45px; height: 45px; border-radius: 50%; color: white; font-size: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; flex-shrink: 0;}
         .mic-btn { background: #00ffff !important; color: #000 !important; }
         .mic-btn.recording { background: #ff0055 !important; color: #fff !important; animation: pulse 1s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,0,85,0.7); } 70% { box-shadow: 0 0 0 10px rgba(255,0,85,0); } 100% { box-shadow: 0 0 0 0 rgba(255,0,85,0); } }
-
-        .name-screen, .admin-login-screen { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; text-align: center; position: relative; z-index: 10; gap: 15px; overflow-y: auto; }
-        .name-screen input, .admin-login-screen input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #8a2be2; background: rgba(0,0,0,0.5); color: white; outline: none; text-align: center; font-size: 16px; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 0, 85, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); } }
+        .name-screen, .admin-login-screen { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; text-align: center; position: relative; z-index: 10; }
+        .name-screen input, .admin-login-screen input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #8a2be2; background: rgba(0,0,0,0.5); color: white; outline: none; text-align: center; margin-bottom: 15px; font-size: 16px; }
         .name-screen button, .admin-login-screen button { width: 100%; padding: 12px; background: linear-gradient(90deg, #8a2be2, #00ffff); border: none; border-radius: 10px; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
-        .admin-list-screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; background: rgba(15,5,25,0.95); position: relative; z-index: 10; }
-        .admin-user-item { padding: 15px; border-bottom: 1px solid #333; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; font-size: 15px; }
-        .admin-user-item:hover { background: rgba(138,43,226,0.15); }
-        .signout-btn { position: absolute; top: 12px; left: 15px; background: rgba(255,0,85,0.2); border: 1px solid #ff0055; color: #ff0055; padding: 5px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: bold; font-family: 'Cairo', sans-serif; z-index: 11; }
-        .info-msg { font-size: 12px; color: #ffaa00; padding: 10px; background: rgba(255,170,0,0.1); border: 1px solid #ffaa00; border-radius: 8px; line-height: 1.6; }
+        .admin-list-screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; background: rgba(15, 5, 25, 0.95); position: relative; z-index: 10; }
+        .admin-user-item { padding: 15px; border-bottom: 1px solid #333; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; font-size: 15px;}
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- التصميم: صورة واسم -->
         <div class="profile-card">
-            <img src="profile.jpg" alt="Relax" class="profile-image"
-                 onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%22 stop-color=%22%238a2be2%22/><stop offset=%221%22 stop-color=%22%2300ffff%22/></linearGradient></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23g)%22/><text x=%2250%22 y=%2268%22 font-size=%2250%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-weight=%22bold%22>R</text></svg>';">
+            <img src="profile.jpg" alt="Relax Profile" class="profile-image">
             <div class="brand-name">RELAX</div>
         </div>
 
         <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
 
         <div class="input-group">
-            <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off" inputmode="numeric">
+            <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off">
         </div>
 
         <button class="btn" id="generateBtn" onclick="generateCode()">
@@ -157,11 +172,11 @@
         </button>
 
         <div class="social-links-container">
-            <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" target="_blank" rel="noopener" class="social-btn wa">
+            <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" target="_blank" class="social-btn wa">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 قناة المطور
             </a>
-            <a href="https://t.me/SE_NJ" target="_blank" rel="noopener" class="social-btn tg">
+            <a href="https://t.me/SE_NJ" target="_blank" class="social-btn tg">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                 المطور تيلي
             </a>
@@ -170,42 +185,38 @@
         <div class="guide-section">
             <div class="guide-title">❓ طريقة ربط البوت</div>
             <div class="guide-step"><span class="step-num">1</span><div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div></div>
-            <div class="guide-step"><span class="step-num">2</span><div>اذهب إلى <span class="highlight-text">الإعدادات</span>.</div></div>
+            <div class="guide-step"><span class="step-num">2</span><div>اذهب إلى <span class="highlight-text">الإعدادات</span> (أو النقاط الثلاث).</div></div>
             <div class="guide-step"><span class="step-num">3</span><div>اختر <span class="highlight-text">الأجهزة المرتبطة</span>.</div></div>
             <div class="guide-step"><span class="step-num">4</span><div>اضغط على <span class="highlight-text">ربط جهاز</span>.</div></div>
             <div class="guide-step"><span class="step-num">5</span><div>اختر <span class="highlight-text">الربط برقم الهاتف</span>.</div></div>
-            <div class="guide-step"><span class="step-num">6</span><div>أدخل الكود المكون من 8 أرقام.</div></div>
+            <div class="guide-step"><span class="step-num">6</span><div>أدخل الكود المكون من 8 أرقام الذي ظهر لك أعلاه.</div></div>
         </div>
 
         <div class="footer">© RELAX SYSTEM 2026</div>
     </div>
 
+    <!-- الشات -->
     <div class="chat-modal" id="chatModal">
         <div class="chat-header" id="chatHeader" onclick="handleHeaderClick()">
             <div class="avatar" id="headerAvatar">🧑‍💻</div>
-            <div style="flex:1;">
+            <div>
                 <h4 id="chatHeaderTitle">محادثة: الدعم</h4>
                 <p id="chatStatus">متصل الآن</p>
             </div>
-            <div id="backBtn" style="display: none; font-size: 20px; color: #00ffff; padding: 10px;">↩</div>
+            <div id="backBtn" style="margin-right: auto; display: none; font-size: 20px; color: #00ffff; padding: 10px;">↩</div>
         </div>
 
-        <button class="signout-btn" id="signoutBtn" style="display:none;" onclick="handleSignOut(event)">خروج</button>
-
         <div class="admin-login-screen" id="adminLoginScreen">
-            <h3 style="color: #ff0055;">🔒 دخول المطور</h3>
-            <p style="font-size: 12px; color: #aaa;">الحساب الوحيد المصرح له</p>
-            <input type="email" id="adminEmailInput" placeholder="البريد الإلكتروني..." autocomplete="username">
-            <input type="password" id="adminPassInput" placeholder="كلمة المرور..." autocomplete="current-password">
+            <h3 style="margin-bottom: 10px; color: #ff0055;">🔒 دخول المطور</h3>
+            <p style="margin-bottom: 20px; font-size: 12px; color: #aaa;">هذه الشاشة مخصصة للمطور فقط</p>
+            <input type="password" id="adminPassInput" placeholder="اكتب كلمة المرور هنا...">
             <button onclick="verifyAdminPassword()">دخول</button>
-            <button onclick="cancelAdminLogin()" style="background:#333;">رجوع</button>
-            <div class="info-msg" id="adminInfoMsg" style="display:none;"></div>
         </div>
 
         <div class="name-screen" id="nameScreen">
-            <h3 style="color: #00ffff;">مرحباً بك! 👋</h3>
-            <p style="font-size: 14px;">اكتب اسمك للبدء</p>
-            <input type="text" id="userNameInput" placeholder="اسمك هنا..." maxlength="30">
+            <h3 style="margin-bottom: 20px; color: #00ffff;">مرحباً بك! 👋</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">من فضلك اكتب اسمك للبدء</p>
+            <input type="text" id="userNameInput" placeholder="اكتب اسمك هنا...">
             <button onclick="saveUserName()">بدء المحادثة</button>
         </div>
 
@@ -219,30 +230,16 @@
         <div class="recording-timer" id="recordingTimer">00:00</div>
 
         <div class="chat-footer" id="chatFooter">
-            <input type="text" id="chatInput" placeholder="اكتب رسالتك..." maxlength="2000" onkeypress="handleChatEnter(event)">
+            <input type="text" id="chatInput" placeholder="اكتب رسالتك..." onkeypress="handleChatEnter(event)">
             <button onclick="sendChatMessage()" style="background:#8a2be2;">➤</button>
             <button id="micBtn" class="mic-btn" onclick="toggleRecording()">🎙️</button>
         </div>
     </div>
 
+    <!-- سكريبت الوظائف الأساسية والشات -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import {
-            getDatabase, ref, push, onChildAdded, get, child,
-            set, serverTimestamp
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-        import {
-            getAuth, signInAnonymously, signInWithEmailAndPassword,
-            createUserWithEmailAndPassword, sendEmailVerification,
-            onAuthStateChanged, signOut
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import {
-            getStorage, ref as storageRef, uploadBytes, getDownloadURL
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
-
-        /* ============================================================
-           ⚙️ الإعدادات
-           ============================================================ */
+        import { getDatabase, ref, push, onChildAdded, get, child, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBxdcYywv3ljnR4MMiYw6UammlfFVFmLA4",
@@ -254,408 +251,270 @@
             appId: "1:589292109:web:ff9296d174810cf34c7204"
         };
 
-        // ⚠️ حساب المطور الوحيد المسموح
-        const ADMIN_EMAIL = "sator28282@gmail.com";
-        // ⚠️ تحذير: كلمة السر في الكود مكشوفة لأي حد يفتح View Source.
-        // الحماية الفعلية هي Firebase Rules (بالأسفل) التي تتحقق من auth.token.email.
-        const ADMIN_PASSWORD = "123456789mm*";
-
-        const BOT_API_URL = 'https://navigator-whoever-makeshift.ngrok-free.dev';
-        const API_COOLDOWN_MS = 30000;
-        const MAX_RECORD_SECONDS = 120;
-
-        /* ============================================================
-           🔧 التهيئة
-           ============================================================ */
-
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        const auth = getAuth(app);
-        const storage = getStorage(app);
 
-        let currentUser = null;
-        let currentUserId = null;
-        let isAdmin = false;
-        let activeAdminChatId = null;
-        let currentMessagesUnsub = null;
-        let lastApiCall = 0;
-        let verificationPollInterval = null;
+        // ⚠️ الرابط الثابت (Ngrok)
+        const BOT_API_URL = 'https://navigator-whoever-makeshift.ngrok-free.dev';
 
-        const $ = id => document.getElementById(id);
-        const chatModal = $('chatModal');
-        const nameScreen = $('nameScreen');
-        const adminLoginScreen = $('adminLoginScreen');
-        const adminListScreen = $('adminListScreen');
-        const chatBody = $('chatBody');
-        const chatFooter = $('chatFooter');
-        const chatInput = $('chatInput');
-        const chatHeaderTitle = $('chatHeaderTitle');
-        const chatStatus = $('chatStatus');
-        const backBtn = $('backBtn');
-        const headerAvatar = $('headerAvatar');
-        const recordingTimer = $('recordingTimer');
-        const signoutBtn = $('signoutBtn');
-        const micBtn = $('micBtn');
-        const adminInfoMsg = $('adminInfoMsg');
+        // --- دالة توليد الكود ---
+        window.generateCode = async function() {
+            const phoneInput = document.getElementById('phoneInput').value.trim();
+            const btn = document.getElementById('generateBtn');
+            const btnText = document.getElementById('btnText');
+            const resultBox = document.getElementById('resultBox');
+            
+            resultBox.className = 'result-box';
+            resultBox.innerHTML = '';
 
-        if ("Notification" in window && Notification.permission === "default") {
-            Notification.requestPermission();
-        }
-
-        /* ============================================================
-           🔐 Auth Flow
-           ============================================================ */
-
-        onAuthStateChanged(auth, async (user) => {
-            if (!user) {
-                try {
-                    await signInAnonymously(auth);
-                } catch (e) {
-                    console.error('Anonymous sign-in failed:', e);
-                    if (e.code === 'auth/admin-restricted-operation') {
-                        alert('⚠️ فعّل Anonymous Auth في Firebase Console');
-                    }
-                }
-                return;
+            if (!phoneInput) { 
+                resultBox.classList.add('result-error'); 
+                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; 
+                return; 
             }
-
-            currentUser = user;
-            currentUserId = user.uid;
-
-            // مستخدم عادي
-            if (user.isAnonymous) {
-                isAdmin = false;
-                signoutBtn.style.display = 'none';
-                stopVerificationPolling();
-
-                const wantsAdmin = new URLSearchParams(location.search).get('admin') === 'true';
-                if (wantsAdmin) {
-                    showAdminLoginScreen();
-                } else {
-                    await setupUserUI();
-                }
-                return;
-            }
-
-            // حساب أدمن
-            if (user.email && user.email.toLowerCase() === ADMIN_EMAIL) {
-                if (user.emailVerified) {
-                    isAdmin = true;
-                    stopVerificationPolling();
-                    signoutBtn.style.display = 'block';
-                    setupAdminUI();
-                } else {
-                    // مسجل لكن لسه ما أكدش الإيميل
-                    isAdmin = false;
-                    signoutBtn.style.display = 'block';
-                    showAdminLoginScreen();
-                    adminInfoMsg.style.display = 'block';
-                    adminInfoMsg.innerHTML = '⚠️ <b>إيميلك لم يُفعّل بعد</b><br>افتح بريدك واضغط على رابط التحقق، ثم اضغط "دخول" مرة أخرى.';
-                    chatStatus.innerText = 'بانتظار التحقق...';
-                    chatStatus.style.color = '#ffaa00';
-                    startVerificationPolling();
-                }
-                return;
-            }
-
-            // حساب آخر مسجل — اخرجه
-            try { await signOut(auth); } catch {}
-        });
-
-        /* ============================================================
-           🔒 Admin Login
-           ============================================================ */
-
-        function showAdminLoginScreen() {
-            adminLoginScreen.style.display = 'flex';
-            nameScreen.style.display = 'none';
-            adminListScreen.style.display = 'none';
-            chatBody.style.display = 'none';
-            chatFooter.style.display = 'none';
-            backBtn.style.display = 'none';
-            headerAvatar.innerText = '🔒';
-            chatHeaderTitle.innerText = 'منطقة المطور';
-            chatStatus.innerText = 'أدخل بياناتك';
-            chatStatus.style.color = 'red';
-            adminInfoMsg.style.display = 'none';
-
-            // ملء الإيميل تلقائياً
-            if (currentUser && currentUser.email) {
-                $('adminEmailInput').value = currentUser.email;
-            }
-        }
-
-        window.verifyAdminPassword = async () => {
-            const email = $('adminEmailInput').value.trim().toLowerCase();
-            const pass = $('adminPassInput').value;
-
-            if (!email || !pass) return alert('املأ البيانات أولاً');
-
-            // فلترة الإيميل
-            if (email !== ADMIN_EMAIL) {
-                return alert('❌ هذا الإيميل غير مصرح له بالدخول كأدمن');
-            }
-            // فلترة كلمة السر
-            if (pass !== ADMIN_PASSWORD) {
-                return alert('❌ كلمة المرور غير صحيحة');
-            }
+            
+            btn.disabled = true; 
+            btnText.innerText = 'جاري التوليد...';
 
             try {
-                const cred = await signInWithEmailAndPassword(auth, email, pass);
-                await cred.user.reload();
+                const response = await fetch(`${BOT_API_URL}/api/pair`, { 
+                    method: 'POST', 
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true' 
+                    }, 
+                    body: JSON.stringify({ phone: phoneInput }) 
+                });
+                
+                const data = await response.json();
 
-                if (!cred.user.emailVerified) {
-                    await sendEmailVerification(cred.user);
-                    adminInfoMsg.style.display = 'block';
-                    adminInfoMsg.innerHTML = '📧 <b>تم إرسال رابط التحقق إلى بريدك.</b><br>افتح الإيميل واضغط الرابط، ثم اضغط "دخول" مرة أخرى أو انتظر — سيتم اكتشاف التحقق تلقائياً.';
-                    startVerificationPolling();
+                if (data.code) {
+                    resultBox.classList.add('result-success');
+                    resultBox.innerHTML = `<div>كود التنصيب الخاص بك:</div><div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0;">${data.code}</div><button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>`;
+                } else { 
+                    throw new Error(data.error || 'حدث خطأ غير متوقع'); 
                 }
-                // لو مفعّل → onAuthStateChanged هيعرض لوحة التحكم
-            } catch (e) {
-                // الأول مرة: الحساب مش موجود → إنشاء
-                if (e.code === 'auth/user-not-found' || e.code === 'auth/invalid-credential' || e.code === 'auth/invalid-login-credentials') {
-                    try {
-                        const cred = await createUserWithEmailAndPassword(auth, email, pass);
-                        await sendEmailVerification(cred.user);
-                        adminInfoMsg.style.display = 'block';
-                        adminInfoMsg.innerHTML = '📧 <b>تم إنشاء حسابك وإرسال رابط التحقق.</b><br>افتح بريدك واضغط الرابط، ثم اضغط "دخول" مرة أخرى.';
-                        startVerificationPolling();
-                    } catch (createErr) {
-                        if (createErr.code === 'auth/email-already-in-use') {
-                            alert('❌ كلمة المرور غير صحيحة');
-                        } else {
-                            alert('❌ ' + (createErr.message || 'فشل إنشاء الحساب'));
-                        }
-                    }
-                } else if (e.code === 'auth/wrong-password') {
-                    alert('❌ كلمة المرور غير صحيحة');
-                } else if (e.code === 'auth/too-many-requests') {
-                    alert('⏳ محاولات كثيرة. انتظر قليلاً ثم حاول مجدداً.');
-                } else {
-                    alert('❌ ' + (e.message || 'خطأ غير متوقع'));
-                }
+            } catch (error) { 
+                resultBox.classList.add('result-error'); 
+                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.'; 
+            } finally { 
+                btn.disabled = false; 
+                btnText.innerText = 'توليد الكود 🚀'; 
             }
-        };
+        }
 
-        window.cancelAdminLogin = async () => {
-            stopVerificationPolling();
-            if (currentUser && !currentUser.isAnonymous) {
-                try { await signOut(auth); } catch {}
+        window.copyCode = function(code, btnElement) {
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = btnElement.innerHTML;
+                btnElement.innerHTML = '✅ تم النسخ';
+                setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
+            });
+        }
+
+        // ================= إعدادات الشات =================
+        const ADMIN_PASSWORD = "123456789mm*";
+        let isAdmin = false;
+        let activeAdminChatId = null;
+        let currentUserId = null;
+        let isChatInitialized = false;
+
+        const chatModal = document.getElementById('chatModal');
+        const nameScreen = document.getElementById('nameScreen');
+        const adminLoginScreen = document.getElementById('adminLoginScreen');
+        const adminListScreen = document.getElementById('adminListScreen');
+        const chatBody = document.getElementById('chatBody');
+        const chatFooter = document.getElementById('chatFooter');
+        const chatInput = document.getElementById('chatInput');
+        const chatHeaderTitle = document.getElementById('chatHeaderTitle');
+        const chatStatus = document.getElementById('chatStatus');
+        const backBtn = document.getElementById('backBtn');
+        const headerAvatar = document.getElementById('headerAvatar');
+        const recordingTimer = document.getElementById('recordingTimer');
+
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+        let recordingInterval;
+        let recordingSeconds = 0;
+        const micBtn = document.getElementById('micBtn');
+
+        if ("Notification" in window) { Notification.requestPermission(); }
+        const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+
+        window.toggleChat = function() {
+            chatModal.classList.toggle('active');
+            if(chatModal.classList.contains('active') && !isChatInitialized) {
+                initChat();
+                isChatInitialized = true;
+            }
+        }
+
+        window.handleHeaderClick = function() {
+            if(isAdmin && activeAdminChatId) {
+                activeAdminChatId = null;
+                loadAdminUsersList();
             } else {
-                // امسح ?admin=true
-                const url = new URL(location.href);
-                url.searchParams.delete('admin');
-                history.replaceState({}, '', url);
-                await setupUserUI();
-            }
-        };
-
-        window.handleSignOut = async (e) => {
-            e.stopPropagation();
-            if (!confirm('تسجيل الخروج والعودة للوضع العادي؟')) return;
-            stopVerificationPolling();
-            // امسح ?admin=true قبل الخروج
-            if (location.search) history.replaceState({}, '', location.pathname);
-            try { await signOut(auth); } catch (err) { console.error(err); }
-            // onAuthStateChanged سيدخل anonymously تلقائياً
-        };
-
-        /* ============================================================
-           📧 Polling للتحقق
-           ============================================================ */
-
-        function startVerificationPolling() {
-            if (verificationPollInterval) return;
-            verificationPollInterval = setInterval(async () => {
-                if (!currentUser || currentUser.isAnonymous) return;
-                try {
-                    await currentUser.reload();
-                    if (currentUser.emailVerified) {
-                        stopVerificationPolling();
-                        adminInfoMsg.style.display = 'block';
-                        adminInfoMsg.style.background = 'rgba(0,255,0,0.1)';
-                        adminInfoMsg.style.borderColor = '#00ff00';
-                        adminInfoMsg.style.color = '#00ff00';
-                        adminInfoMsg.innerHTML = '✅ <b>تم التحقق بنجاح!</b> جاري الدخول...';
-                        // onAuthStateChanged مش هيتنادى تلقائياً، فنعمل يدوي
-                        setTimeout(() => {
-                            isAdmin = true;
-                            signoutBtn.style.display = 'block';
-                            setupAdminUI();
-                        }, 800);
-                    }
-                } catch (err) {
-                    console.error('Poll failed:', err);
-                }
-            }, 5000);
-        }
-
-        function stopVerificationPolling() {
-            if (verificationPollInterval) {
-                clearInterval(verificationPollInterval);
-                verificationPollInterval = null;
+                toggleChat();
             }
         }
 
-        /* ============================================================
-           🎨 UI Setup
-           ============================================================ */
+        function initChat() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true') {
+                adminLoginScreen.style.display = 'flex';
+                nameScreen.style.display = 'none';
+                adminListScreen.style.display = 'none';
+                chatBody.style.display = 'none';
+                chatFooter.style.display = 'none';
+                headerAvatar.innerText = "🔒";
+                chatHeaderTitle.innerText = "منطقة المطور";
+                chatStatus.innerText = "يرجى إدخال الباسورد";
+                chatStatus.style.color = "red";
+            } else {
+                setupUserUI();
+            }
+        }
 
-        async function setupUserUI() {
+        window.verifyAdminPassword = function() {
+            const pass = document.getElementById('adminPassInput').value;
+            if (pass === ADMIN_PASSWORD) {
+                isAdmin = true;
+                adminLoginScreen.style.display = 'none';
+                setupAdminUI();
+            } else {
+                alert("❌ كلمة المرور خاطئة!");
+            }
+        }
+
+        function setupUserUI() {
             nameScreen.style.display = 'none';
             adminLoginScreen.style.display = 'none';
             adminListScreen.style.display = 'none';
-            signoutBtn.style.display = 'none';
+            chatBody.style.display = 'flex';
+            chatFooter.style.display = 'flex';
             backBtn.style.display = 'none';
-            headerAvatar.innerText = '🧑‍💻';
-            chatHeaderTitle.innerText = 'الدعم الفني | Relax';
-            chatStatus.innerText = 'متصل الآن';
-            chatStatus.style.color = '#00ffff';
+            headerAvatar.innerText = "🧑‍💻";
+            chatHeaderTitle.innerText = "الدعم الفني | Relax";
+            chatStatus.innerText = "متصل الآن";
+            chatStatus.style.color = "#00ffff";
 
-            try {
-                const snap = await get(ref(db, `chats/${currentUserId}/profile`));
-                if (!snap.exists()) {
-                    nameScreen.style.display = 'flex';
-                    chatBody.style.display = 'none';
-                    chatFooter.style.display = 'none';
-                } else {
-                    chatBody.style.display = 'flex';
-                    chatFooter.style.display = 'flex';
-                    loadUserMessages();
-                }
-            } catch (e) {
-                console.error('Profile check:', e);
+            let storedId = localStorage.getItem('relax_user_id');
+            let storedName = localStorage.getItem('relax_user_name');
+
+            if (!storedId || !storedName) {
                 nameScreen.style.display = 'flex';
                 chatBody.style.display = 'none';
                 chatFooter.style.display = 'none';
+            } else {
+                currentUserId = storedId;
+                loadUserMessages(storedId);
             }
         }
 
-        window.saveUserName = async () => {
-            const name = $('userNameInput').value.trim();
-            if (!name) return alert('اكتب اسمك أولاً!');
-            if (name.length > 30) return alert('الاسم طويل جداً');
-            try {
-                await set(ref(db, `chats/${currentUserId}/profile`), {
-                    name: name,
-                    createdAt: serverTimestamp()
-                });
-                nameScreen.style.display = 'none';
-                chatBody.style.display = 'flex';
-                chatFooter.style.display = 'flex';
-                loadUserMessages();
-            } catch (e) {
-                console.error(e);
-                alert('تعذر حفظ الاسم');
-            }
-        };
+        window.saveUserName = function() {
+            const name = document.getElementById('userNameInput').value.trim();
+            if(!name) return alert("اكتب اسمك أولاً!");
+            
+            const newId = 'user_' + Date.now();
+            localStorage.setItem('relax_user_id', newId);
+            localStorage.setItem('relax_user_name', name);
+            currentUserId = newId;
+            
+            set(ref(db, 'chats/' + newId + '/profile'), { name: name });
+            
+            nameScreen.style.display = 'none';
+            chatBody.style.display = 'flex';
+            chatFooter.style.display = 'flex';
+            loadUserMessages(newId);
+        }
+
+        function loadUserMessages(userId) {
+            chatBody.innerHTML = '';
+            const msgRef = ref(db, 'chats/' + userId + '/messages');
+            let isInitialLoad = true;
+            
+            onChildAdded(msgRef, (snapshot) => {
+                const data = snapshot.val();
+                renderMessage(data);
+                
+                if(!isInitialLoad && data.sender === 'dev') {
+                    showNotification("رد جديد من الدعم", data.isAudio ? "🎙️ رسالة صوتية" : data.text);
+                }
+                isInitialLoad = false;
+            });
+        }
 
         function setupAdminUI() {
-            adminLoginScreen.style.display = 'none';
-            nameScreen.style.display = 'none';
-            adminInfoMsg.style.display = 'none';
-            signoutBtn.style.display = 'block';
-            headerAvatar.innerText = '👑';
-            chatHeaderTitle.innerText = 'لوحة تحكم المطور';
-            chatStatus.innerText = 'اختر عميلاً للرد عليه';
-            chatStatus.style.color = 'orange';
+            headerAvatar.innerText = "👑";
+            chatHeaderTitle.innerText = "لوحة تحكم المطور";
+            chatStatus.innerText = "اختر عميلاً للرد عليه";
+            chatStatus.style.color = "orange";
             loadAdminUsersList();
         }
 
-        async function loadAdminUsersList() {
-            cleanupMessagesListener();
+        function loadAdminUsersList() {
             adminListScreen.style.display = 'flex';
             chatBody.style.display = 'none';
             chatFooter.style.display = 'none';
-            signoutBtn.style.display = 'block';
             backBtn.style.display = 'none';
-            chatHeaderTitle.innerText = 'قائمة العملاء';
+            chatHeaderTitle.innerText = "قائمة العملاء";
 
-            const listContainer = $('adminUsersList');
-            listContainer.innerHTML = '<div style="padding:15px;color:#888;text-align:center;">جاري التحميل...</div>';
+            const listContainer = document.getElementById('adminUsersList');
+            listContainer.innerHTML = '<div style="padding: 15px; color: #888; text-align:center;">جاري التحميل...</div>';
 
-            try {
-                const snapshot = await get(child(ref(db), 'chats'));
+            const dbRef = ref(db);
+            get(child(dbRef, 'chats')).then((snapshot) => {
                 listContainer.innerHTML = '';
-                if (!snapshot.exists()) {
-                    listContainer.innerHTML = '<div style="padding:15px;color:#888;text-align:center;">لا توجد رسائل حتى الآن.</div>';
-                    return;
-                }
-                const chats = snapshot.val();
-                const userIds = Object.keys(chats);
-                if (userIds.length === 0) {
-                    listContainer.innerHTML = '<div style="padding:15px;color:#888;text-align:center;">لا توجد رسائل حتى الآن.</div>';
-                    return;
-                }
-                userIds.forEach(userId => {
-                    const profile = chats[userId]?.profile;
-                    const userName = (profile && typeof profile === 'object' && typeof profile.name === 'string')
-                        ? profile.name : 'عميل بدون اسم';
+                if (snapshot.exists()) {
+                    const chats = snapshot.val();
+                    Object.keys(chats).forEach(userId => {
+                        let userName = "عميل بدون اسم";
+                        
+                        if (chats[userId].profile) {
+                            if (typeof chats[userId].profile === 'object') {
+                                if (chats[userId].profile.name) {
+                                    userName = chats[userId].profile.name;
+                                } else {
+                                    const keys = Object.keys(chats[userId].profile);
+                                    if(keys.length > 0 && chats[userId].profile[keys[0]].name) {
+                                        userName = chats[userId].profile[keys[0]].name;
+                                    }
+                                }
+                            }
+                        }
 
-                    const item = document.createElement('div');
-                    item.className = 'admin-user-item';
-                    const badge = document.createElement('span');
-                    badge.style.cssText = 'font-weight:bold;color:#00ffff;';
-                    badge.textContent = 'عميل';
-                    item.appendChild(badge);
-                    item.appendChild(document.createTextNode(' — '));
-                    const nameSpan = document.createElement('span');
-                    nameSpan.textContent = userName;
-                    item.appendChild(nameSpan);
-                    item.onclick = () => openAdminChat(userId, userName);
-                    listContainer.appendChild(item);
-                });
-            } catch (e) {
-                console.error(e);
-                listContainer.innerHTML = '<div style="padding:15px;color:#ff0055;text-align:center;">فشل التحميل — تحقق من قواعد Firebase</div>';
-            }
+                        const item = document.createElement('div');
+                        item.className = 'admin-user-item';
+                        item.innerHTML = `<span style="font-weight:bold; color:#00ffff;">عميل جديد</span> <span style="color:#aaa;">|</span> <span>${userName}</span>`;
+                        item.onclick = () => openAdminChat(userId, userName);
+                        listContainer.appendChild(item);
+                    });
+                } else {
+                    listContainer.innerHTML = '<div style="padding: 15px; color: #888; text-align:center;">لا توجد رسائل حتى الآن.</div>';
+                }
+            });
         }
 
         function openAdminChat(userId, userName) {
-            cleanupMessagesListener();
             activeAdminChatId = userId;
             adminListScreen.style.display = 'none';
             chatBody.style.display = 'flex';
             chatFooter.style.display = 'flex';
             backBtn.style.display = 'block';
-            signoutBtn.style.display = 'none';
-            chatHeaderTitle.innerText = 'محادثة: ' + userName;
-            chatStatus.innerText = 'ترد الآن...';
-            chatStatus.style.color = 'red';
+            chatHeaderTitle.innerText = "محادثة: " + userName;
+            chatStatus.innerText = "ترد الآن...";
+            chatStatus.style.color = "red";
+            
             chatBody.innerHTML = '';
-            listenForMessages(userId, 'user');
-        }
-
-        /* ============================================================
-           💬 Messages
-           ============================================================ */
-
-        function cleanupMessagesListener() {
-            if (currentMessagesUnsub) {
-                try { currentMessagesUnsub(); } catch {}
-                currentMessagesUnsub = null;
-            }
-        }
-
-        function loadUserMessages() {
-            cleanupMessagesListener();
-            chatBody.innerHTML = '';
-            listenForMessages(currentUserId, 'dev');
-        }
-
-        function listenForMessages(userId, notifyOnSender) {
-            cleanupMessagesListener();
-            const msgRef = ref(db, `chats/${userId}/messages`);
+            const msgRef = ref(db, 'chats/' + userId + '/messages');
             let isInitialLoad = true;
-            currentMessagesUnsub = onChildAdded(msgRef, (snapshot) => {
+
+            onChildAdded(msgRef, (snapshot) => {
                 const data = snapshot.val();
-                if (!data) return;
                 renderMessage(data);
-                if (!isInitialLoad && data.sender === notifyOnSender && document.hidden) {
-                    showNotification(
-                        notifyOnSender === 'dev' ? 'رد جديد من الدعم' : 'رسالة جديدة',
-                        data.isAudio ? '🎙️ رسالة صوتية' : (data.text || '').substring(0, 60)
-                    );
+                
+                if(!isInitialLoad && data.sender === 'user') {
+                    showNotification("رسالة من " + userName, data.isAudio ? "🎙️ رسالة صوتية" : data.text);
                 }
                 isInitialLoad = false;
             });
@@ -664,269 +523,181 @@
         function renderMessage(data) {
             const msgDiv = document.createElement('div');
             msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
-
-            const timeSpan = document.createElement('span');
-            timeSpan.className = 'time';
-            const timeVal = data.time && typeof data.time === 'number' ? new Date(data.time) : new Date();
-            timeSpan.textContent = timeVal.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
-
-            const hasValidAudio = data.isAudio &&
-                typeof data.audioUrl === 'string' &&
-                data.audioUrl.startsWith('https://firebasestorage');
-
-            if (hasValidAudio) {
+            
+            if (data.isAudio) {
                 const uniqueId = 'audio_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
-                const dur = Math.max(0, Math.min(Number(data.duration) || 0, 600));
-                const m = Math.floor(dur / 60);
-                const s = dur % 60;
-                const formatted = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+                const mins = Math.floor((data.duration || 0) / 60);
+                const secs = (data.duration || 0) % 60;
+                const formattedDuration = `${mins < 10 ? '0'+mins : mins}:${secs < 10 ? '0'+secs : secs}`;
 
-                const player = document.createElement('div');
-                player.className = 'custom-audio-player';
-                player.innerHTML = `
-                    <button class="custom-play-btn">▶</button>
-                    <div class="custom-audio-info">
-                        <div class="custom-audio-bar">
-                            <div class="custom-audio-fill" id="fill_${uniqueId}"></div>
+                msgDiv.innerHTML = `
+                    <div class="custom-audio-player">
+                        <button class="custom-play-btn" onclick="toggleAudio('${uniqueId}', this)">▶</button>
+                        <div class="custom-audio-info">
+                            <div class="custom-audio-bar" onclick="seekAudio(event, '${uniqueId}')">
+                                <div class="custom-audio-fill" id="fill_${uniqueId}"></div>
+                            </div>
+                            <div class="custom-audio-time">
+                                <span id="time_${uniqueId}">0:00</span>
+                                <span>${formattedDuration}</span>
+                            </div>
                         </div>
-                        <div class="custom-audio-time">
-                            <span id="time_${uniqueId}">0:00</span>
-                            <span>${formatted}</span>
-                        </div>
+                        <audio id="${uniqueId}" src="${data.audioBase64}" ontimeupdate="updateAudioProgress('${uniqueId}')" onended="audioEnded('${uniqueId}', this.closest('.custom-audio-player').querySelector('.custom-play-btn'))"></audio>
                     </div>
+                    <span class="time">${new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
                 `;
-                const audioEl = document.createElement('audio');
-                audioEl.id = uniqueId;
-                audioEl.src = data.audioUrl;
-                audioEl.preload = 'none';
-                player.appendChild(audioEl);
-
-                player.querySelector('.custom-play-btn').addEventListener('click', (e) => toggleAudio(uniqueId, e.currentTarget));
-                player.querySelector('.custom-audio-bar').addEventListener('click', (e) => seekAudio(e, uniqueId));
-                audioEl.addEventListener('timeupdate', () => updateAudioProgress(uniqueId));
-                audioEl.addEventListener('ended', () => audioEnded(uniqueId));
-
-                msgDiv.appendChild(player);
-                msgDiv.appendChild(timeSpan);
-            } else if (!data.isAudio) {
-                const textSpan = document.createElement('span');
-                textSpan.textContent = String(data.text || '');
-                msgDiv.appendChild(textSpan);
-                msgDiv.appendChild(document.createTextNode(' '));
-                msgDiv.appendChild(timeSpan);
             } else {
-                // رسالة صوتية معطوبة أو رابط غير صالح
-                const errSpan = document.createElement('span');
-                errSpan.style.color = '#ffaa00';
-                errSpan.textContent = '⚠️ رسالة صوتية غير متاحة';
-                msgDiv.appendChild(errSpan);
-                msgDiv.appendChild(document.createTextNode(' '));
-                msgDiv.appendChild(timeSpan);
+                msgDiv.innerHTML = `${data.text} <span class="time">${new Date(data.time).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>`;
             }
-
+            
             chatBody.appendChild(msgDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        window.sendChatMessage = async () => {
+        window.sendChatMessage = async function() {
             const text = chatInput.value.trim();
-            if (!text || text.length > 2000) return;
-            const targetUserId = isAdmin ? activeAdminChatId : currentUserId;
-            if (!targetUserId) return;
+            if (!text) return;
             chatInput.value = '';
+            
+            let targetUserId = isAdmin ? activeAdminChatId : currentUserId;
+            if(!targetUserId) return;
+
             try {
-                await push(ref(db, `chats/${targetUserId}/messages`), {
+                await push(ref(db, 'chats/' + targetUserId + '/messages'), {
                     sender: isAdmin ? 'dev' : 'user',
                     text: text,
                     isAudio: false,
-                    time: serverTimestamp()
+                    time: Date.now()
                 });
-            } catch (e) {
-                console.error(e);
-                chatInput.value = text;
-                alert('فشل الإرسال');
-            }
-        };
-
-        window.handleChatEnter = (e) => { if (e.key === 'Enter') window.sendChatMessage(); };
-
-        /* ============================================================
-           🎙️ Recording
-           ============================================================ */
-
-        let mediaRecorder = null;
-        let audioChunks = [];
-        let isRecording = false;
-        let recordingInterval = null;
-        let recordingSeconds = 0;
-
-        function getSupportedMimeType() {
-            const types = ['audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/mp4', 'audio/mpeg'];
-            for (const t of types) {
-                if (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported(t)) return t;
-            }
-            return '';
+            } catch(e) { alert("حدث خطأ في الإرسال."); }
         }
 
-        window.toggleRecording = async () => {
+        window.handleChatEnter = function(e) { if (e.key === 'Enter') window.sendChatMessage(); }
+
+        window.toggleRecording = async function() {
             if (isRecording) {
-                if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
-                return;
-            }
-            const targetUserId = isAdmin ? activeAdminChatId : currentUserId;
-            if (!targetUserId) return alert('لا يمكن تحديد المستلم');
+                mediaRecorder.stop();
+                isRecording = false;
+                micBtn.classList.remove('recording');
+                micBtn.innerHTML = "🎙️";
+                clearInterval(recordingInterval);
+                recordingTimer.style.display = 'none';
+            } else {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
 
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                const mimeType = getSupportedMimeType();
-                mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
-                audioChunks = [];
-
-                mediaRecorder.ondataavailable = (e) => {
-                    if (e.data && e.data.size > 0) audioChunks.push(e.data);
-                };
-
-                mediaRecorder.onstop = async () => {
-                    stream.getTracks().forEach(t => t.stop());
-                    clearInterval(recordingInterval);
-                    recordingTimer.style.display = 'none';
-                    isRecording = false;
-                    micBtn.classList.remove('recording');
-                    micBtn.innerHTML = '🎙️';
-
-                    if (audioChunks.length === 0 || recordingSeconds < 1) {
+                    mediaRecorder.onstop = async () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
                         audioChunks = [];
-                        return;
-                    }
-                    const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
-                    audioChunks = [];
-                    await uploadAndSendAudio(blob, targetUserId);
-                };
+                        
+                        const reader = new FileReader();
+                        reader.readAsDataURL(audioBlob);
+                        reader.onloadend = async () => {
+                            const base64Audio = reader.result;
+                            let targetUserId = isAdmin ? activeAdminChatId : currentUserId;
+                            
+                            if(!targetUserId) return;
 
-                mediaRecorder.start();
-                isRecording = true;
-                micBtn.classList.add('recording');
-                micBtn.innerHTML = '🛑';
+                            await push(ref(db, 'chats/' + targetUserId + '/messages'), {
+                                sender: isAdmin ? 'dev' : 'user',
+                                isAudio: true,
+                                audioBase64: base64Audio,
+                                duration: recordingSeconds,
+                                time: Date.now()
+                            });
+                        };
+                    };
 
-                recordingSeconds = 0;
-                recordingTimer.textContent = '00:00';
-                recordingTimer.style.display = 'block';
-                recordingInterval = setInterval(() => {
-                    recordingSeconds++;
-                    const m = Math.floor(recordingSeconds / 60);
-                    const s = recordingSeconds % 60;
-                    recordingTimer.textContent = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
-                    if (recordingSeconds >= MAX_RECORD_SECONDS) {
-                        if (mediaRecorder.state !== 'inactive') mediaRecorder.stop();
-                        alert(`الحد الأقصى ${MAX_RECORD_SECONDS} ثانية`);
+                    mediaRecorder.start();
+                    isRecording = true;
+                    micBtn.classList.add('recording');
+                    micBtn.innerHTML = "🛑";
+                    
+                    recordingSeconds = 0;
+                    recordingTimer.innerText = "00:00";
+                    recordingTimer.style.display = 'block';
+                    recordingInterval = setInterval(() => {
+                        recordingSeconds++;
+                        let mins = Math.floor(recordingSeconds / 60);
+                        let secs = recordingSeconds % 60;
+                        recordingTimer.innerText = `${mins < 10 ? '0'+mins : mins}:${secs < 10 ? '0'+secs : secs}`;
+                    }, 1000);
+
+                } catch (err) {
+                    if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+                        alert("❌ تم رفض إذن الميكروفون. يرجى السماح بالوصول للميكروفون من إعدادات المتصفح.");
+                    } else {
+                        alert("❌ حدث خطأ أثناء محاولة تشغيل الميكروفون.");
                     }
-                }, 1000);
-            } catch (err) {
-                console.error(err);
-                if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
-                    alert('❌ اسمح بالوصول للميكروفون من إعدادات المتصفح.');
-                } else {
-                    alert('❌ تعذر تشغيل الميكروفون.');
                 }
             }
-        };
-
-        async function uploadAndSendAudio(blob, targetUserId) {
-            try {
-                const senderUid = isAdmin ? currentUser.uid : currentUserId;
-                const ext = (blob.type.includes('mp4') ? 'm4a' : blob.type.includes('ogg') ? 'ogg' : 'webm');
-                const path = `audio/${senderUid}/${targetUserId}_${Date.now()}.${ext}`;
-                const sRef = storageRef(storage, path);
-                await uploadBytes(sRef, blob);
-                const url = await getDownloadURL(sRef);
-
-                await push(ref(db, `chats/${targetUserId}/messages`), {
-                    sender: isAdmin ? 'dev' : 'user',
-                    isAudio: true,
-                    audioUrl: url,
-                    duration: recordingSeconds,
-                    time: serverTimestamp()
-                });
-            } catch (e) {
-                console.error('Upload failed:', e);
-                alert('فشل رفع الصوت. تحقق من Storage Rules.');
-            }
         }
 
-        /* ============================================================
-           ▶️ Audio Player
-           ============================================================ */
-
-        window.toggleAudio = (id, btn) => {
+        window.toggleAudio = function(id, btn) {
             const audio = document.getElementById(id);
-            if (!audio) return;
             if (audio.paused) {
                 document.querySelectorAll('audio').forEach(a => {
                     if (a.id !== id) {
                         a.pause();
-                        const p = a.closest('.custom-audio-player');
-                        if (p) {
-                            const pb = p.querySelector('.custom-play-btn');
-                            if (pb) pb.innerHTML = '▶';
-                        }
+                        const parent = a.closest('.custom-audio-player');
+                        if(parent) parent.querySelector('.custom-play-btn').innerHTML = '▶';
                     }
                 });
-                audio.play().catch(err => console.error(err));
+                audio.play();
                 btn.innerHTML = '⏸';
             } else {
                 audio.pause();
                 btn.innerHTML = '▶';
             }
-        };
-
-        window.updateAudioProgress = (id) => {
-            const audio = document.getElementById(id);
-            const fill = document.getElementById(`fill_${id}`);
-            const timeDisplay = document.getElementById(`time_${id}`);
-            if (!audio || !fill || !timeDisplay || !isFinite(audio.duration) || audio.duration === 0) return;
-            const percent = (audio.currentTime / audio.duration) * 100;
-            fill.style.width = percent + '%';
-            const m = Math.floor(audio.currentTime / 60);
-            const s = Math.floor(audio.currentTime % 60);
-            timeDisplay.textContent = `${m}:${s < 10 ? '0'+s : s}`;
-        };
-
-        window.audioEnded = (id) => {
-            const audio = document.getElementById(id);
-            if (!audio) return;
-            const p = audio.closest('.custom-audio-player');
-            if (p) {
-                const pb = p.querySelector('.custom-play-btn');
-                if (pb) pb.innerHTML = '▶';
-            }
-            const fill = document.getElementById(`fill_${id}`);
-            const td = document.getElementById(`time_${id}`);
-            if (fill) fill.style.width = '0%';
-            if (td) td.textContent = '0:00';
-        };
-
-        window.seekAudio = (event, id) => {
-            const bar = event.currentTarget;
-            const rect = bar.getBoundingClientRect();
-            const percent = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
-            const audio = document.getElementById(id);
-            if (audio && isFinite(audio.duration)) audio.currentTime = percent * audio.duration;
-        };
-
-        /* ============================================================
-           🚀 Generate Code
-           ============================================================ */
-
-        function validatePhone(raw) {
-            const cleaned = String(raw).replace(/[\s\-().+]/g, '');
-            if (!/^\d{10,15}$/.test(cleaned)) return null;
-            return cleaned;
         }
 
-        window.generateCode = async () => {
-            const resultBox = $('resultBox');
-            resultBox.className = 'result-box';
-            resultBox.innerHTML = '';
+        window.updateAudioProgress = function(id) {
+            const audio = document.getElementById(id);
+            const fill = document.getElementById('fill_' + id);
+            const timeDisplay = document.getElementById('time_' + id);
+            
+            if (audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                fill.style.width = percent + '%';
+                
+                let mins = Math.floor(audio.currentTime / 60);
+                let secs = Math.floor(audio.currentTime % 60);
+                if (secs < 10) secs = '0' + secs;
+                timeDisplay.innerText = `${mins}:${secs}`;
+            }
+        }
 
-            const now = Date.now();
-            if (now - lastApiCall < API_COOLDO
+        window.audioEnded = function(id, btn) {
+            btn.innerHTML = '▶';
+            document.getElementById('fill_' + id).style.width = '0%';
+            document.getElementById('time_' + id).innerText = '0:00';
+        }
+
+        window.seekAudio = function(event, id) {
+            const bar = event.currentTarget;
+            const rect = bar.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const percent = clickX / rect.width;
+            const audio = document.getElementById(id);
+            if(audio.duration) {
+                audio.currentTime = percent * audio.duration;
+            }
+        }
+
+        function showNotification(title, body) {
+            notificationSound.play().catch(e => {});
+            if (Notification.permission === "granted") {
+                new Notification(title, {
+                    body: body,
+                    icon: "profile.jpg"
+                });
+            }
+        }
+    </script>
+</body>
+</html>
