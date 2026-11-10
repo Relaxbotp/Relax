@@ -9,16 +9,15 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
         
         :root {
-            --neon-blue: #00d4ff;
-            --dark-blue: #001a4d;
-            --mid-blue: #0066ff;
+            --neon-blue: #00d2ff;
+            --dark-blue: #003366;
             --light-blue: #66e0ff;
-            --bg-dark: #05080d;
+            --bg-dark: #050505;
         }
 
         body {
             background-color: var(--bg-dark);
-            background-image: linear-gradient(rgba(5, 8, 13, 0.85), rgba(5, 8, 13, 0.95)), url('https://i.pinimg.com/736x/1e/6c/1c/1e6c1c9d6e6b0e1e6b0e1e6b0e1e6b0e.jpg');
+            background-image: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.95)), url('https://share.google/MXZnelrPb6LH7rWcl');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -32,260 +31,184 @@
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             background: rgba(10, 15, 25, 0.85);
-            padding: 30px 20px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
+            padding: 35px 25px;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.2), inset 0 0 20px rgba(0, 210, 255, 0.05);
             text-align: center;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
+        }
+
+        /* تأثير ضوئي علوي */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 80%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            box-shadow: 0 0 10px var(--neon-blue);
         }
 
         .profile-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
-            position: relative;
+            margin-bottom: 25px;
         }
 
         .profile-image {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 50px rgba(0, 212, 255, 0.4);
-            animation: glowPulseBlue 2s infinite alternate;
-            background-color: #0a1525; 
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8), 0 0 60px rgba(0, 210, 255, 0.4);
+            animation: glowPulseBlue 2.5s infinite alternate;
+            background-color: #111; 
         }
 
         @keyframes glowPulseBlue {
-            from { box-shadow: 0 0 15px rgba(0, 212, 255, 0.6), 0 0 30px rgba(0, 212, 255, 0.3); }
-            to { box-shadow: 0 0 30px rgba(0, 212, 255, 1), 0 0 60px rgba(0, 212, 255, 0.6); }
+            from { box-shadow: 0 0 15px rgba(0, 210, 255, 0.6), 0 0 40px rgba(0, 210, 255, 0.3); }
+            to { box-shadow: 0 0 35px rgba(0, 210, 255, 1), 0 0 80px rgba(0, 210, 255, 0.6); }
         }
 
         .brand-name {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 900;
             color: #fff;
-            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 40px var(--mid-blue);
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 25px var(--neon-blue), 0 0 50px var(--dark-blue);
             margin-top: 15px;
             letter-spacing: 5px;
         }
 
-        .subtitle { font-size: 14px; color: #bbb; margin-bottom: 15px; }
+        .subtitle { font-size: 15px; color: #a0c4d8; margin-bottom: 25px; font-weight: 700; }
 
+        /* خانات الإحصائيات */
         .stats-container {
             display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 30px;
             width: 100%;
         }
 
         .stat-box {
             flex: 1;
-            background: rgba(15, 25, 40, 0.8);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 12px;
-            padding: 15px 10px;
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 16px;
+            padding: 18px 10px;
             text-align: center;
-            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.05);
             position: relative;
             overflow: hidden;
+            transition: 0.3s;
         }
 
-        .stat-box::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-            opacity: 0.6;
+        .stat-box:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
         }
 
         .stat-value {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             color: #fff;
-            text-shadow: 0 0 10px var(--neon-blue);
-            margin-bottom: 5px;
+            text-shadow: 0 0 12px var(--neon-blue);
+            margin-bottom: 6px;
             display: block;
         }
 
         .stat-label {
             font-size: 12px;
-            color: #aaa;
+            color: #8ab4c8;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
         }
 
-        .input-group { margin-bottom: 20px; }
-        input[type="text"] {
-            width: 100%;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #1a2a3f;
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            font-size: 18px;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
+        .input-group { margin-bottom: 22px; }
+        input[type="text"] { 
+            width: 100%; padding: 16px; border-radius: 14px; 
+            border: 1px solid #1a3a4a; background: rgba(0, 10, 20, 0.7); 
+            color: #fff; font-size: 18px; text-align: center; outline: none; transition: 0.3s; 
         }
-        input[type="text"]:focus {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        input[type="text"]:focus { 
+            border-color: var(--neon-blue); 
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); 
         }
         
-        .btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(90deg, var(--dark-blue), var(--neon-blue));
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        .btn { 
+            width: 100%; padding: 16px; border: none; border-radius: 14px; 
+            background: linear-gradient(135deg, var(--dark-blue), var(--neon-blue)); 
+            color: #fff; font-size: 19px; font-weight: bold; cursor: pointer; transition: 0.3s; 
+            display: flex; justify-content: center; align-items: center; gap: 10px; 
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.3); 
         }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6); }
-        .btn:disabled { background: #333; cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.6); }
+        .btn:disabled { background: #222; cursor: not-allowed; transform: none; box-shadow: none; color: #666; }
 
-        .result-box {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: bold;
-            display: none;
-            animation: fadeIn 0.5s;
-        }
+        .result-box { margin-top: 22px; padding: 18px; border-radius: 14px; font-size: 18px; font-weight: bold; display: none; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .result-success {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--neon-blue);
-            color: var(--light-blue);
-            display: block;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        .result-success { 
+            background: rgba(0, 210, 255, 0.1); border: 1px solid var(--neon-blue); 
+            color: var(--light-blue); display: block; box-shadow: 0 0 20px rgba(0, 210, 255, 0.15); 
         }
-        .result-error {
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid #ff0000;
-            color: #ff6666;
-            display: block;
+        .result-error { 
+            background: rgba(255, 0, 0, 0.1); border: 1px solid #ff3333; 
+            color: #ff6666; display: block; 
         }
 
-        .copy-btn {
-            background: rgba(0, 212, 255, 0.15);
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
-            padding: 8px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s;
-            margin-top: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+        .copy-btn { 
+            background: rgba(0, 210, 255, 0.15); border: 1px solid var(--neon-blue); 
+            color: var(--light-blue); padding: 10px 18px; border-radius: 10px; cursor: pointer; 
+            font-family: 'Cairo', sans-serif; font-weight: bold; font-size: 14px; transition: 0.3s; 
+            margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; 
         }
-        .copy-btn:hover { background: var(--neon-blue); color: #05080d; }
+        .copy-btn:hover { background: var(--neon-blue); color: #000; }
 
-        .guide-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
-            text-align: right;
-        }
-        .guide-title {
-            font-size: 16px;
-            color: var(--light-blue);
-            font-weight: bold;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .guide-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-size: 13px;
-            color: #ccc;
-        }
-        .step-num {
-            background: rgba(0, 212, 255, 0.2);
-            color: var(--neon-blue);
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            font-weight: bold;
-            flex-shrink: 0;
-            margin-top: 2px;
-            border: 1px solid rgba(0, 212, 255, 0.5);
+        .guide-section { margin-top: 35px; padding-top: 25px; border-top: 1px solid rgba(0, 210, 255, 0.15); text-align: right; }
+        .guide-title { font-size: 16px; color: var(--light-blue); font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .guide-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 13px; color: #b0c4d0; }
+        .step-num { 
+            background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); 
+            width: 24px; height: 24px; border-radius: 50%; 
+            display: flex; justify-content: center; align-items: center; 
+            font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; 
+            border: 1px solid rgba(0, 210, 255, 0.4); 
         }
         .highlight-text { color: #fff; font-weight: bold; }
-        .footer { margin-top: 25px; font-size: 12px; color: #666; }
+        
+        .footer { margin-top: 30px; font-size: 13px; color: #556; font-weight: bold; letter-spacing: 1px; }
 
-        .social-links-container { display: flex; gap: 10px; margin-top: 20px; }
-        .social-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            transition: 0.3s;
+        .social-links-container { display: flex; gap: 12px; margin-top: 20px; }
+        .social-btn { 
+            flex: 1; padding: 12px; border-radius: 12px; text-align: center; 
+            text-decoration: none; font-size: 13px; font-weight: bold; 
+            display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.3s; 
         }
-        .social-btn.wa {
-            background: rgba(37, 211, 102, 0.1);
-            color: #25D366;
-            border: 1px solid #25D366;
-        }
-        .social-btn.wa:hover { background: rgba(37, 211, 102, 0.25); }
-        .social-btn.tg {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--neon-blue);
-            border: 1px solid var(--neon-blue);
-        }
-        .social-btn.tg:hover { background: rgba(0, 212, 255, 0.25); }
+        .social-btn.wa { background: rgba(37, 211, 102, 0.1); color: #25D366; border: 1px solid #25D366; }
+        .social-btn.wa:hover { background: rgba(37, 211, 102, 0.2); }
+        .social-btn.tg { background: rgba(0, 210, 255, 0.1); color: var(--neon-blue); border: 1px solid var(--neon-blue); }
+        .social-btn.tg:hover { background: rgba(0, 210, 255, 0.2); }
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="profile-card">
-            <img src="https://i.pinimg.com/736x/43/ff/09/43ff09ab357df84b2ac12268a59f3531.jpg" alt="BOT X" class="profile-image">
+            <!-- استخدام رابط الصورة الجديد -->
+            <img src="https://share.google/MXZnelrPb6LH7rWcl" alt="BOT X Profile" class="profile-image">
             <div class="brand-name">BOT X</div>
         </div>
 
         <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
 
-        <!-- الإحصائيات -->
+        <!-- خانات الإحصائيات -->
         <div class="stats-container">
             <div class="stat-box">
                 <span class="stat-value" id="statInstalled">0</span>
@@ -328,88 +251,85 @@
             <div class="guide-step"><span class="step-num">6</span><div>أدخل الكود المكون من 8 أرقام الذي ظهر لك أعلاه.</div></div>
         </div>
 
-        <div class="footer">© BOT X SYSTEM 2026</div>
+        <div class="footer">© BOT X | 2026</div>
     </div>
 
     <script>
-        // ====== إعدادات الاتصال بالسيرفر ======
-        // سيبه فاضي لو الموقع هيتقدم من نفس السيرفر
-        // أو حط رابط السيرفر لو الموقع على دومين منفصل
-        const BOT_API_URL = '';
-        const SECRET_API_KEY = 'Relax_Secret_Key_2026';
+        // المفتاح السري (تأكد أنه مطابق للمفتاح الموجود في ملف index.js الخاص بالبوت)
+        const SECRET_API_KEY = "Relax_Secret_Key_2026"; 
 
-        // ====== جلب الإحصائيات ======
+        // 1. جلب الإحصائيات
         async function fetchBotStats() {
             try {
-                const response = await fetch(`${BOT_API_URL}/api/stats`, {
+                const response = await fetch('/api/stats', {
                     headers: { 'x-api-key': SECRET_API_KEY }
                 });
                 const data = await response.json();
+                
                 if (data) {
-                    document.getElementById('statInstalled').innerText = data.installed ?? 0;
-                    document.getElementById('statAvailable').innerText = data.available ?? 100;
+                    document.getElementById('statInstalled').innerText = data.installed || 0;
+                    document.getElementById('statAvailable').innerText = data.available || 100;
                 }
             } catch (e) {
-                // لو السيرفر مش متصل، سيب الأرقام زي ما هي
-                console.warn('تعذر جلب الإحصائيات:', e.message);
+                console.error("فشل جلب الإحصائيات:", e);
             }
         }
 
         fetchBotStats();
-        setInterval(fetchBotStats, 5000);
+        setInterval(fetchBotStats, 5000); // تحديث كل 5 ثواني
 
-        // ====== توليد الكود ======
-        window.generateCode = async function () {
+        // 2. توليد الكود
+        async function generateCode() {
             const phoneInput = document.getElementById('phoneInput').value.trim();
             const btn = document.getElementById('generateBtn');
             const btnText = document.getElementById('btnText');
             const resultBox = document.getElementById('resultBox');
-
+            
             resultBox.className = 'result-box';
             resultBox.innerHTML = '';
 
-            if (!phoneInput) {
-                resultBox.classList.add('result-error');
-                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!';
-                return;
+            if (!phoneInput) { 
+                resultBox.classList.add('result-error'); 
+                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; 
+                return; 
             }
-
-            btn.disabled = true;
+            
+            btn.disabled = true; 
             btnText.innerText = 'جاري التوليد...';
 
             try {
-                const response = await fetch(`${BOT_API_URL}/api/pair`, {
-                    method: 'POST',
-                    headers: {
+                const response = await fetch('/api/pair', { 
+                    method: 'POST', 
+                    headers: { 
                         'Content-Type': 'application/json',
                         'x-api-key': SECRET_API_KEY
-                    },
-                    body: JSON.stringify({ phone: phoneInput })
+                    }, 
+                    body: JSON.stringify({ phone: phoneInput }) 
                 });
-
+                
                 const data = await response.json();
 
                 if (data.code) {
                     resultBox.classList.add('result-success');
                     resultBox.innerHTML = `
                         <div>كود التنصيب الخاص بك:</div>
-                        <div style="font-size: 24px; letter-spacing: 2px; margin: 10px 0; color: #fff; text-shadow: 0 0 10px var(--neon-blue);">${data.code}</div>
-                        <button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ</button>
+                        <div style="font-size: 26px; letter-spacing: 3px; margin: 12px 0; color: #fff; text-shadow: 0 0 15px var(--neon-blue); font-weight: 900;">${data.code}</div>
+                        <button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ الكود</button>
                     `;
-                } else {
-                    throw new Error(data.error || 'حدث خطأ غير متوقع');
+                } else { 
+                    throw new Error(data.error || 'حدث خطأ غير متوقع'); 
                 }
-            } catch (error) {
-                resultBox.classList.add('result-error');
-                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.';
-            } finally {
-                btn.disabled = false;
-                btnText.innerText = 'توليد الكود 🚀';
+            } catch (error) { 
+                resultBox.classList.add('result-error'); 
+                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.'; 
+            } finally { 
+                btn.disabled = false; 
+                btnText.innerText = 'توليد الكود 🚀'; 
             }
         }
 
-        // ====== نسخ الكود ======
-        window.copyCode = function (code, btnElement) {
+        // 3. نسخ الكود
+        function copyCode(code, btnElement) {
             navigator.clipboard.writeText(code).then(() => {
                 const originalHTML = btnElement.innerHTML;
                 btnElement.innerHTML = '✅ تم النسخ';
