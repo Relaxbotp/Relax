@@ -1,341 +1,196 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BOT X | تنصيب البوت</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Projects</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        
-        :root {
-            --neon-blue: #00d2ff;
-            --dark-blue: #003366;
-            --light-blue: #66e0ff;
-            --bg-dark: #050505;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
 
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        
         body {
-            background-color: var(--bg-dark);
-            background-image: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.95)), url('https://share.google/MXZnelrPb6LH7rWcl');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #050505;
             color: #fff;
+            overflow: hidden;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100dvh;
-            padding: 20px;
+            perspective: 1000px; /* للـ 3D effect */
         }
 
+        /* === تأثير النجوم في الخلفية === */
+        .stars {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                              radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                              radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            animation: bgMove 100s linear infinite;
+        }
+        @keyframes bgMove { 100% { background-position: 550px 550px, 350px 350px, 250px 250px; } }
+
+        /* === الحاوية الرئيسية === */
         .container {
-            width: 100%;
-            max-width: 420px;
-            background: rgba(10, 15, 25, 0.85);
-            padding: 35px 25px;
-            border-radius: 24px;
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            box-shadow: 0 0 40px rgba(0, 210, 255, 0.2), inset 0 0 20px rgba(0, 210, 255, 0.05);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            transform: rotateY(-15deg) rotateX(5deg); /* إمالة الشاشة زي الفيديو */
+            transition: transform 0.1s ease-out;
         }
 
-        /* تأثير ضوئي علوي */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 50%; transform: translateX(-50%);
-            width: 80%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-            box-shadow: 0 0 10px var(--neon-blue);
+        /* === عنوان PROJECTS === */
+        .title-section h1 {
+            font-size: 80px;
+            font-weight: 900;
+            letter-spacing: 10px;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3); /* عنوان مفرغ */
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
         }
 
-        .profile-card {
+        /* === شبكة الكروت === */
+        .cards-grid {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin-bottom: 25px;
+            gap: 20px;
+            width: 400px;
         }
 
-        .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--neon-blue);
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8), 0 0 60px rgba(0, 210, 255, 0.4);
-            animation: glowPulseBlue 2.5s infinite alternate;
-            background-color: #111; 
-        }
-
-        @keyframes glowPulseBlue {
-            from { box-shadow: 0 0 15px rgba(0, 210, 255, 0.6), 0 0 40px rgba(0, 210, 255, 0.3); }
-            to { box-shadow: 0 0 35px rgba(0, 210, 255, 1), 0 0 80px rgba(0, 210, 255, 0.6); }
-        }
-
-        .brand-name {
-            font-size: 38px;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 10px var(--neon-blue), 0 0 25px var(--neon-blue), 0 0 50px var(--dark-blue);
-            margin-top: 15px;
-            letter-spacing: 5px;
-        }
-
-        .subtitle { font-size: 15px; color: #a0c4d8; margin-bottom: 25px; font-weight: 700; }
-
-        /* خانات الإحصائيات */
-        .stats-container {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-
-        .stat-box {
-            flex: 1;
-            background: rgba(0, 210, 255, 0.05);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            border-radius: 16px;
-            padding: 18px 10px;
-            text-align: center;
+        .card {
             position: relative;
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             overflow: hidden;
-            transition: 0.3s;
+            cursor: pointer;
+            transition: all 0.4s ease;
         }
 
-        .stat-box:hover {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        /* التوهج خلف الكارت */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: var(--glow-color);
+            filter: blur(60px);
+            opacity: 0.3;
+            z-index: -1;
+            transition: opacity 0.4s;
         }
 
-        .stat-value {
-            font-size: 26px;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 12px var(--neon-blue);
-            margin-bottom: 6px;
-            display: block;
+        .card:hover {
+            transform: translateX(20px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .stat-label {
+        .card:hover::before { opacity: 0.6; }
+
+        /* ألوان الكروت من الفيديو */
+        .card-purple { --glow-color: #8A2BE2; }
+        .card-cyan { --glow-color: #00FFFF; }
+        .card-pink { --glow-color: #FF1493; }
+        .card-teal { --glow-color: #008080; }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .card .tag {
+            display: inline-block;
+            font-size: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        .card p {
             font-size: 12px;
-            color: #8ab4c8;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        /* زر اكتشف */
+        .btn-explore {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            border-radius: 30px;
+            cursor: pointer;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            transition: 0.3s;
+            letter-spacing: 1px;
         }
+        .btn-explore:hover { background: #fff; color: #000; }
 
-        .input-group { margin-bottom: 22px; }
-        input[type="text"] { 
-            width: 100%; padding: 16px; border-radius: 14px; 
-            border: 1px solid #1a3a4a; background: rgba(0, 10, 20, 0.7); 
-            color: #fff; font-size: 18px; text-align: center; outline: none; transition: 0.3s; 
-        }
-        input[type="text"]:focus { 
-            border-color: var(--neon-blue); 
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); 
-        }
-        
-        .btn { 
-            width: 100%; padding: 16px; border: none; border-radius: 14px; 
-            background: linear-gradient(135deg, var(--dark-blue), var(--neon-blue)); 
-            color: #fff; font-size: 19px; font-weight: bold; cursor: pointer; transition: 0.3s; 
-            display: flex; justify-content: center; align-items: center; gap: 10px; 
-            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.3); 
-        }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.6); }
-        .btn:disabled { background: #222; cursor: not-allowed; transform: none; box-shadow: none; color: #666; }
-
-        .result-box { margin-top: 22px; padding: 18px; border-radius: 14px; font-size: 18px; font-weight: bold; display: none; animation: fadeIn 0.4s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .result-success { 
-            background: rgba(0, 210, 255, 0.1); border: 1px solid var(--neon-blue); 
-            color: var(--light-blue); display: block; box-shadow: 0 0 20px rgba(0, 210, 255, 0.15); 
-        }
-        .result-error { 
-            background: rgba(255, 0, 0, 0.1); border: 1px solid #ff3333; 
-            color: #ff6666; display: block; 
-        }
-
-        .copy-btn { 
-            background: rgba(0, 210, 255, 0.15); border: 1px solid var(--neon-blue); 
-            color: var(--light-blue); padding: 10px 18px; border-radius: 10px; cursor: pointer; 
-            font-family: 'Cairo', sans-serif; font-weight: bold; font-size: 14px; transition: 0.3s; 
-            margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; 
-        }
-        .copy-btn:hover { background: var(--neon-blue); color: #000; }
-
-        .guide-section { margin-top: 35px; padding-top: 25px; border-top: 1px solid rgba(0, 210, 255, 0.15); text-align: right; }
-        .guide-title { font-size: 16px; color: var(--light-blue); font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
-        .guide-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 13px; color: #b0c4d0; }
-        .step-num { 
-            background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); 
-            width: 24px; height: 24px; border-radius: 50%; 
-            display: flex; justify-content: center; align-items: center; 
-            font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; 
-            border: 1px solid rgba(0, 210, 255, 0.4); 
-        }
-        .highlight-text { color: #fff; font-weight: bold; }
-        
-        .footer { margin-top: 30px; font-size: 13px; color: #556; font-weight: bold; letter-spacing: 1px; }
-
-        .social-links-container { display: flex; gap: 12px; margin-top: 20px; }
-        .social-btn { 
-            flex: 1; padding: 12px; border-radius: 12px; text-align: center; 
-            text-decoration: none; font-size: 13px; font-weight: bold; 
-            display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.3s; 
-        }
-        .social-btn.wa { background: rgba(37, 211, 102, 0.1); color: #25D366; border: 1px solid #25D366; }
-        .social-btn.wa:hover { background: rgba(37, 211, 102, 0.2); }
-        .social-btn.tg { background: rgba(0, 210, 255, 0.1); color: var(--neon-blue); border: 1px solid var(--neon-blue); }
-        .social-btn.tg:hover { background: rgba(0, 210, 255, 0.2); }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="profile-card">
-            <!-- استخدام رابط الصورة الجديد -->
-            <img src="https://share.google/MXZnelrPb6LH7rWcl" alt="BOT X Profile" class="profile-image">
-            <div class="brand-name">BOT X</div>
+    <!-- النجوم -->
+    <div class="stars"></div>
+
+    <div class="container" id="3d-container">
+        
+        <!-- العنوان الجانبي -->
+        <div class="title-section">
+            <h1>PROJECTS</h1>
         </div>
 
-        <div class="subtitle">أدخل رقمك لطلب كود التنصيب</div>
-
-        <!-- خانات الإحصائيات -->
-        <div class="stats-container">
-            <div class="stat-box">
-                <span class="stat-value" id="statInstalled">0</span>
-                <span class="stat-label">📱 الأجهزة المنصبة</span>
+        <!-- الكروت -->
+        <div class="cards-grid">
+            <div class="card card-purple">
+                <span class="tag">AI MODEL</span>
+                <h3>AI CORE</h3>
+                <p>The foundational reasoning engine behind every module in the lab.</p>
             </div>
-            <div class="stat-box">
-                <span class="stat-value" id="statAvailable">100</span>
-                <span class="stat-label">🟢 الأماكن المتاحة</span>
+
+            <div class="card card-cyan">
+                <span class="tag">VISION MODEL</span>
+                <h3>AI VISION</h3>
+                <p>Processing systems trained to read and understand the visual world.</p>
             </div>
+
+            <div class="card card-pink">
+                <span class="tag">FINANCE</span>
+                <h3>CREDIT</h3>
+                <p>Infrastructure for recognizing trust and credit systems in real time.</p>
+            </div>
+
+            <div class="card card-teal">
+                <span class="tag">NETWORK</span>
+                <h3>NEURAL GRID</h3>
+                <p>A distributed access layer connecting a fleet of robotic units.</p>
+            </div>
+
+            <button class="btn-explore">EXPLORE MORE</button>
         </div>
 
-        <div class="input-group">
-            <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off">
-        </div>
-
-        <button class="btn" id="generateBtn" onclick="generateCode()">
-            <span id="btnText">توليد الكود 🚀</span>
-        </button>
-
-        <div id="resultBox" class="result-box"></div>
-
-        <div class="social-links-container">
-            <a href="https://whatsapp.com/channel/0029Vb8ycvQ5kg6xUaBjEw0O" target="_blank" class="social-btn wa">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                قناة المطور
-            </a>
-            <a href="https://t.me/dark00909" target="_blank" class="social-btn tg">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                المطور تيلي
-            </a>
-        </div>
-
-        <div class="guide-section">
-            <div class="guide-title">❓ طريقة ربط البوت</div>
-            <div class="guide-step"><span class="step-num">1</span><div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div></div>
-            <div class="guide-step"><span class="step-num">2</span><div>اذهب إلى <span class="highlight-text">الإعدادات</span> (أو النقاط الثلاث).</div></div>
-            <div class="guide-step"><span class="step-num">3</span><div>اختر <span class="highlight-text">الأجهزة المرتبطة</span>.</div></div>
-            <div class="guide-step"><span class="step-num">4</span><div>اضغط على <span class="highlight-text">ربط جهاز</span>.</div></div>
-            <div class="guide-step"><span class="step-num">5</span><div>اختر <span class="highlight-text">الربط برقم الهاتف</span>.</div></div>
-            <div class="guide-step"><span class="step-num">6</span><div>أدخل الكود المكون من 8 أرقام الذي ظهر لك أعلاه.</div></div>
-        </div>
-
-        <div class="footer">© BOT X | 2026</div>
     </div>
 
     <script>
-        // المفتاح السري (تأكد أنه مطابق للمفتاح الموجود في ملف index.js الخاص بالبوت)
-        const SECRET_API_KEY = "Relax_Secret_Key_2026"; 
+        // حركة 3D لما الماوس يتحرك (Parallax Effect)
+        const container = document.getElementById('3d-container');
 
-        // 1. جلب الإحصائيات
-        async function fetchBotStats() {
-            try {
-                const response = await fetch('/api/stats', {
-                    headers: { 'x-api-key': SECRET_API_KEY }
-                });
-                const data = await response.json();
-                
-                if (data) {
-                    document.getElementById('statInstalled').innerText = data.installed || 0;
-                    document.getElementById('statAvailable').innerText = data.available || 100;
-                }
-            } catch (e) {
-                console.error("فشل جلب الإحصائيات:", e);
-            }
-        }
-
-        fetchBotStats();
-        setInterval(fetchBotStats, 5000); // تحديث كل 5 ثواني
-
-        // 2. توليد الكود
-        async function generateCode() {
-            const phoneInput = document.getElementById('phoneInput').value.trim();
-            const btn = document.getElementById('generateBtn');
-            const btnText = document.getElementById('btnText');
-            const resultBox = document.getElementById('resultBox');
+        document.addEventListener('mousemove', (e) => {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 50;
             
-            resultBox.className = 'result-box';
-            resultBox.innerHTML = '';
-
-            if (!phoneInput) { 
-                resultBox.classList.add('result-error'); 
-                resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; 
-                return; 
-            }
-            
-            btn.disabled = true; 
-            btnText.innerText = 'جاري التوليد...';
-
-            try {
-                const response = await fetch('/api/pair', { 
-                    method: 'POST', 
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'x-api-key': SECRET_API_KEY
-                    }, 
-                    body: JSON.stringify({ phone: phoneInput }) 
-                });
-                
-                const data = await response.json();
-
-                if (data.code) {
-                    resultBox.classList.add('result-success');
-                    resultBox.innerHTML = `
-                        <div>كود التنصيب الخاص بك:</div>
-                        <div style="font-size: 26px; letter-spacing: 3px; margin: 12px 0; color: #fff; text-shadow: 0 0 15px var(--neon-blue); font-weight: 900;">${data.code}</div>
-                        <button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ الكود</button>
-                    `;
-                } else { 
-                    throw new Error(data.error || 'حدث خطأ غير متوقع'); 
-                }
-            } catch (error) { 
-                resultBox.classList.add('result-error'); 
-                resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.'; 
-            } finally { 
-                btn.disabled = false; 
-                btnText.innerText = 'توليد الكود 🚀'; 
-            }
-        }
-
-        // 3. نسخ الكود
-        function copyCode(code, btnElement) {
-            navigator.clipboard.writeText(code).then(() => {
-                const originalHTML = btnElement.innerHTML;
-                btnElement.innerHTML = '✅ تم النسخ';
-                setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
-            });
-        }
+            // بنحافظ على الميل الأساسي وبنزود عليه حركة الماوس
+            container.style.transform = `rotateY(${-15 - xAxis}deg) rotateX(${5 + yAxis}deg)`;
+        });
     </script>
 </body>
 </html>
