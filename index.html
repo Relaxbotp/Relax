@@ -21,20 +21,30 @@
 
         body {
             background-color: var(--dark-bg);
-            background-image: radial-gradient(circle at top left, #1a0b2e 0%, #06030a 60%), 
-                              radial-gradient(circle at bottom right, #2a0845 0%, transparent 50%);
-            background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
-        /* ================= الهيدر ================= */
+        /* الخلفية المتحركة */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at top left, #1a0b2e 0%, #06030a 60%), 
+                        radial-gradient(circle at bottom right, #2a0845 0%, transparent 50%);
+        }
+
+        /* الهيدر */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: rgba(5, 2, 10, 0.9);
+            padding: 15px 5%; background: rgba(5, 2, 10, 0.7);
             backdrop-filter: blur(15px); border-bottom: 1px solid rgba(138, 43, 226, 0.2);
             position: sticky; top: 0; z-index: 100;
         }
@@ -54,7 +64,7 @@
         }
         .header-btn:hover { background: var(--primary); box-shadow: 0 0 20px var(--primary); }
 
-        /* ================= قسم الهيرو (Hero) ================= */
+        /* قسم الهيرو */
         .hero {
             display: flex; align-items: center; justify-content: space-between;
             padding: 60px 5%; max-width: 1200px; margin: 0 auto; width: 100%;
@@ -67,12 +77,10 @@
         .hero-text p { font-size: 18px; color: var(--text-muted); line-height: 1.8; max-width: 500px; }
 
         .hero-image { flex: 1; display: flex; justify-content: center; position: relative; }
-        /* تم تغيير رابط الصورة لواحد شغال ومضمون */
         .hero-image img { 
             width: 100%; max-width: 380px; border-radius: 20px; z-index: 2; 
             filter: drop-shadow(0 0 40px rgba(138, 43, 226, 0.6)); 
-            object-fit: cover;
-            border: 1px solid rgba(138, 43, 226, 0.3);
+            object-fit: cover; border: 1px solid rgba(138, 43, 226, 0.3);
         }
         .hero-image::before { 
             content: ''; position: absolute; width: 250px; height: 250px; 
@@ -80,10 +88,8 @@
             opacity: 0.5; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; 
         }
 
-        /* ================= صندوق التنصيب ================= */
-        .install-wrapper {
-            width: 100%; max-width: 900px; margin: 0 auto 50px; padding: 0 20px;
-        }
+        /* صندوق التنصيب */
+        .install-wrapper { width: 100%; max-width: 900px; margin: 0 auto 50px; padding: 0 20px; }
         .install-box-container {
             background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
             padding: 30px; backdrop-filter: blur(20px);
@@ -91,22 +97,12 @@
             position: relative; z-index: 10;
         }
 
-        .install-box-title { 
-            display: flex; align-items: center; justify-content: center; gap: 10px; 
-            font-size: 22px; font-weight: bold; margin-bottom: 30px; color: #fff;
-            text-shadow: 0 0 10px var(--primary);
-        }
+        .install-box-title { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 22px; font-weight: bold; margin-bottom: 30px; color: #fff; text-shadow: 0 0 10px var(--primary); }
         .install-box-title i { color: var(--primary-glow); }
-
         .install-content { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
 
-        /* الموبايل الوهمي */
         .install-visual { flex: 0.8; display: flex; justify-content: center; position: relative; }
-        .phone-mockup { 
-            width: 180px; height: 350px; background: #0d0d0d; border: 4px solid #222; 
-            border-radius: 25px; position: relative; display: flex; justify-content: center; 
-            align-items: center; box-shadow: 0 0 30px rgba(138, 43, 226, 0.2); 
-        }
+        .phone-mockup { width: 180px; height: 350px; background: #0d0d0d; border: 4px solid #222; border-radius: 25px; position: relative; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 30px rgba(138, 43, 226, 0.2); }
         .phone-mockup i { font-size: 70px; color: #25D366; filter: drop-shadow(0 0 15px #25D366); z-index: 2;}
         
         .orbit { position: absolute; border: 1px solid rgba(138, 43, 226, 0.4); border-radius: 50%; border-top-color: var(--primary-glow); animation: spin 4s linear infinite; }
@@ -114,114 +110,56 @@
         .orbit-2 { width: 290px; height: 290px; animation-direction: reverse; animation-duration: 6s;}
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        .shield-icon { 
-            position: absolute; bottom: 10px; left: 0px; font-size: 32px; color: var(--primary-glow); 
-            background: #111; padding: 10px; border-radius: 50%; border: 1px solid var(--primary); z-index: 3; 
-            box-shadow: 0 0 15px var(--primary);
-        }
+        .shield-icon { position: absolute; bottom: 10px; left: 0px; font-size: 32px; color: var(--primary-glow); background: #111; padding: 10px; border-radius: 50%; border: 1px solid var(--primary); z-index: 3; box-shadow: 0 0 15px var(--primary); }
 
-        /* الفورم */
         .install-form { flex: 1.2; display: flex; flex-direction: column; gap: 15px; }
         .input-group { position: relative; }
         .input-group i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 18px; }
-        .input-group input { 
-            width: 100%; padding: 15px 45px 15px 15px; background: rgba(0, 0, 0, 0.5); 
-            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #fff; 
-            font-size: 16px; outline: none; transition: 0.3s; font-family: 'Cairo', sans-serif;
-        }
+        .input-group input { width: 100%; padding: 15px 45px 15px 15px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #fff; font-size: 16px; outline: none; transition: 0.3s; font-family: 'Cairo', sans-serif; }
         .input-group input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(138, 43, 226, 0.3); }
         .input-hint { font-size: 12px; color: var(--text-muted); text-align: right; padding-right: 5px; }
 
-        .install-btn { 
-            background: linear-gradient(90deg, #4a0e85, #8a2be2); color: white; border: none; 
-            padding: 16px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; 
-            transition: 0.3s; box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4); 
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-        }
+        .install-btn { background: linear-gradient(90deg, #4a0e85, #8a2be2); color: white; border: none; padding: 16px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4); display: flex; justify-content: center; align-items: center; gap: 10px; }
         .install-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(138, 43, 226, 0.7); }
         .install-btn:disabled { background: #333; cursor: not-allowed; box-shadow: none; transform: none; }
 
-        /* ================= قسم الخطوات ================= */
-        .steps-section { 
-            display: flex; justify-content: center; align-items: flex-start; gap: 30px; 
-            max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; position: relative; 
-        }
-        .steps-section::before { 
-            content: ''; position: absolute; top: 30px; left: 15%; right: 15%; 
-            height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); z-index: 1; 
-        }
-        
+        /* الخطوات */
+        .steps-section { display: flex; justify-content: center; align-items: flex-start; gap: 30px; max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; position: relative; z-index: 5; }
+        .steps-section::before { content: ''; position: absolute; top: 30px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); z-index: 1; }
         .step-item { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 2; width: 120px; }
-        .step-circle { 
-            width: 60px; height: 60px; background: #140a24; border: 2px solid var(--primary); 
-            border-radius: 50%; display: flex; justify-content: center; align-items: center; 
-            font-size: 22px; color: var(--primary-glow); box-shadow: 0 0 20px rgba(138, 43, 226, 0.2); 
-            margin-bottom: 15px; position: relative; 
-        }
-        .step-number { 
-            position: absolute; top: -5px; right: -5px; background: var(--primary); color: white; 
-            width: 22px; height: 22px; border-radius: 50%; font-size: 12px; display: flex; 
-            justify-content: center; align-items: center; font-weight: bold; border: 2px solid #140a24;
-        }
+        .step-circle { width: 60px; height: 60px; background: #140a24; border: 2px solid var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 22px; color: var(--primary-glow); box-shadow: 0 0 20px rgba(138, 43, 226, 0.2); margin-bottom: 15px; position: relative; }
+        .step-number { position: absolute; top: -5px; right: -5px; background: var(--primary); color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 12px; display: flex; justify-content: center; align-items: center; font-weight: bold; border: 2px solid #140a24; }
         .step-item p { font-size: 14px; color: #fff; font-weight: 700; }
 
-        /* ================= قسم المميزات ================= */
-        .features-section { 
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; 
-            max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; 
-        }
-        .feature-card { 
-            background: var(--card-bg); border: 1px solid rgba(138, 43, 226, 0.2); 
-            border-radius: 15px; padding: 30px 20px; text-align: center; 
-            transition: 0.3s; backdrop-filter: blur(10px); 
-        }
-        .feature-card:hover { 
-            border-color: var(--primary); transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2); 
-        }
-        .feature-icon { 
-            font-size: 35px; color: var(--primary-glow); margin-bottom: 15px; 
-            filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5)); 
-        }
+        /* المميزات */
+        .features-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; z-index: 5; position: relative; }
+        .feature-card { background: var(--card-bg); border: 1px solid rgba(138, 43, 226, 0.2); border-radius: 15px; padding: 30px 20px; text-align: center; transition: 0.3s; backdrop-filter: blur(10px); }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2); }
+        .feature-icon { font-size: 35px; color: var(--primary-glow); margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5)); }
         .feature-card h3 { font-size: 18px; margin-bottom: 10px; color: #fff; font-weight: bold; }
         .feature-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-        /* ================= الفوتر ================= */
-        footer { 
-            background: #090510; border-top: 1px solid var(--border-color); 
-            padding: 25px 5%; display: flex; justify-content: space-between; 
-            align-items: center; margin-top: auto;
-        }
+        /* الفوتر */
+        footer { background: #090510; border-top: 1px solid var(--border-color); padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; margin-top: auto; z-index: 10; }
         .footer-text { color: var(--text-muted); font-size: 14px; display: flex; align-items: center; gap: 10px; font-weight: bold;}
         .social-icons { display: flex; gap: 15px; }
-        .social-icons a { 
-            width: 40px; height: 40px; background: rgba(255, 255, 255, 0.05); 
-            border-radius: 50%; display: flex; justify-content: center; align-items: center; 
-            color: #fff; text-decoration: none; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); 
-        }
-        .social-icons a:hover { 
-            background: var(--primary); border-color: var(--primary-glow); 
-            transform: translateY(-3px); box-shadow: 0 0 15px var(--primary); 
-        }
+        .social-icons a { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; text-decoration: none; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .social-icons a:hover { background: var(--primary); border-color: var(--primary-glow); transform: translateY(-3px); box-shadow: 0 0 15px var(--primary); }
 
-        /* ================= التجاوب مع الموبايل ================= */
+        /* الموبايل */
         @media (max-width: 900px) {
             .hero { flex-direction: column; text-align: center; padding: 30px 5%; gap: 20px;}
             .hero-text h1 { font-size: 32px; }
             .hero-text h1 span { font-size: 45px; }
             .hero-text p { margin: 0 auto; font-size: 15px; }
             .hero-image img { max-width: 300px; }
-            
             .install-content { flex-direction: column; gap: 30px; }
-            
             .steps-section { flex-direction: column; align-items: center; gap: 30px; }
             .steps-section::before { display: none; }
-            
             .features-section { grid-template-columns: repeat(2, 1fr); }
             .nav-links { display: none; }
             footer { flex-direction: column; gap: 20px; text-align: center; }
         }
-
         @media (max-width: 500px) {
             .features-section { grid-template-columns: 1fr; }
             .install-box-container { padding: 20px 15px; }
@@ -233,11 +171,10 @@
 </head>
 <body>
 
-    <!-- الهيدر -->
+    <canvas id="bg-canvas"></canvas>
+
     <header>
-        <div class="logo">
-            <i class="fa-solid fa-xmarks-lines"></i> BOT X
-        </div>
+        <div class="logo"><i class="fa-solid fa-xmarks-lines"></i> BOT X</div>
         <nav class="nav-links">
             <a href="#"><i class="fa-solid fa-circle-info"></i> حول البوت</a>
             <a href="#"><i class="fa-solid fa-headset"></i> الدعم</a>
@@ -248,32 +185,25 @@
         </a>
     </header>
 
-    <!-- قسم الهيرو -->
     <section class="hero">
         <div class="hero-text">
             <h1>موقع تنصيب بوت <span>X</span> <i class="fa-solid fa-crown" style="font-size: 35px; color: var(--primary); margin-right: 10px;"></i></h1>
             <p>أدخل رقم واتسابك .. واحصل على رمز التنصيب واربط حسابك مع البوت بكل سهولة وأمان.</p>
         </div>
         <div class="hero-image">
-            <!-- تم وضع صورة أنيمي مناسبة -->
             <img src="https://i.pinimg.com/736x/8a/e4/6d/8ae46dc4b1e167159f9c5e4f2a8f82f6.jpg" alt="BOT X Anime">
         </div>
     </section>
 
-    <!-- صندوق التنصيب -->
     <div class="install-wrapper">
         <div class="install-box-container">
-            <div class="install-box-title">
-                <i class="fa-solid fa-gear"></i> أبدأ عملية التنصيب
-            </div>
+            <div class="install-box-title"><i class="fa-solid fa-gear"></i> أبدأ عملية التنصيب</div>
             
             <div class="install-content">
                 <div class="install-visual">
                     <div class="orbit orbit-1"></div>
                     <div class="orbit orbit-2"></div>
-                    <div class="phone-mockup">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
+                    <div class="phone-mockup"><i class="fa-brands fa-whatsapp"></i></div>
                     <i class="fa-solid fa-shield-check shield-icon"></i>
                 </div>
 
@@ -288,65 +218,29 @@
                         <i class="fa-solid fa-bolt"></i> إنشاء رمز التنصيب
                     </button>
                     
-                    <!-- مكان ظهور الكود -->
                     <div id="result" style="display: none; padding: 15px; border-radius: 10px; font-weight: bold; text-align: center; font-size: 18px; margin-top: 10px; transition: 0.3s;"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- قسم الخطوات -->
     <section class="steps-section">
-        <div class="step-item">
-            <div class="step-circle"><span class="step-number">1</span><i class="fa-solid fa-mobile-screen-button"></i></div>
-            <p>أدخل رقمك</p>
-        </div>
-        <div class="step-item">
-            <div class="step-circle"><span class="step-number">2</span><i class="fa-solid fa-key"></i></div>
-            <p>احصل على رمز التنصيب</p>
-        </div>
-        <div class="step-item">
-            <div class="step-circle"><span class="step-number">3</span><i class="fa-solid fa-check"></i></div>
-            <p>اربط حسابك</p>
-        </div>
-        <div class="step-item">
-            <div class="step-circle"><span class="step-number">4</span><i class="fa-solid fa-rocket"></i></div>
-            <p>تم بنجاح!</p>
-        </div>
+        <div class="step-item"><div class="step-circle"><span class="step-number">1</span><i class="fa-solid fa-mobile-screen-button"></i></div><p>أدخل رقمك</p></div>
+        <div class="step-item"><div class="step-circle"><span class="step-number">2</span><i class="fa-solid fa-key"></i></div><p>احصل على رمز التنصيب</p></div>
+        <div class="step-item"><div class="step-circle"><span class="step-number">3</span><i class="fa-solid fa-check"></i></div><p>اربط حسابك</p></div>
+        <div class="step-item"><div class="step-circle"><span class="step-number">4</span><i class="fa-solid fa-rocket"></i></div><p>تم بنجاح!</p></div>
     </section>
 
-    <!-- قسم المميزات -->
     <section class="features-section">
-        <div class="feature-card">
-            <i class="fa-solid fa-gem feature-icon"></i>
-            <h3>مميزات رهيبة</h3>
-            <p>بوت متطور بميزات لا تنتهي تلبي جميع احتياجاتك.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fa-solid fa-bolt feature-icon"></i>
-            <h3>سهولة الاستخدام</h3>
-            <p>خطوات بسيطة وسريعة لتنصيب البوت في ثوانٍ معدودة.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fa-solid fa-shield-halved feature-icon"></i>
-            <h3>أمان عالي</h3>
-            <p>حماية كاملة لحسابك ومحادثاتك بفضل أنظمة التشفير.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fa-solid fa-headset feature-icon"></i>
-            <h3>دعم فوري</h3>
-            <p>فريق دعم متواجد دائماً لمساعدتك وحل أي مشكلة.</p>
-        </div>
+        <div class="feature-card"><i class="fa-solid fa-gem feature-icon"></i><h3>مميزات رهيبة</h3><p>بوت متطور بميزات لا تنتهي تلبي جميع احتياجاتك.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-bolt feature-icon"></i><h3>سهولة الاستخدام</h3><p>خطوات بسيطة وسريعة لتنصيب البوت في ثوانٍ معدودة.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-shield-halved feature-icon"></i><h3>أمان عالي</h3><p>حماية كاملة لحسابك ومحادثاتك بفضل أنظمة التشفير.</p></div>
+        <div class="feature-card"><i class="fa-solid fa-headset feature-icon"></i><h3>دعم فوري</h3><p>فريق دعم متواجد دائماً لمساعدتك وحل أي مشكلة.</p></div>
     </section>
 
-    <!-- الفوتر -->
     <footer>
-        <div class="logo" style="font-size: 20px;">
-            <i class="fa-solid fa-xmarks-lines"></i> BOT X
-        </div>
-        <div class="footer-text">
-            معاً .. نحو تجربة أفضل في عالم البوتات <i class="fa-solid fa-heart" style="color: #ff0055;"></i>
-        </div>
+        <div class="logo" style="font-size: 20px;"><i class="fa-solid fa-xmarks-lines"></i> BOT X</div>
+        <div class="footer-text">معاً .. نحو تجربة أفضل في عالم البوتات <i class="fa-solid fa-heart" style="color: #ff0055;"></i></div>
         <div class="social-icons">
             <a href="https://whatsapp.com/channel/0029Vb8ycvQ5kg6xUaBjEw0O" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="#"><i class="fa-brands fa-telegram"></i></a>
@@ -355,7 +249,55 @@
         </div>
     </footer>
 
-    <!-- سكريبت ربط الـ API -->
+    <!-- سكريبت الخلفية المتحركة -->
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
+
+        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let mouse = { x: width/2, y: height/2 };
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('touchmove', e => { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width; this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1; this.vy = (Math.random() - 0.5) * 1;
+                this.radius = Math.random() * 2 + 1;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                let dx = mouse.x - this.x; let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 100) { this.x -= dx * 0.02; this.y -= dy * 0.02; }
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#a855f7'; ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 80; i++) particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles(); animateParticles();
+    </script>
+
+    <!-- سكريبت التنصيب -->
     <script>
         async function generateCode() {
             const phoneInput = document.getElementById('phoneInput').value.trim();
@@ -377,24 +319,18 @@
             resultDiv.style.display = 'none';
 
             try {
-                // تأكد أن مسار الـ API هو /api/pair أو حسب ما هو معرف في سيرفر البوت بتاعك
+                // الاتصال بالسيرفر (هنستخدم مسار الـ API اللي هنعمله في Vercel)
                 const response = await fetch('/api/pair', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-api-key': '45.13.225.210:26571'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ phone: phoneInput })
                 });
 
                 const text = await response.text();
                 let data;
                 
-                try {
-                    data = JSON.parse(text);
-                } catch (e) {
-                    throw new Error('استجابة السيرفر غير صالحة. تأكد من تشغيل البوت.');
-                }
+                try { data = JSON.parse(text); } 
+                catch (e) { throw new Error('استجابة السيرفر غير صالحة.'); }
 
                 if (data.code || data.pairingCode) {
                     const code = data.code || data.pairingCode;
@@ -407,16 +343,15 @@
                         <div style="font-size: 26px; letter-spacing: 4px; font-weight: 900; text-shadow: 0 0 10px #00ffcc;">${code}</div>
                     `;
                 } else {
-                    throw new Error(data.message || data.error || 'فشل الحصول على الكود من السيرفر.');
+                    throw new Error(data.message || data.error || 'فشل الحصول على الكود.');
                 }
-
             } catch (error) {
                 console.error(error);
                 resultDiv.style.display = 'block';
                 resultDiv.style.background = 'rgba(255, 0, 0, 0.1)';
                 resultDiv.style.border = '1px solid #ff0000';
                 resultDiv.style.color = '#ff4d4d';
-                resultDiv.innerHTML = `⚠️ ${error.message || 'تعذر الاتصال بالسيرفر.'}`;
+                resultDiv.innerHTML = `⚠️ تعذر الاتصال بالسيرفر. تأكد من تشغيل البوت.`;
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = btnText;
