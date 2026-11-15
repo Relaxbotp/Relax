@@ -1,115 +1,354 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أحمد ❤️ رؤى</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Amiri:wght@700&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
-  body{background:#fff0f3;color:#4a0e1e;text-align:center;overflow-x:hidden}
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:25px;background:linear-gradient(180deg,#7f0e2a,#c9184a,#ff4d6d,#ff8fa3);position:relative}
-  .hero h3{color:#ffd700;font-size:28px;letter-spacing:1px}
-  .hero h1{font-size:70px;color:white;line-height:1.1;text-shadow:0 10px 30px rgba(0,0,0,.3);margin:10px 0}
-  .hero h1 span{color:#ffe5ec}
-  .hero p{color:white;font-size:22px;max-width:600px;line-height:1.7}
-  .btn{background:white;color:#c9184a;border:none;padding:16px 40px;border-radius:50px;font-size:21px;font-weight:900;cursor:pointer;margin-top:25px;box-shadow:0 15px 30px rgba(0,0,0,.25)}
-  .card{background:white;margin:20px auto;max-width:650px;border-radius:30px;padding:30px;box-shadow:0 15px 35px rgba(201,24,74,.15)}
-  .card h2{color:#c9184a;font-size:32px;margin-bottom:12px}
-  .card p{font-size:20px;line-height:1.9}
-  .photos{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:15px}
-  .photos img{width:160px;height:160px;object-fit:cover;border-radius:20px;border:4px solid #ff8fa3}
-  .big-love{font-size:50px;margin:10px 0}
-  .count{font-size:38px;font-weight:900;color:#c9184a}
-  .love-btn{background:#c9184a;color:white;border:none;padding:18px 45px;border-radius:50px;font-size:24px;font-weight:900;cursor:pointer;margin:10px}
-  .heart{position:fixed;top:-30px;animation:fall linear infinite;pointer-events:none;z-index:99}
-  @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
-  .footer{padding:30px;color:#999}
-  input{padding:12px 20px;border-radius:20px;border:2px solid #ffb3c1;font-size:18px;width:90%;max-width:400px;margin-top:10px;text-align:center}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BOT X | موقع التنصيب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        
+        :root {
+            --primary: #8a2be2;
+            --primary-glow: #a855f7;
+            --dark-bg: #06030a;
+            --card-bg: rgba(20, 10, 35, 0.7);
+            --border-color: rgba(138, 43, 226, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #b3a4c2;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(circle at top left, #1a0b2e 0%, #06030a 50%), 
+                              radial-gradient(circle at bottom right, #2a0845 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glow-text { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); }
+
+        /* ================= الهيدر ================= */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: rgba(10, 5, 15, 0.8);
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .logo { display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 900; color: #fff; }
+        .logo i { color: var(--primary); font-size: 28px; }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 15px; font-weight: 700; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .nav-links a:hover { color: var(--primary-glow); text-shadow: 0 0 10px var(--primary); }
+
+        .header-btn {
+            background: transparent; border: 1px solid var(--primary); color: #fff;
+            padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer;
+            transition: 0.3s; text-decoration: none; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+        }
+        .header-btn:hover { background: var(--primary); box-shadow: 0 0 20px var(--primary); }
+
+        /* ================= قسم الهيرو ================= */
+        .hero { display: flex; align-items: center; justify-content: space-between; padding: 50px 5%; max-width: 1200px; margin: 0 auto; position: relative; }
+        .hero-text { flex: 1; padding-left: 20px; z-index: 2; }
+        .hero-text h1 { font-size: 50px; font-weight: 900; line-height: 1.2; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--primary-glow); font-size: 65px; }
+        .hero-text p { font-size: 18px; color: var(--text-muted); line-height: 1.8; max-width: 500px; }
+
+        .hero-image { flex: 1; display: flex; justify-content: center; position: relative; }
+        .hero-image img { width: 100%; max-width: 450px; border-radius: 20px; filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.5)); z-index: 2; object-fit: cover; }
+        .hero-image::before { content: ''; position: absolute; width: 300px; height: 300px; background: var(--primary); border-radius: 50%; filter: blur(100px); opacity: 0.4; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; }
+
+        /* ================= صندوق التنصيب ================= */
+        .install-box-container {
+            width: 100%; max-width: 900px; margin: -30px auto 50px;
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
+            padding: 30px; backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(138, 43, 226, 0.1);
+            position: relative; z-index: 10;
+        }
+
+        .install-box-title { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 20px; font-weight: bold; margin-bottom: 30px; color: var(--primary-glow); }
+        .install-content { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+
+        .install-visual { flex: 0.8; display: flex; justify-content: center; position: relative; }
+        .phone-mockup { width: 200px; height: 380px; background: #111; border: 4px solid #333; border-radius: 30px; position: relative; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 30px rgba(138, 43, 226, 0.3); overflow: hidden; }
+        .phone-mockup i { font-size: 80px; color: #25D366; filter: drop-shadow(0 0 15px #25D366); z-index: 2;}
+        
+        .orbit { position: absolute; border: 2px solid rgba(138, 43, 226, 0.5); border-radius: 50%; border-top-color: transparent; border-bottom-color: transparent; animation: spin 4s linear infinite; }
+        .orbit-1 { width: 250px; height: 250px; transform: rotate(45deg); }
+        .orbit-2 { width: 300px; height: 300px; animation-direction: reverse; animation-duration: 6s;}
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .shield-icon { position: absolute; bottom: -10px; left: -10px; font-size: 40px; color: var(--primary-glow); background: #111; padding: 10px; border-radius: 12px; border: 1px solid var(--primary); z-index: 3; }
+
+        .install-form { flex: 1.2; display: flex; flex-direction: column; gap: 20px; }
+        .input-group { position: relative; }
+        .input-group i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 18px; }
+        .input-group input { width: 100%; padding: 15px 45px 15px 15px; background: rgba(0, 0, 0, 0.4); border: 1px solid #444; border-radius: 12px; color: #fff; font-size: 16px; outline: none; transition: 0.3s; font-family: 'Cairo', sans-serif; }
+        .input-group input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(138, 43, 226, 0.3); }
+        .input-hint { font-size: 12px; color: var(--text-muted); text-align: left; margin-top: 5px; padding-right: 5px; }
+
+        .install-btn { background: linear-gradient(90deg, #5c1a9e, var(--primary)); color: white; border: none; padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4); display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .install-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6); }
+        .install-btn:disabled { background: #333; cursor: not-allowed; box-shadow: none; transform: none; }
+
+        /* ================= قسم الخطوات ================= */
+        .steps-section { display: flex; justify-content: center; align-items: flex-start; gap: 40px; max-width: 1000px; margin: 0 auto 60px; padding: 0 20px; position: relative; }
+        .steps-section::before { content: ''; position: absolute; top: 25px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); z-index: 1; }
+        .step-item { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 2; width: 120px; }
+        .step-circle { width: 60px; height: 60px; background: #140a24; border: 2px solid var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: var(--primary-glow); box-shadow: 0 0 20px rgba(138, 43, 226, 0.3); margin-bottom: 15px; position: relative; }
+        .step-number { position: absolute; top: -5px; right: -5px; background: var(--primary); color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 12px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
+        .step-item p { font-size: 14px; color: var(--text-muted); font-weight: bold; }
+
+        /* ================= قسم المميزات ================= */
+        .features-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; }
+        .feature-card { background: var(--card-bg); border: 1px solid rgba(138, 43, 226, 0.2); border-radius: 15px; padding: 30px 20px; text-align: center; transition: 0.3s; backdrop-filter: blur(10px); }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2); }
+        .feature-icon { font-size: 40px; color: var(--primary-glow); margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5)); }
+        .feature-card h3 { font-size: 18px; margin-bottom: 10px; color: #fff; }
+        .feature-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+        /* ================= الفوتر ================= */
+        footer { background: #090510; border-top: 1px solid var(--border-color); padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .footer-text { color: var(--text-muted); font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; text-decoration: none; transition: 0.3s; border: 1px solid transparent; }
+        .social-icons a:hover { background: var(--primary); border-color: var(--primary-glow); transform: translateY(-3px); box-shadow: 0 0 15px var(--primary); }
+
+        /* ================= التجاوب ================= */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding: 30px 5%; }
+            .hero-text { padding-left: 0; margin-top: 30px; }
+            .hero-text h1 { font-size: 36px; }
+            .hero-text h1 span { font-size: 46px; }
+            .hero-text p { margin: 0 auto; }
+            .install-content { flex-direction: column; }
+            .install-visual { margin-bottom: 30px; }
+            .features-section { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+        }
+
+        @media (max-width: 600px) {
+            .steps-section { flex-direction: column; align-items: center; gap: 30px; }
+            .steps-section::before { display: none; }
+            .features-section { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="hero">
-  <div style="font-size:70px">❤️</div>
-  <h3>عيد حبنا</h3>
-  <h1>أحمد <span>❤️</span><br>رؤى</h1>
-  <p>بعشقك يا رؤى... مش مجرد كلمة، ده وعد مني ليكي<br>كل سنة وإحنا مع بعض، وكل سنة وإنتِ أحلى حاجة في حياتي</p>
-  <button class="btn" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">يلا نشوف حكايتنا يا رؤى 👇</button>
-</div>
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-xmarks-lines glow-text"></i> BOT X
+        </div>
+        <nav class="nav-links">
+            <a href="#"><i class="fa-solid fa-circle-info"></i> حول البوت</a>
+            <a href="#"><i class="fa-solid fa-headset"></i> الدعم</a>
+            <a href="#"><i class="fa-solid fa-star"></i> المميزات</a>
+        </nav>
+        <!-- تم تعديل اللينك لقناة الواتساب -->
+        <a href="https://whatsapp.com/channel/0029Vb8ycvQ5kg6xUaBjEw0O" target="_blank" class="header-btn">
+            <i class="fa-brands fa-whatsapp"></i> قناة البوت
+        </a>
+    </header>
 
-<div class="card" id="story">
-  <h2>يا رؤى... 📖</h2>
-  <p>من أول مرة شفتك فيها، وأنا عارف إن قلبي اختارك إنتِ.<br>
-  ضحكتك بقت أحلى صوت في يومي، وزعلك بقى أصعب حاجة عليا.<br>
-  أنا أحمد، واللي بيحبك أكتر من نفسه، واللي بعشقك بجد.<br><br>
-  <b style="color:#c9184a;font-size:24px">بعشقك يا رؤى ❤️</b></p>
-</div>
+    <!-- قسم الهيرو -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>موقع تنصيب بوت <span>X</span> <i class="fa-solid fa-crown glow-text" style="font-size: 40px; margin-right: 10px;"></i></h1>
+            <p>أدخل رقم واتسابك .. واحصل على رمز التنصيب واربط حسابك مع البوت بكل سهولة وأمان.</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://i.pinimg.com/736x/8a/e4/6d/8ae46dc4b1e167159f9c5e4f2a8f82f6.jpg" alt="X Bot Anime">
+        </div>
+    </section>
 
-<div class="card">
-  <h2>ذكرياتنا أنا وإنتِ 📸</h2>
-  <p>حط هنا أحلى صور ليكم</p>
-  <div class="photos">
-    <img src="https://picsum.photos/400/400?random=11">
-    <img src="https://picsum.photos/400/400?random=12">
-    <img src="https://picsum.photos/400/400?random=13">
-  </div>
-  <p style="font-size:14px;color:#999;margin-top:10px">بدل لينكات الصور دي بصوركم إنتوا، أو ابعتلي صوركم وأنا أحطها</p>
-</div>
+    <!-- صندوق التنصيب -->
+    <div class="install-box-container">
+        <div class="install-box-title">
+            <i class="fa-solid fa-gear"></i> أبدأ عملية التنصيب
+        </div>
+        
+        <div class="install-content">
+            <div class="install-visual">
+                <div class="orbit orbit-1"></div>
+                <div class="orbit orbit-2"></div>
+                <div class="phone-mockup">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <i class="fa-solid fa-shield-check shield-icon"></i>
+            </div>
 
-<div class="card">
-  <h2>3 حاجات بعشقها فيكي 💕</h2>
-  <p>
-    1. ضحكتك اللي بتنور يومي ✨<br>
-    2. حنيتك اللي ملهاش زيها 🫶<br>
-    3. إنك رؤى... وده لوحده كفاية ❤️
-  </p>
-</div>
+            <div class="install-form">
+                <div class="input-group">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="text" id="phoneInput" placeholder="أدخل رقم واتسابك مع رمز الدولة">
+                </div>
+                <div class="input-hint">مثال: 201012345678+</div>
+                
+                <button class="install-btn" id="generateBtn" onclick="generateCode()">
+                    <i class="fa-solid fa-bolt"></i> إنشاء رمز التنصيب
+                </button>
+                <!-- مكان ظهور الكود أو الخطأ -->
+                <div id="result" style="display: none; padding: 15px; border-radius: 10px; font-weight: bold; text-align: center; font-size: 18px; margin-top: 10px; transition: 0.3s;"></div>
+            </div>
+        </div>
+    </div>
 
-<div class="card">
-  <h2>اكتبي اسمك هنا يا رؤى 👇</h2>
-  <input id="nameInput" placeholder="اكتبي رؤى هنا...">
-  <br><button class="btn" style="background:#c9184a;color:white" onclick="showLove()">دوسي هنا</button>
-  <p id="loveMsg" style="font-weight:900;color:#c9184a;font-size:24px;margin-top:15px"></p>
-</div>
+    <!-- قسم الخطوات -->
+    <section class="steps-section">
+        <div class="step-item">
+            <div class="step-circle">
+                <span class="step-number">1</span>
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <p>أدخل رقمك</p>
+        </div>
+        <div class="step-item">
+            <div class="step-circle">
+                <span class="step-number">2</span>
+                <i class="fa-solid fa-key"></i>
+            </div>
+            <p>احصل على رمز التنصيب</p>
+        </div>
+        <div class="step-item">
+            <div class="step-circle">
+                <span class="step-number">3</span>
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <p>اربط حسابك</p>
+        </div>
+        <div class="step-item">
+            <div class="step-circle">
+                <span class="step-number">4</span>
+                <i class="fa-solid fa-rocket"></i>
+            </div>
+            <p>تم بنجاح!</p>
+        </div>
+    </section>
 
-<div class="card">
-  <h2>سؤال مهم جداً 💍</h2>
-  <div class="big-love">أحمد ❤️ رؤى</div>
-  <p style="font-size:26px;font-weight:900">هتفضلي معايا طول العمر يا رؤى؟</p>
-  <button class="love-btn" onclick="yes()">أيوه طبعاً ❤️</button>
-  <button class="love-btn" id="noBtn" style="background:#eee;color:#333" onmouseover="escapeBtn()">لأ</button>
-  <p id="answer" style="font-size:23px;font-weight:900;color:#c9184a;margin-top:12px"></p>
-</div>
+    <!-- قسم المميزات -->
+    <section class="features-section">
+        <div class="feature-card">
+            <i class="fa-solid fa-gem feature-icon"></i>
+            <h3>مميزات رهيبة</h3>
+            <p>بوت متطور بميزات لا تنتهي تلبي جميع احتياجاتك.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-bolt feature-icon"></i>
+            <h3>سهولة الاستخدام</h3>
+            <p>خطوات بسيطة وسريعة لتنصيب البوت في ثوانٍ معدودة.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-shield-halved feature-icon"></i>
+            <h3>أمان عالي</h3>
+            <p>حماية كاملة لحسابك ومحادثاتك بفضل أنظمة التشفير.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-headset feature-icon"></i>
+            <h3>دعم فوري</h3>
+            <p>فريق دعم متواجد دائماً لمساعدتك وحل أي مشكلة.</p>
+        </div>
+    </section>
 
-<div class="footer">اتعمل بحب من أحمد لـ رؤى ❤️ | بعشقك</div>
+    <!-- الفوتر -->
+    <footer>
+        <div class="logo" style="font-size: 20px;">
+            <i class="fa-solid fa-xmarks-lines"></i> BOT X
+        </div>
+        <div class="footer-text">
+            معاً .. نحو تجربة أفضل في عالم البوتات <i class="fa-solid fa-heart" style="color: #ff0055;"></i>
+        </div>
+        <div class="social-icons">
+            <!-- تم تعديل لينكات التواصل -->
+            <a href="https://whatsapp.com/channel/0029Vb8ycvQ5kg6xUaBjEw0O" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-solid fa-globe"></i></a>
+        </div>
+    </footer>
 
-<script>
-  function createHeart(){
-    const h=document.createElement('div');
-    h.className='heart'; h.innerHTML=Math.random()>0.5?'❤️':'🌹';
-    h.style.left=Math.random()*100+'vw';
-    h.style.fontSize=(Math.random()*20+18)+'px';
-    h.style.animationDuration=(Math.random()*3+2)+'s';
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),5000);
-  }
-  setInterval(createHeart,350);
+    <!-- السكريبت الخاص بربط الـ API -->
+    <script>
+        async function generateCode() {
+            const phoneInput = document.getElementById('phoneInput').value.trim();
+            const btn = document.getElementById('generateBtn');
+            const resultDiv = document.getElementById('result');
+            const btnText = btn.innerHTML;
 
-  function escapeBtn(){
-    const b=document.getElementById('noBtn');
-    b.style.position='fixed';
-    b.style.left=Math.random()*70+'vw';
-    b.style.top=Math.random()*70+'vh';
-  }
-  function yes(){
-    document.getElementById('answer').innerHTML='كنت عارف يا رؤى 😍❤️ بعشقك أويييي!';
-    alert('أحمد بيقولك: بعشقك يا رؤى ❤️❤️❤️');
-  }
-  function showLove(){
-    const n=document.getElementById('nameInput').value || 'رؤى';
-    document.getElementById('loveMsg').innerHTML='بحبك يا '+n+' ❤️ أحمد بعشقك!';
-  }
-</script>
+            // التأكد من إدخال الرقم
+            if(!phoneInput) {
+                resultDiv.style.display = 'block';
+                resultDiv.style.background = 'rgba(255, 0, 0, 0.1)';
+                resultDiv.style.border = '1px solid #ff0000';
+                resultDiv.style.color = '#ff4d4d';
+                resultDiv.innerHTML = '⚠️ يرجى إدخال رقم الهاتف أولاً!';
+                return;
+            }
+
+            // تغيير شكل الزرار أثناء التحميل
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الإنشاء...';
+            resultDiv.style.display = 'none';
+
+            try {
+                // الاتصال بالسيرفر عن طريق المسار اللي عملناه في vercel.json
+                // بنستخدم /api/pair كمسار متوقع، لو الـ api بتاعك مختلف غيرها لاسمه
+                const response = await fetch('/api/pair', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': '45.13.225.210:26571' // حطيت المفتاح هنا احتياطي
+                    },
+                    body: JSON.stringify({ phone: phoneInput })
+                });
+
+                const text = await response.text();
+                let data;
+                
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    throw new Error('استجابة السيرفر غير صالحة.');
+                }
+
+                // لو السيرفر رجع كود
+                if (data.code || data.pairingCode) {
+                    const code = data.code || data.pairingCode;
+                    resultDiv.style.display = 'block';
+                    resultDiv.style.background = 'rgba(0, 255, 204, 0.1)';
+                    resultDiv.style.border = '1px solid #00ffcc';
+                    resultDiv.style.color = '#00ffcc';
+                    resultDiv.innerHTML = `
+                        <div style="font-size: 14px; margin-bottom: 5px;">كود التنصيب الخاص بك:</div>
+                        <div style="font-size: 26px; letter-spacing: 4px; font-weight: 900; text-shadow: 0 0 10px #00ffcc;">${code}</div>
+                    `;
+                } else {
+                    throw new Error(data.message || data.error || 'فشل الحصول على الكود من السيرفر.');
+                }
+
+            } catch (error) {
+                console.error(error);
+                resultDiv.style.display = 'block';
+                resultDiv.style.background = 'rgba(255, 0, 0, 0.1)';
+                resultDiv.style.border = '1px solid #ff0000';
+                resultDiv.style.color = '#ff4d4d';
+                resultDiv.innerHTML = `⚠️ ${error.message || 'تعذر الاتصال بالسيرفر، تأكد من تشغيل البوت.'}`;
+            } finally {
+                // إرجاع الزرار لشكله الطبيعي
+                btn.disabled = false;
+                btn.innerHTML = btnText;
+            }
+        }
+    </script>
 </body>
 </html>
