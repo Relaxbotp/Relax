@@ -4,12 +4,360 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relax Bot - تجربة أقوى .. بوتات بلا حدود</title>
+    
     <!-- خطوط جوجل -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <!-- مكتبة الأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- ملف التصميم -->
-    <link rel="stylesheet" href="style.css">
+
+    <!-- التصميم (CSS) -->
+    <style>
+        /* الإعدادات الأساسية */
+        :root {
+            --bg-color: #09050f;
+            --primary-purple: #9d00ff;
+            --primary-cyan: #00f3ff;
+            --card-bg: rgba(20, 10, 35, 0.7);
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --neon-glow-purple: 0 0 15px rgba(157, 0, 255, 0.6);
+            --neon-glow-cyan: 0 0 15px rgba(0, 243, 255, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(157, 0, 255, 0.15), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.15), transparent 30%);
+            background-attachment: fixed;
+            padding-bottom: 50px;
+        }
+
+        /* القائمة العلوية */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(9, 5, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(157, 0, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--text-main);
+            text-shadow: var(--neon-glow-purple);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header .logo i { color: var(--primary-purple); }
+
+        header nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        header nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        header nav a:hover, header nav a.active {
+            color: var(--text-main);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-dev-channel {
+            background: transparent;
+            border: 1px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        .btn-dev-channel:hover {
+            background: var(--primary-cyan);
+            color: #000;
+            box-shadow: var(--neon-glow-cyan);
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 70px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            background: linear-gradient(to right, #fff, var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(157, 0, 255, 0.5));
+        }
+
+        .hero-title span {
+            color: var(--primary-cyan);
+            -webkit-text-fill-color: var(--primary-cyan);
+            filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.5));
+        }
+
+        .hero-subtitle { font-size: 24px; margin-top: 10px; }
+        .hero-desc { color: var(--text-muted); font-size: 18px; margin-top: 10px; }
+
+        /* صندوق التثبيت (الزجاجي) */
+        .installation-card {
+            display: flex;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(157, 0, 255, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            gap: 40px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(157, 0, 255, 0.1);
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+        }
+
+        .profile-section {
+            flex: 1;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            padding-left: 20px;
+            text-align: center;
+        }
+
+        .avatar-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-purple);
+            padding: 3px;
+            box-shadow: var(--neon-glow-purple);
+            background: #1a0b2e; /* لون بديل في حال عدم وجود صورة */
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .verified-badge {
+            color: var(--primary-cyan);
+            font-size: 18px;
+            filter: drop-shadow(0 0 5px var(--primary-cyan));
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .stat-val { display: block; font-weight: bold; color: var(--primary-cyan); }
+        .stat-label { font-size: 12px; color: var(--text-muted); }
+
+        /* قسم توليد الكود */
+        .generate-section {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .generate-section h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .generate-section h2 i { color: var(--primary-purple); }
+        .generate-section p { color: var(--text-muted); margin-bottom: 20px; }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .country-code {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            outline: none;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+        }
+
+        .country-code option { background: var(--bg-color); color: white; }
+
+        .input-group input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            outline: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .btn-generate {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #7a00ff, #00f3ff);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 20px rgba(122, 0, 255, 0.4);
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
+        }
+
+        /* قسم المميزات */
+        .features { padding: 60px 20px; text-align: center; }
+
+        .section-title h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-purple), transparent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px 20px;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-purple);
+            box-shadow: var(--neon-glow-purple);
+            transform: translateY(-5px);
+        }
+
+        .icon-box { font-size: 30px; color: var(--primary-purple); margin-bottom: 15px; }
+        .feature-card h3 { font-size: 18px; margin-bottom: 10px; }
+        .feature-card p { color: var(--text-muted); font-size: 14px; }
+
+        /* التجاوب مع الموبايل */
+        @media (max-width: 992px) {
+            .installation-card { flex-direction: column; }
+            .profile-section {
+                border-left: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-left: 0;
+                padding-bottom: 20px;
+            }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; gap: 15px; }
+            header nav { justify-content: center; gap: 15px; }
+            .hero-title { font-size: 45px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .input-group { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
 
@@ -41,6 +389,7 @@
             <!-- الملف الشخصي -->
             <div class="profile-section">
                 <div class="avatar-container">
+                    <!-- ضع رابط الصورة هنا -->
                     <img src="https://i.pinimg.com/736x/8f/1c/a2/8f1ca2029e2efce2f8d10e3c7ff5f9b1.jpg" alt="Relax Bot">
                 </div>
                 <h3>Relax Bot <i class="fa-solid fa-circle-check verified-badge"></i></h3>
@@ -114,59 +463,6 @@
             </div>
         </div>
     </section>
-
-    <!-- قسم البوتات المتاحة -->
-    <section class="bots-slider">
-        <div class="section-title">
-            <h2><i class="fa-solid fa-robot"></i> البوتات المتاحة</h2>
-        </div>
-        <div class="slider-container">
-            <button class="nav-btn prev"><i class="fa-solid fa-chevron-right"></i></button>
-            
-            <div class="bot-card">
-                <img src="https://i.pinimg.com/736x/3c/1e/8e/3c1e8e6f4f2a1e8d9b0c5e7f8a9b0c1d.jpg" alt="Satoru Bot">
-                <div class="bot-info">
-                    <h3><i class="fa-solid fa-crown"></i> SATORU BOT</h3>
-                    <span class="status online">متصل 🟢</span>
-                </div>
-            </div>
-
-            <div class="bot-card active-card">
-                <img src="https://i.pinimg.com/736x/8f/1c/a2/8f1ca2029e2efce2f8d10e3c7ff5f9b1.jpg" alt="Relax Bot">
-                <div class="bot-info">
-                    <h3><i class="fa-solid fa-crown"></i> Relax Bot</h3>
-                    <span class="status online">متصل 🟢</span>
-                </div>
-            </div>
-
-            <div class="bot-card">
-                <img src="https://i.pinimg.com/736x/4c/1e/8e/4c1e8e6f4f2a1e8d9b0c5e7f8a9b0c1d.jpg" alt="Tokito Bot">
-                <div class="bot-info">
-                    <h3><i class="fa-solid fa-crown"></i> TOKITO BOT</h3>
-                    <span class="status online">متصل 🟢</span>
-                </div>
-            </div>
-
-            <button class="nav-btn next"><i class="fa-solid fa-chevron-left"></i></button>
-        </div>
-    </section>
-
-    <!-- الفوتر (تذييل الصفحة) -->
-    <footer>
-        <div class="quote">
-            <p>.. لأن الحرية هي كل ما أريده ..</p>
-            <span>- إيرين ييغر -</span>
-        </div>
-        <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-discord"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#"><i class="fa-brands fa-telegram"></i></a>
-            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-        <div class="copyright">
-            Relax Bot © 2026 - جميع الحقوق محفوظة <i class="fa-regular fa-heart"></i>
-        </div>
-    </footer>
 
 </body>
 </html>
