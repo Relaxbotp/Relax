@@ -2,221 +2,255 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relax Bot | تجربة أقوى .. بوتات بلا حدود</title>
-    
-    <!-- خطوط جوجل -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-    <!-- أيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RELAX // PRO MAX PAIRING TERMINAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ====== التصميم كله هنا ====== */
-        :root {
-            --bg: #05010a;
-            --purple: #9d00ff;
-            --cyan: #00f3ff;
-            --glass: rgba(20, 10, 35, 0.6);
-            --text: #ffffff;
-            --muted: #a0a0a0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
 
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
+        :root {
+            --crimson: #ff083a;
+            --crimson-bright: #ff3b63;
+            --crimson-deep: #660015;
+            --obsidian: #070709;
+            --panel: rgba(14, 14, 19, 0.78);
+            --panel-elevated: rgba(22, 22, 30, 0.9);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-crimson: rgba(255, 8, 58, 0.38);
+            --text-main: #f5f5f7;
+            --text-muted: #9898a6;
+            --wa-green: #25d366;
         }
 
         body {
-            background-color: var(--bg);
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(157, 0, 255, 0.15), transparent 30%),
-                radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.15), transparent 30%),
-                url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=2000&auto=format&fit=crop');
+            background-color: var(--obsidian);
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(255, 8, 58, 0.18), transparent 55%),
+                linear-gradient(rgba(7, 7, 9, 0.86), rgba(7, 7, 9, 0.96)),
+                url('https://i.pinimg.com/736x/00/38/23/00382364ea86499ba8fcd6ce77eb4923.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: var(--text);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100dvh;
+            padding: 20px;
+            position: relative;
             overflow-x: hidden;
         }
 
-        /* القائمة العلوية */
-        header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 30px;
-            background: rgba(5, 1, 10, 0.85);
-            border-bottom: 1px solid rgba(157, 0, 255, 0.3);
-            backdrop-filter: blur(10px);
-            position: sticky; top: 0; z-index: 100;
+        /* شبكة تقنية دقيقة تعطي عمقاً معمارياً بدون إزعاج بصري */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: radial-gradient(circle at 50% 35%, black 35%, transparent 85%);
+            pointer-events: none;
+            z-index: 0;
         }
-        .logo { font-family: 'Orbitron'; font-size: 22px; font-weight: 900; text-shadow: 0 0 10px var(--purple); display: flex; align-items: center; gap: 8px;}
-        .logo i { color: var(--purple); }
-        nav { display: flex; gap: 20px; }
-        nav a { color: var(--muted); text-decoration: none; font-size: 14px; transition: 0.3s; display: flex; align-items: center; gap: 5px;}
-        nav a:hover, nav a.active { color: white; text-shadow: 0 0 8px white; }
-        .btn-channel { color: var(--cyan); border: 1px solid var(--cyan); padding: 5px 15px; border-radius: 20px; text-decoration: none; font-size: 12px; box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2); transition: 0.3s;}
-        .btn-channel:hover { background: var(--cyan); color: #000; }
 
-        /* القسم الرئيسي */
-        .hero {
-            display: flex; flex-direction: column; align-items: center;
-            padding: 60px 20px; min-height: 80vh; justify-content: center;
+        .container {
+            width: 100%;
+            max-width: 430px;
+            background: var(--panel);
+            padding: 24px 22px 26px;
+            border-radius: 26px;
+            border: 1px solid var(--border-subtle);
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.75),
+                0 0 0 1px rgba(255, 8, 58, 0.14),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(22px) saturate(140%);
+            z-index: 1;
         }
-        .hero-text { text-align: center; margin-bottom: 40px; }
-        .hero-text h1 {
-            font-family: 'Orbitron'; font-size: 60px; font-weight: 900;
-            text-shadow: 0 0 20px var(--purple);
-        }
-        .hero-text h1 span { color: var(--cyan); text-shadow: 0 0 30px var(--cyan); }
-        .hero-text p { font-size: 18px; margin-top: 10px; }
-        .hero-text .sub { color: var(--muted); font-size: 14px; }
 
-        /* المربع الزجاجي */
-        .glass-card {
-            display: flex; gap: 30px;
-            background: var(--glass);
-            border: 1px solid rgba(157, 0, 255, 0.4);
-            border-radius: 20px; padding: 30px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 0 40px rgba(157, 0, 255, 0.2), inset 0 0 20px rgba(157, 0, 255, 0.1);
-            width: 100%; max-width: 800px;
+        /* خط علوي متدرج بنبض خفيف */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 12%;
+            right: 12%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--crimson), var(--crimson-bright), var(--crimson), transparent);
+            box-shadow: 0 0 18px var(--crimson);
+        }
+
+        /* شريط حالة النظام العلوي */
+        .hud-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 7px 12px;
+            margin-bottom: 20px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .hud-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--crimson-bright);
+            font-weight: 700;
+        }
+
+        .hud-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--crimson);
+            box-shadow: 0 0 10px var(--crimson);
+            animation: hudPulse 1.8s infinite;
+        }
+
+        @keyframes hudPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.35); opacity: 0.55; }
+        }
+
+        .hud-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        /* بطاقة الهوية */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 14px;
             position: relative;
         }
-        .glass-card::before {
-            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, var(--purple), var(--cyan));
-            z-index: -1; border-radius: 22px; filter: blur(10px); opacity: 0.3;
+
+        .avatar-ring {
+            position: relative;
+            width: 114px;
+            height: 114px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* الملف الشخصي */
-        .profile { flex: 1; text-align: center; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px; }
-        .avatar { width: 90px; height: 90px; margin: 0 auto 15px; border-radius: 50%; border: 2px solid var(--purple); padding: 3px; box-shadow: 0 0 15px var(--purple); background: #111;}
-        .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        .profile h3 { font-size: 18px; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .verify { color: var(--cyan); font-size: 16px; text-shadow: 0 0 5px var(--cyan); }
-        .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .stats div { background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);}
-        .stats span { display: block; color: var(--cyan); font-weight: bold; font-size: 14px; }
-        .stats small { color: var(--muted); font-size: 11px; }
-
-        /* قسم التثبيت */
-        .setup { flex: 1.5; display: flex; flex-direction: column; justify-content: center; }
-        .setup h2 { font-size: 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;}
-        .setup h2 i { color: var(--purple); }
-        .setup p { color: var(--muted); font-size: 14px; margin-bottom: 15px; }
-        .input-box { display: flex; gap: 10px; margin-bottom: 15px; }
-        .input-box select { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px; border-radius: 8px; outline: none; font-family: 'Cairo'; cursor: pointer;}
-        .input-box select option { background: #000; }
-        .input-box input { flex: 1; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 15px; border-radius: 8px; outline: none; font-family: 'Cairo';}
-        .input-box input:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0, 243, 255, 0.3); }
-        button { width: 100%; padding: 12px; border: none; border-radius: 8px; background: linear-gradient(90deg, #7a00ff, #00f3ff); color: white; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(122, 0, 255, 0.4); font-family: 'Cairo'; transition: 0.3s;}
-        button:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 243, 255, 0.6); }
-
-        /* قسم البوتات */
-        .bots-section { text-align: center; padding: 40px 20px; }
-        .bots-section h2 { font-size: 22px; margin-bottom: 30px; }
-        .bots-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .bot-card {
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px; width: 200px; overflow: hidden; padding-bottom: 15px;
-            backdrop-filter: blur(10px); transition: 0.3s;
+        .avatar-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 2.5px;
+            background: conic-gradient(from 0deg, var(--crimson), transparent 45%, var(--crimson-bright), transparent 80%, var(--crimson));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: ringSpin 9s linear infinite;
         }
-        .bot-card:hover { transform: translateY(-5px); }
-        .bot-card.active { border-color: var(--cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.3); }
-        .bot-img { width: 100%; height: 150px; background-size: cover; background-position: center; margin-bottom: 10px; background-color: #222; }
-        .bot-card h3 { font-family: 'Orbitron'; font-size: 14px; }
-        .online { color: #00ff88; font-size: 12px; display: block; margin-top: 5px; }
-        .online i { font-size: 8px; margin-left: 3px; }
 
-        /* الفوتر */
-        footer { text-align: center; padding: 20px; color: var(--muted); font-size: 12px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;}
-
-        /* التجاوب مع الموبايل */
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 15px; }
-            nav { flex-wrap: wrap; justify-content: center; }
-            .glass-card { flex-direction: column; padding: 20px; }
-            .profile { border-left: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-bottom: 20px; }
-            .hero-text h1 { font-size: 40px; }
-            .input-box { flex-direction: column; }
+        @keyframes ringSpin {
+            to { transform: rotate(360deg); }
         }
-    </style>
-</head>
-<body>
 
-    <header>
-        <div class="logo"><i class="fa-solid fa-crown"></i> Relax Bot</div>
-        <nav>
-            <a href="#" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a>
-            <a href="#"><i class="fa-regular fa-star"></i> المميزات</a>
-            <a href="#"><i class="fa-solid fa-code"></i> طريقة التثبيت</a>
-            <a href="#"><i class="fa-solid fa-robot"></i> البوتات</a>
-            <a href="#"><i class="fa-solid fa-headset"></i> الدعم</a>
-        </nav>
-        <a href="#" class="btn-channel"><i class="fa-brands fa-telegram"></i> قناة المطور</a>
-    </header>
+        .profile-image {
+            width: 102px;
+            height: 102px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(255, 8, 58, 0.35);
+            background-color: #16161d;
+        }
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>RELAX <span>BOT</span></h1>
-            <p>مرحباً بك في عالم الـ Relax Bot</p>
-            <p class="sub">تثبيت أسهل .. تجربة أقوى .. بوتات بلا حدود !</p>
-        </div>
+        .brand-name {
+            font-family: 'JetBrains Mono', 'Cairo', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 6px;
+            margin-top: 12px;
+            text-shadow: 0 0 24px rgba(255, 8, 58, 0.55);
+            line-height: 1.1;
+        }
 
-        <div class="glass-card">
-            <div class="profile">
-                <div class="avatar">
-                    <img src="https://i.pinimg.com/736x/8f/1c/a2/8f1ca2029e2efce2f8d10e3c7ff5f9b1.jpg" alt="Bot">
-                </div>
-                <h3>Relax Bot <i class="fa-solid fa-circle-check verify"></i></h3>
-                <div class="stats">
-                    <div><span>+250K</span><small>مستخدم</small></div>
-                    <div><span>v2.0.0</span><small>إصدار</small></div>
-                    <div><span>99.9%</span><small>استقرار</small></div>
-                    <div><span>99.9%</span><small>استجابة</small></div>
-                </div>
-            </div>
+        .subtitle {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
 
-            <div class="setup">
-                <h2><i class="fa-solid fa-bolt"></i> ابدأ الآن بتثبيت بوتك <i class="fa-solid fa-rocket"></i></h2>
-                <p>أدخل رقم هاتفك مع رمز الدولة</p>
-                <div class="input-box">
-                    <select>
-                        <option>+20 🇪🇬</option>
-                        <option>+966 🇸🇦</option>
-                        <option>+971 🇦🇪</option>
-                        <option>+212 🇲🇦</option>
-                    </select>
-                    <input type="text" placeholder="مثال: 201012345678">
-                </div>
-                <button onclick="alert('جاري توليد الكود...')"><i class="fa-solid fa-bolt"></i> توليد الكود <i class="fa-solid fa-bolt"></i></button>
-            </div>
-        </div>
-    </section>
+        /* الإحصائيات */
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
 
-    <section class="bots-section">
-        <h2><i class="fa-solid fa-robot"></i> البوتات المتاحة</h2>
-        <div class="bots-container">
-            <div class="bot-card">
-                <div class="bot-img" style="background-image: url('https://i.pinimg.com/736x/3c/1e/8e/3c1e8e6f4f2a1e8d9b0c5e7f8a9b0c1d.jpg');"></div>
-                <h3>SATORU BOT</h3>
-                <span class="online"><i class="fa-solid fa-circle"></i> متصل</span>
-            </div>
-            <div class="bot-card active">
-                <div class="bot-img" style="background-image: url('https://i.pinimg.com/736x/8f/1c/a2/8f1ca2029e2efce2f8d10e3c7ff5f9b1.jpg');"></div>
-                <h3>Relax Bot</h3>
-                <span class="online"><i class="fa-solid fa-circle"></i> متصل</span>
-            </div>
-            <div class="bot-card">
-                <div class="bot-img" style="background-image: url('https://i.pinimg.com/736x/4c/1e/8e/4c1e8e6f4f2a1e8d9b0c5e7f8a9b0c1d.jpg');"></div>
-                <h3>TOKITO BOT</h3>
-                <span class="online"><i class="fa-solid fa-circle"></i> متصل</span>
-            </div>
-        </div>
-    </section>
+        .stat-box {
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 8, 58, 0.03));
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
 
-    <footer>
-        <p>Relax Bot © 2026 - جميع الحقوق محفوظة</p>
-    </footer>
+        .stat-box:hover {
+            border-color: var(--border-crimson);
+            transform: translateY(-2px);
+        }
 
-</body>
-</html>
+        .stat-value {
+            font-family: 'JetBrains Mono', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 0 16px rgba(255, 8, 58, 0.45);
+            margin-bottom: 4px;
+            display: block;
+            line-height: 1.15;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* حقل إدخال الرقم وزر التوليد */
+        .input-group {
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 18px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(5, 5, 8, 0.75);
+            color: #fff;
+            font-family: 'JetBrains Mono', 'Cairo', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.25s ease, box
