@@ -3,35 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RELAX // PRO MAX PAIRING TERMINAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+    <title>RELAX | تنصيب البوت</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-
+        
         :root {
-            --crimson: #ff083a;
-            --crimson-bright: #ff3b63;
-            --crimson-deep: #660015;
-            --obsidian: #070709;
-            --panel: rgba(14, 14, 19, 0.78);
-            --panel-elevated: rgba(22, 22, 30, 0.9);
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-crimson: rgba(255, 8, 58, 0.38);
-            --text-main: #f5f5f7;
-            --text-muted: #9898a6;
-            --wa-green: #25d366;
+            --neon-red: #ff0033;
+            --dark-red: #8b0000;
+            --light-red: #ff4d4d;
+            --bg-dark: #050505;
+            --text-dim: #888;
+            --mono: 'JetBrains Mono', 'Courier New', monospace;
         }
 
         body {
-            background-color: var(--obsidian);
-            background-image:
-                radial-gradient(circle at 50% 0%, rgba(255, 8, 58, 0.18), transparent 55%),
-                linear-gradient(rgba(7, 7, 9, 0.86), rgba(7, 7, 9, 0.96)),
-                url('https://i.pinimg.com/736x/00/38/23/00382364ea86499ba8fcd6ce77eb4923.jpg');
+            background-color: var(--bg-dark);
+            background-image: linear-gradient(rgba(5,5,5,0.94), rgba(5,5,5,0.98)), url('https://i.pinimg.com/736x/00/38/23/00382364ea86499ba8fcd6ce77eb4923.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: var(--text-main);
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -41,216 +34,1270 @@
             overflow-x: hidden;
         }
 
-        /* شبكة تقنية دقيقة تعطي عمقاً معمارياً بدون إزعاج بصري */
+        /* 🔷 شبكة الخلفية */
         body::before {
             content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-            background-size: 32px 32px;
-            mask-image: radial-gradient(circle at 50% 35%, black 35%, transparent 85%);
-            pointer-events: none;
+            position: fixed; inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,0,51,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,0,51,0.035) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse at 50% 40%, black 25%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 25%, transparent 80%);
             z-index: 0;
+            pointer-events: none;
         }
 
+        /* 🔴 توهج مركزي */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120vw; height: 120vh;
+            background: radial-gradient(ellipse at center, rgba(255,0,51,0.12), transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: glowPulse 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            from { opacity: 0.5; } to { opacity: 1; }
+        }
+
+        /* ========== الكارت الرئيسي ========== */
         .container {
             width: 100%;
             max-width: 430px;
-            background: var(--panel);
-            padding: 24px 22px 26px;
-            border-radius: 26px;
-            border: 1px solid var(--border-subtle);
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.75),
-                0 0 0 1px rgba(255, 8, 58, 0.14),
-                inset 0 1px 0 rgba(255, 255, 255, 0.08);
-            text-align: center;
+            background: linear-gradient(180deg, rgba(15,15,15,0.96), rgba(8,4,6,0.96));
+            padding: 38px 26px 28px;
             position: relative;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,0,51,0.18);
+            box-shadow: 
+                0 0 0 1px rgba(255,0,51,0.03),
+                0 20px 60px rgba(0,0,0,0.85),
+                0 0 100px rgba(255,0,51,0.08);
+            animation: containerIn 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
-            backdrop-filter: blur(22px) saturate(140%);
             z-index: 1;
         }
 
-        /* خط علوي متدرج بنبض خفيف */
+        @keyframes containerIn {
+            from { opacity: 0; transform: translateY(25px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         .container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 12%;
-            right: 12%;
+            top: 0; left: 0; right: 0;
             height: 2px;
-            background: linear-gradient(90deg, transparent, var(--crimson), var(--crimson-bright), var(--crimson), transparent);
-            box-shadow: 0 0 18px var(--crimson);
+            background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+            opacity: 0.7;
+            animation: shimmer 3s ease-in-out infinite;
         }
 
-        /* شريط حالة النظام العلوي */
-        .hud-topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 7px 12px;
-            margin-bottom: 20px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-subtle);
-            font-size: 11px;
-            color: var(--text-muted);
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
         }
 
-        .hud-live {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--crimson-bright);
-            font-weight: 700;
+        /* 💠 زوايا مقصوصة */
+        .corner {
+            position: absolute;
+            width: 16px; height: 16px;
+            border-color: var(--neon-red);
+            opacity: 0.55;
+            pointer-events: none;
         }
+        .corner.tl { top: 8px; left: 8px; border-top: 1.5px solid; border-left: 1.5px solid; }
+        .corner.tr { top: 8px; right: 8px; border-top: 1.5px solid; border-right: 1.5px solid; }
+        .corner.bl { bottom: 8px; left: 8px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+        .corner.br { bottom: 8px; right: 8px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
 
-        .hud-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--crimson);
-            box-shadow: 0 0 10px var(--crimson);
-            animation: hudPulse 1.8s infinite;
-        }
-
-        @keyframes hudPulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.35); opacity: 0.55; }
-        }
-
-        .hud-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-        }
-
-        /* بطاقة الهوية */
+        /* ========== البروفايل ========== */
         .profile-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 20px;
             position: relative;
         }
 
-        .avatar-ring {
+        .profile-ring {
+            width: 130px; height: 130px;
             position: relative;
-            width: 114px;
-            height: 114px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 4px;
+            animation: float 4s ease-in-out infinite;
         }
 
-        .avatar-ring::before {
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .profile-ring::before {
             content: '';
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            padding: 2.5px;
-            background: conic-gradient(from 0deg, var(--crimson), transparent 45%, var(--crimson-bright), transparent 80%, var(--crimson));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: ringSpin 9s linear infinite;
+            background: conic-gradient(from 0deg, transparent 0deg, var(--neon-red) 80deg, transparent 160deg, transparent 200deg, var(--neon-red) 280deg, transparent 360deg);
+            animation: spinRing 4s linear infinite;
+            -webkit-mask: radial-gradient(circle, transparent 79%, black 81%);
+            mask: radial-gradient(circle, transparent 79%, black 81%);
+            opacity: 0.9;
         }
 
-        @keyframes ringSpin {
+        @keyframes spinRing {
             to { transform: rotate(360deg); }
         }
 
         .profile-image {
-            width: 102px;
-            height: 102px;
+            width: 104px; height: 104px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 10px 30px rgba(255, 8, 58, 0.35);
-            background-color: #16161d;
+            border: 2px solid var(--neon-red);
+            box-shadow: 
+                0 0 25px rgba(255,0,51,0.5),
+                0 0 50px rgba(255,0,51,0.2),
+                inset 0 0 15px rgba(0,0,0,0.6);
+            background-color: #111;
+            position: relative;
+            z-index: 2;
         }
 
         .brand-name {
-            font-family: 'JetBrains Mono', 'Cairo', sans-serif;
-            font-size: 34px;
+            font-size: 40px;
             font-weight: 900;
             color: #fff;
-            letter-spacing: 6px;
-            margin-top: 12px;
-            text-shadow: 0 0 24px rgba(255, 8, 58, 0.55);
-            line-height: 1.1;
+            letter-spacing: 12px;
+            padding-right: 12px;
+            margin-top: 6px;
+            text-shadow: 
+                0 0 10px rgba(255,0,51,0.8),
+                0 0 30px rgba(255,0,51,0.5),
+                0 0 60px rgba(255,0,51,0.25);
+            position: relative;
+        }
+
+        .brand-sub {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--neon-red);
+            letter-spacing: 3px;
+            margin-top: 8px;
+            opacity: 0.7;
         }
 
         .subtitle {
-            font-size: 13.5px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+            font-size: 13px;
+            color: #bbb;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: 0.3px;
         }
 
-        /* الإحصائيات */
+        .live-dot {
+            width: 7px; height: 7px;
+            background: var(--neon-red);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-red);
+            animation: pulseDot 1.5s ease-in-out infinite;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.75); }
+        }
+
+        /* ========== الإحصائيات ========== */
         .stats-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 20px;
             width: 100%;
         }
 
         .stat-box {
-            background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 8, 58, 0.03));
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 14px 12px;
+            background: linear-gradient(180deg, rgba(255,0,51,0.04), rgba(0,0,0,0.3));
+            border: 1px solid rgba(255,0,51,0.18);
+            padding: 16px 12px 14px;
             text-align: center;
             position: relative;
-            transition: border-color 0.25s ease, transform 0.25s ease;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+            opacity: 0.5;
         }
 
         .stat-box:hover {
-            border-color: var(--border-crimson);
-            transform: translateY(-2px);
+            border-color: rgba(255,0,51,0.4);
+            background: linear-gradient(180deg, rgba(255,0,51,0.07), rgba(0,0,0,0.3));
         }
 
         .stat-value {
-            font-family: 'JetBrains Mono', sans-serif;
-            font-size: 26px;
-            font-weight: 800;
+            font-family: var(--mono);
+            font-size: 30px;
+            font-weight: 700;
             color: #fff;
-            text-shadow: 0 0 16px rgba(255, 8, 58, 0.45);
-            margin-bottom: 4px;
+            text-shadow: 0 0 15px rgba(255,0,51,0.6);
             display: block;
-            line-height: 1.15;
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
         }
 
         .stat-label {
+            font-size: 11px;
+            color: var(--text-dim);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        /* ========== الإدخال ========== */
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,0,51,0.25);
+            margin-bottom: 14px;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .input-group::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--neon-red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+            box-shadow: 0 0 15px var(--neon-red);
+        }
+
+        .input-group:focus-within {
+            border-color: rgba(255,0,51,0.6);
+            box-shadow: 0 0 20px rgba(255,0,51,0.15);
+        }
+
+        .input-group:focus-within::after {
+            transform: scaleX(1);
+        }
+
+        .input-prefix {
+            padding: 0 0 0 16px;
+            color: var(--neon-red);
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 18px;
+            text-shadow: 0 0 8px var(--neon-red);
+        }
+
+        input[type="text"] {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 16px;
+            color: #fff;
+            font-size: 16px;
+            font-family: var(--mono);
+            letter-spacing: 1px;
+            outline: none;
+            text-align: left;
+        }
+
+        input[type="text"]::placeholder {
+            color: #555;
+            font-family: 'Cairo', sans-serif;
+            letter-spacing: 0.5px;
+            text-align: right;
+        }
+
+        /* ========== الزر الرئيسي ========== */
+        .btn {
+            width: 100%;
+            padding: 17px 24px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: linear-gradient(135deg, #a30024, var(--neon-red));
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 
+                0 4px 20px rgba(255,0,51,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.15);
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 35px rgba(255,0,51,0.6),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+
+        .btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #222;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+            border-color: #333;
+            color: #666;
+        }
+
+        /* ========== صندوق النتيجة ========== */
+        .result-box {
+            margin-top: 18px;
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 700;
+            display: none;
+            animation: fadeIn 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-success {
+            background: linear-gradient(135deg, rgba(255,0,51,0.1), rgba(255,0,51,0.03));
+            border: 1px solid rgba(255,0,51,0.5);
+            color: #fff;
+            display: block;
+            box-shadow: 
+                0 0 30px rgba(255,0,51,0.15),
+                inset 0 0 30px rgba(255,0,51,0.05);
+        }
+
+        .result-success::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+        }
+
+        .result-error {
+            background: rgba(255,0,0,0.08);
+            border: 1px solid rgba(255,50,50,0.6);
+            color: #ff5555;
+            display: block;
+        }
+
+        .copy-btn {
+            background: rgba(255,0,51,0.15);
+            border: 1px solid var(--neon-red);
+            color: var(--neon-red);
+            padding: 9px 16px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-btn:hover {
+            background: var(--neon-red);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255,0,51,0.4);
+        }
+
+        /* ========== زر مراسلة المطور ========== */
+        .contact-dev-btn {
+            width: 100%;
+            padding: 14px 20px;
+            margin-top: 14px;
+            background: transparent;
+            border: 1px solid rgba(255,0,51,0.4);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-dev-btn:hover {
+            background: rgba(255,0,51,0.1);
+            border-color: var(--neon-red);
+            box-shadow: 0 0 20px rgba(255,0,51,0.2);
+        }
+
+        /* ========== السوشيال ========== */
+        .social-links-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
             font-size: 12px;
-            color: var(--text-muted);
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
         }
 
-        /* حقل إدخال الرقم وزر التوليد */
-        .input-group {
-            margin-bottom: 14px;
+        .social-btn svg { width: 15px; height: 15px; }
+
+        .social-btn.wa {
+            background: rgba(37,211,102,0.06);
+            color: #25D366;
+            border: 1px solid rgba(37,211,102,0.3);
+        }
+        .social-btn.wa:hover {
+            background: rgba(37,211,102,0.15);
+            box-shadow: 0 0 15px rgba(37,211,102,0.25);
+        }
+
+        .social-btn.tg {
+            background: rgba(255,0,51,0.06);
+            color: var(--neon-red);
+            border: 1px solid rgba(255,0,51,0.3);
+        }
+        .social-btn.tg:hover {
+            background: rgba(255,0,51,0.15);
+            box-shadow: 0 0 15px rgba(255,0,51,0.25);
+        }
+
+        /* ========== الدليل ========== */
+        .guide-section {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,0,51,0.15);
+            text-align: right;
+        }
+
+        .guide-title {
+            font-size: 13px;
+            color: var(--neon-red);
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guide-title::before {
+            content: '';
+            width: 8px; height: 8px;
+            background: var(--neon-red);
+            box-shadow: 0 0 10px var(--neon-red);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        .guide-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        .step-num {
+            background: rgba(255,0,51,0.12);
+            color: var(--neon-red);
+            min-width: 26px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 700;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,0,51,0.4);
+            font-family: var(--mono);
+            margin-top: 1px;
+            clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+        }
+
+        .highlight-text { color: #fff; font-weight: 700; }
+
+        .footer {
+            margin-top: 24px;
+            font-family: var(--mono);
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 2px;
+            opacity: 0.6;
+        }
+
+        /* ============================================= */
+        /* ========== تنسيقات شات المطور ========== */
+        /* ============================================= */
+        .chat-modal {
+            position: fixed;
+            bottom: 0; right: 0;
+            width: 100%; height: 100dvh;
+            background: rgba(8,8,8,0.98);
+            display: none;
+            flex-direction: column;
+            z-index: 9999;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .chat-modal.active {
+            display: flex;
+            animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (min-width: 768px) {
+            .chat-modal {
+                bottom: 24px; right: 24px;
+                width: 400px; height: 85vh;
+                max-height: 680px;
+                border: 1px solid rgba(255,0,51,0.35);
+                box-shadow: 0 0 50px rgba(255,0,51,0.2);
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(180deg, rgba(20,10,14,0.98), rgba(15,8,10,0.98));
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,0,51,0.25);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            z-index: 10;
             position: relative;
         }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 15px 18px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(5, 5, 8, 0.75);
+        .chat-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+        }
+
+        .chat-header .avatar {
+            font-size: 20px;
+            background: linear-gradient(135deg, var(--dark-red), var(--neon-red));
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgba(255,0,51,0.6);
+            box-shadow: 0 0 15px rgba(255,0,51,0.4);
+            flex-shrink: 0;
+        }
+
+        .chat-header h4 {
+            font-size: 15px;
+            margin: 0;
             color: #fff;
-            font-family: 'JetBrains Mono', 'Cairo', sans-serif;
-            font-size: 18px;
             font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .chat-header p {
+            font-size: 11px;
+            color: var(--light-red);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .chat-header p::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00ff88;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 20px 15px;
+            overflow-y: auto;
+            background: 
+                radial-gradient(circle at top right, rgba(255,0,51,0.04), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(255,0,51,0.03), transparent 50%),
+                #08080a;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+        }
+
+        .chat-body::-webkit-scrollbar { width: 4px; }
+        .chat-body::-webkit-scrollbar-track { background: transparent; }
+        .chat-body::-webkit-scrollbar-thumb { background: rgba(255,0,51,0.3); }
+
+        .chat-msg {
+            position: relative;
+            z-index: 2;
+            max-width: 82%;
+            padding: 11px 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            word-wrap: break-word;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+            animation: msgIn 0.3s ease;
+        }
+
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-msg.user {
+            background: linear-gradient(135deg, #a30024, var(--neon-red));
+            align-self: flex-end;
+            border-radius: 16px 16px 4px 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chat-msg.dev {
+            background: linear-gradient(135deg, rgba(25,25,28,0.98), rgba(30,15,20,0.98));
+            align-self: flex-start;
+            border-radius: 16px 16px 16px 4px;
+            border: 1px solid rgba(255,0,51,0.25);
+            box-shadow: 0 0 15px rgba(255,0,51,0.08);
+        }
+
+        .chat-msg .time {
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            display: block;
+            text-align: left;
+            margin-top: 5px;
+            font-family: var(--mono);
+        }
+
+        .chat-msg.dev .time { color: rgba(255,100,130,0.5); }
+
+        /* مشغل الصوت */
+        .custom-audio-player {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0,0,0,0.4);
+            padding: 10px;
+            border-radius: 12px;
+            min-width: 220px;
+            margin-top: 4px;
+            border: 1px solid rgba(255,0,51,0.2);
+        }
+
+        .custom-play-btn {
+            background: linear-gradient(135deg, var(--dark-red), var(--neon-red));
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 38px; height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            cursor: pointer;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(255,0,51,0.5);
+            transition: all 0.2s;
+        }
+
+        .custom-play-btn:hover { transform: scale(1.08); }
+
+        .custom-audio-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .custom-audio-bar {
+            width: 100%;
+            height: 5px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .custom-audio-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--dark-red), var(--neon-red));
+            border-radius: 3px;
+            width: 0%;
+            position: absolute;
+            top: 0; left: 0;
+            pointer-events: none;
+            box-shadow: 0 0 8px var(--neon-red);
+        }
+
+        .custom-audio-time {
+            font-size: 10px;
+            color: #aaa;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--mono);
+        }
+
+        .custom-audio-player audio { display: none; }
+
+        /* المؤقت */
+        .recording-timer {
+            display: none;
+            position: absolute;
+            bottom: 82px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--dark-red), var(--neon-red));
+            color: white;
+            padding: 7px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13px;
+            z-index: 20;
+            box-shadow: 0 0 20px rgba(255,0,51,0.7);
+            animation: pulseRec 1.5s infinite;
+            font-family: var(--mono);
             letter-spacing: 1px;
-            text-align: center;
+        }
+
+        @keyframes pulseRec {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        /* الفوتر */
+        .chat-footer {
+            background: rgba(12,10,12,0.98);
+            padding: 12px;
+            display: none;
+            gap: 8px;
+            align-items: center;
+            border-top: 1px solid rgba(255,0,51,0.2);
+            z-index: 10;
+            position: relative;
+        }
+
+        .chat-footer::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,0,51,0.4), transparent);
+        }
+
+        .chat-footer input {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid #2a2a2a;
+            padding: 12px 16px;
+            border-radius: 22px;
+            color: white;
             outline: none;
-            transition: border-color 0.25s ease, box
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .chat-footer input:focus {
+            border-color: rgba(255,0,51,0.6);
+            box-shadow: 0 0 12px rgba(255,0,51,0.2);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .chat-footer button {
+            background: linear-gradient(135deg, var(--dark-red), var(--neon-red));
+            border: none;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(255,0,51,0.4);
+        }
+
+        .chat-footer button:hover { transform: scale(1.08); }
+
+        .mic-btn {
+            background: #2a2a2a !important;
+            color: var(--light-red) !important;
+            box-shadow: none !important;
+        }
+
+        .mic-btn.recording {
+            background: linear-gradient(135deg, var(--dark-red), var(--neon-red)) !important;
+            color: #fff !important;
+            animation: pulseMic 1s infinite;
+        }
+
+        @keyframes pulseMic {
+            0% { box-shadow: 0 0 0 0 rgba(255,0,51,0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255,0,51,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,0,51,0); }
+        }
+
+        /* شاشات الشات */
+        .name-screen, .admin-login-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            background: radial-gradient(circle at center, rgba(255,0,51,0.06), transparent 70%), #08080a;
+        }
+
+        .name-screen h3, .admin-login-screen h3 {
+            color: var(--neon-red);
+            text-shadow: 0 0 15px rgba(255,0,51,0.5);
+            margin-bottom: 8px;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .name-screen input, .admin-login-screen input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,0,51,0.25);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            outline: none;
+            text-align: center;
+            margin-bottom: 14px;
+            font-size: 15px;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .name-screen input:focus, .admin-login-screen input:focus {
+            border-color: var(--neon-red);
+            box-shadow: 0 0 20px rgba(255,0,51,0.3);
+        }
+
+        .name-screen button, .admin-login-screen button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--dark-red), var(--neon-red));
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255,0,51,0.4);
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .name-screen button:hover, .admin-login-screen button:hover {
+            box-shadow: 0 6px 30px rgba(255,0,51,0.6);
+            transform: translateY(-1px);
+        }
+
+        .admin-list-screen {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            overflow-y: auto;
+            background: #08080a;
+            position: relative;
+            z-index: 10;
+        }
+
+        .admin-user-item {
+            padding: 16px 18px;
+            border-bottom: 1px solid rgba(255,0,51,0.08);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .admin-user-item:hover {
+            background: rgba(255,0,51,0.08);
+            border-right: 3px solid var(--neon-red);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+
+        <!-- البروفايل -->
+        <div class="profile-card">
+            <div class="profile-ring">
+                <img src="https://i.pinimg.com/1200x/43/ff/09/43ff09ab357df84b2ac12268a59f3531.jpg" alt="Relax Profile" class="profile-image">
+            </div>
+            <div class="brand-name">RELAX</div>
+            <div class="brand-sub">// PAIRING_PORTAL_v2.6</div>
+        </div>
+
+        <div class="subtitle">
+            <span class="live-dot"></span>
+            أدخل رقمك لطلب كود التنصيب
+        </div>
+
+        <!-- الإحصائيات -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <span class="stat-value" id="statInstalled">0</span>
+                <span class="stat-label">الأجهزة المنصبة</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-value" id="statAvailable">100</span>
+                <span class="stat-label">الأماكن المتاحة</span>
+            </div>
+        </div>
+
+        <!-- الإدخال -->
+        <div class="input-group">
+            <span class="input-prefix">&gt;</span>
+            <input type="text" id="phoneInput" placeholder="مثال: 201012345678" autocomplete="off">
+        </div>
+
+        <!-- الزر -->
+        <button class="btn" id="generateBtn" onclick="generateCode()">
+            <span id="btnText">توليد الكود 🚀</span>
+        </button>
+
+        <div id="resultBox" class="result-box"></div>
+
+        <!-- التواصل -->
+        <button class="contact-dev-btn" onclick="toggleChat()">
+            <span class="live-dot"></span>
+            <span>مراسلة المطور</span>
+        </button>
+
+        <div class="social-links-container">
+            <a href="https://whatsapp.com/channel/0029Vb8n2FZ0Vyc7nrWFSl1h" target="_blank" class="social-btn wa">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.63"/></svg>
+                قناة المطور
+            </a>
+            <a href="https://t.me/SE_NJ" target="_blank" class="social-btn tg">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                المطور تيلي
+            </a>
+        </div>
+
+        <!-- الدليل -->
+        <div class="guide-section">
+            <div class="guide-title">طريقة ربط البوت</div>
+            <div class="guide-step"><span class="step-num">01</span><div>افتح تطبيق <span class="highlight-text">واتساب</span> على هاتفك.</div></div>
+            <div class="guide-step"><span class="step-num">02</span><div>اذهب إلى <span class="highlight-text">الإعدادات</span>.</div></div>
+            <div class="guide-step"><span class="step-num">03</span><div>اختر <span class="highlight-text">الأجهزة المرتبطة</span>.</div></div>
+            <div class="guide-step"><span class="step-num">04</span><div>اضغط على <span class="highlight-text">ربط جهاز</span>.</div></div>
+            <div class="guide-step"><span class="step-num">05</span><div>اختر <span class="highlight-text">الربط برقم الهاتف</span>.</div></div>
+            <div class="guide-step"><span class="step-num">06</span><div>أدخل الكود المكون من 8 أرقام.</div></div>
+        </div>
+
+        <div class="footer">© RELAX SYSTEM 2026 · ALL RIGHTS RESERVED</div>
+    </div>
+
+    <!-- شات المطور -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-header" id="chatHeader" onclick="handleHeaderClick()">
+            <div class="avatar" id="headerAvatar">🧑‍💻</div>
+            <div>
+                <h4 id="chatHeaderTitle">محادثة: الدعم</h4>
+                <p id="chatStatus">متصل الآن</p>
+            </div>
+            <div id="backBtn" style="margin-right: auto; display: none; font-size: 22px; color: var(--light-red); padding: 10px;">↩</div>
+        </div>
+        <div class="admin-login-screen" id="adminLoginScreen">
+            <h3>🔒 دخول المطور</h3>
+            <p style="margin-bottom: 20px; font-size: 12px; color: #aaa;">هذه الشاشة مخصصة للمطور فقط</p>
+            <input type="password" id="adminPassInput" placeholder="اكتب كلمة المرور هنا...">
+            <button onclick="verifyAdminPassword()">دخول</button>
+        </div>
+        <div class="name-screen" id="nameScreen">
+            <h3>مرحباً بك! 👋</h3>
+            <p style="margin-bottom: 15px; font-size: 14px; color: #ccc;">من فضلك اكتب اسمك للبدء</p>
+            <input type="text" id="userNameInput" placeholder="اكتب اسمك هنا...">
+            <button onclick="saveUserName()">بدء المحادثة</button>
+        </div>
+        <div class="admin-list-screen" id="adminListScreen">
+            <div style="padding: 15px; font-weight: bold; color: var(--neon-red); border-bottom: 1px solid rgba(255,0,51,0.3); text-align: center;">قائمة العملاء</div>
+            <div id="adminUsersList"></div>
+        </div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="recording-timer" id="recordingTimer">00:00</div>
+        <div class="chat-footer" id="chatFooter">
+            <input type="text" id="chatInput" placeholder="اكتب رسالتك..." onkeypress="handleChatEnter(event)">
+            <button onclick="sendChatMessage()">➤</button>
+            <button id="micBtn" class="mic-btn" onclick="toggleRecording()">🎙️</button>
+        </div>
+    </div>
+
+    <!-- سكريبت Firebase (كما هو - بدون تغيير) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, push, onChildAdded, get, child, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBxdcYywv3ljnR4MMiYw6UammlfFVFmLA4",
+            authDomain: "relax-chat-72d0d.firebaseapp.com",
+            databaseURL: "https://relax-chat-72d0d-default-rtdb.firebaseio.com",
+            projectId: "relax-chat-72d0d",
+            storageBucket: "relax-chat-72d0d.firebasestorage.app",
+            messagingSenderId: "589292109",
+            appId: "1:589292109:web:ff9296d174810cf34c7204"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        const BOT_API_URL = ''; 
+        const SECRET_API_KEY = "Relax_Secret_Key_2026"; 
+
+        async function fetchBotStats() {
+            try {
+                const response = await fetch(`${BOT_API_URL}/api/stats`, { headers: { 'x-api-key': SECRET_API_KEY } });
+                const data = await response.json();
+                if (data) {
+                    document.getElementById('statInstalled').innerText = data.installed || 0;
+                    document.getElementById('statAvailable').innerText = data.available || 100;
+                }
+            } catch (e) { console.error("فشل جلب الإحصائيات:", e); }
+        }
+        fetchBotStats();
+        setInterval(fetchBotStats, 5000);
+
+        window.generateCode = async function() {
+            const phoneInput = document.getElementById('phoneInput').value.trim();
+            const btn = document.getElementById('generateBtn');
+            const btnText = document.getElementById('btnText');
+            const resultBox = document.getElementById('resultBox');
+            
+            resultBox.className = 'result-box'; resultBox.innerHTML = '';
+            if (!phoneInput) { resultBox.classList.add('result-error'); resultBox.innerText = 'يرجى إدخال رقم الهاتف أولاً!'; return; }
+            
+            btn.disabled = true; btnText.innerText = 'جاري التوليد...';
+
+            try {
+                const response = await fetch(`${BOT_API_URL}/api/pair`, { 
+                    method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': SECRET_API_KEY }, body: JSON.stringify({ phone: phoneInput }) 
+                });
+                const text = await response.text();
+                let data;
+                try { data = JSON.parse(text); } catch (e) { throw new Error("انتهى وقت الانتظار أو حدث خطأ في السيرفر."); }
+
+                if (data.code) {
+                    resultBox.classList.add('result-success');
+                    resultBox.innerHTML = `
+                        <div>كود التنصيب الخاص بك:</div>
+                        <div style="font-size: 26px; letter-spacing: 3px; margin: 12px 0; color: #fff; text-shadow: 0 0 15px var(--neon-red); font-weight: 900; font-family: var(--mono);">${data.code}</div>
+                        <button class="copy-btn" onclick="copyCode('${data.code}', this)">📋 نسخ الكود</button>
+                    `;
+                } else { throw new Error(data.error || 'حدث خطأ غير متوقع'); }
+            } catch (error) { resultBox.classList.add('result-error'); resultBox.innerText = error.message || 'تعذر الاتصال بالسيرفر.'; } 
+            finally { btn.disabled = false; btnText.innerText = 'توليد الكود 🚀'; }
+        }
+
+        window.copyCode = function(code, btnElement) {
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = btnElement.innerHTML;
+                btnElement.innerHTML = '✅ تم النسخ';
+                setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
+            });
+        }
+
+        const ADMIN_PASSWORD = "Relax@Admin2026"; 
+        let isAdmin = false, activeAdminChatId = null, currentUserId = null, isChatInitialized = false;
+        const chatModal = document.getElementById('chatModal'), nameScreen = document.getElementById('nameScreen'), adminLoginScreen = document.getElementById('adminLoginScreen'), adminListScreen = document.getElementById('adminListScreen'), chatBody = document.getElementById('chatBody'), chatFooter = document.getElementById('chatFooter'), chatInput = document.getElementById('chatInput'), chatHeaderTitle = document.getElementById('chatHeaderTitle'), chatStatus = document.getElementById('chatStatus'), backBtn = document.getElementById('backBtn'), headerAvatar = document.getElementById('headerAvatar'), recordingTimer = document.getElementById('recordingTimer');
+        let mediaRecorder, audioChunks = [], isRecording = false, recordingInterval, recordingSeconds = 0;
+        const micBtn = document.getElementById('micBtn');
+
+        if ("Notification" in window) { Notification.requestPermission(); }
+        const notificationSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+
+        window.toggleChat = function() {
+            chatModal.classList.toggle('active');
+            if(chatModal.classList.contains('active') && !isChatInitialized) { initChat(); isChatInitialized = true; }
+        }
+
+        window.handleHeaderClick = function() {
+            if(isAdmin && activeAdminChatId) { activeAdminChatId = null; loadAdminUsersList(); } else { toggleChat(); }
+        }
+
+        function initChat() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true') {
+                adminLoginScreen.style.display = 'flex'; nameScreen.style.display = 'none'; adminListScreen.style.display = 'none'; chatBody.style.display = 'none'; chatFooter.style.display = 'none'; headerAvatar.innerText = "🔒"; chatHeaderTitle.innerText = "منطقة المطور"; chatStatus.innerText = "يرجى إدخال الباسورد"; chatStatus.style.color = "var(--neon-red)";
+            } else { setupUserUI(); }
+        }
+
+        window.verifyAdminPassword = function() {
+            const pass = document.getElementById('adminPassInput').value;
+            if (pass === ADMIN_PASSWORD) { isAdmin = true; adminLoginScreen.style.display = 'none'; setupAdminUI(); } else { alert("❌ كلمة المرور خاطئة!"); }
+        }
+
+        function setupUserUI() {
+            nameScreen.style.display = 'none'; adminLoginScreen.style.display = 'none'; adminListScreen.style.display = 'none'; chatBody.style.display = 'flex'; chatFooter.style.display = 'flex'; backBtn.style.display = 'none'; headerAvatar.innerText = "🧑‍💻"; chatHeaderTitle.innerText = "الدعم الفني | Relax"; chatStatus.innerText = "متصل الآن"; chatStatus.style.color = "var(--light-red)";
+            let storedId = localStorage.getItem('relax_user_id');
+            let storedName = localStorage.getItem('relax_user_name');
+            if (!storedId || !storedName) { nameScreen.style.display = 'flex'; chatBody.style.display = 'none'; chatFooter.style.display = 'none'; } 
+            else { currentUserId = storedId; loadUserMessages(storedId); }
+        }
+
+        window.saveUserName = function() {
+            const name = document.getElementById('userNameInput').value.trim();
+            if(!name) return alert("اكتب اسمك أولاً!");
+            const newId = 'user_' + Date.now();
+            localStorage.setItem('relax_user_id', newId); localStorage.setItem('relax_user_name', name); currentUserId = newId;
+            set(ref(db, 'chats/' + newId + '/profile'), { name: name });
+            nameScreen.style.display = 'none'; chatBody.style.display = 'flex'; chatFooter.style.display = 'flex'; loadUserMessages(newId);
+        }
+
+        function loadUserMessages(userId) {
+            chatBody.innerHTML = '';
+            const msgRef = ref(db, 'chats/' + userId + '/messages');
+            let isInitialLoad = true;
+            onChildAdded(msgRef, (snapshot) => {
+                const data = snapshot.val(); renderMessage(data);
+                if(!isInitialLoad && data.sender === 'dev') { showNotification("رد جديد من الدعم", data.isAudio ? "🎙️ رسالة صوتية" : data.text); }
+                isInitialLoad = false;
+            });
+        }
+
+        function setupAdminUI() {
+            headerAvatar.innerText = "👑"; chatHeaderTitle.innerText = "لوحة تحكم المطور"; chatStatus.innerText = "اختر عميلاً للرد عليه"; chatStatus.style.color = "var(--light-red)"; loadAdminUsersList();
+        }
+
+        function loadAdminUsersList() {
+            adminListScreen.style.display = 'flex'; chatBody.style.display = 'none'; chatFooter.style.display = 'none'; backBtn.style.display = 'none'; chatHeaderTitle.innerText = "قائمة العملاء";
+            const listContainer = document.getElementById('adminUsersList'); listContainer.innerHTML = '<div style="padding: 20px; color: #888; text-align:center;">جاري التحميل...</div>';
+            const dbRef = ref(db);
+            get(child(dbRef, 'chats')).then((snapshot) => {
+                listContainer.innerHTML = '';
+                if (snapshot.exists()) {
+                    const chats = snapshot.val();
+                    Object.keys(chats).forEach(userId => {
+                        let userName = "عميل بدون اسم";
+                        if (chats[userId].profile && typeof chats[userId].profile === 'object') {
+                            if (chats[userId].profile.name) { userName = chats[userId].profile.name; } 
+                            else { const keys = Object.keys(chats[userId].profile); if(keys.length > 0 && chats[userId].profile[keys[0]].name) { userName = chats[userId].profile[keys[0]].name; } }
+                        }
+                        const item = document.createElement('div');
+                        item.className = 'admin-user-item';
+                        item.innerHTML = `<span style="font-weight:bold; color:var(--neon-red);">عميل</span> | <span>${userName}</span>`;
+                        item.onclick = () => openAdminChat(userId, userName);
+                        listContainer.appendChild(item);
+                    });
+                } else { listContainer.innerHTML = '<div style="padding: 20px; color: #888; text-align:center;">لا توجد رسائل حتى الآن.</div>'; }
+            });
+        }
+
+        function openAdminChat(userId, userName) {
+            activeAdminChatId = userId; adminListScreen.style.display = 'none'; chatBody.style.display = 'flex'; chatFooter.style.display = 'flex'; backBtn.style.display = 'block'; chatHeaderTitle.innerText = "محادثة: " + userName; chatStatus.innerText = "ترد الآن..."; chatStatus.style.color = "var(--neon-red)";
+            chatBody.innerHTML = '';
+            const msgRef = ref(db, 'chats/' + userId + '/messages');
+            let isInitialLoad = true;
+            onChildAdded(msgRef, (snapshot) => {
+                const data = snapshot.val(); renderMessage(data);
+                if(!isInitialLoad && data.sender === 'user') { showNotification("رسالة من " + userName, data.isAudio ? "🎙️ رسالة صوتية" : data.text); }
+                isInitialLoad = false;
+            });
+        }
+
+        function renderMessage(data) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `chat-msg ${data.sender === 'user' ? 'user' : 'dev'}`;
+            if (data.isAudio) {
+                const uniqueId = 'audio_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+                const mins = Math.floor((data.duration || 0) / 60);
+                const secs = (data.duration || 0) % 60;
+                const formattedDuration = `${mins < 10 ? '0'+mins : mins}:${secs < 10 ? '0'+secs : secs}`;
+                msgDiv.innerHTML = `
+                    <div class="custom-audio-player">
+                        <button class="custom-p
